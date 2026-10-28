@@ -19,7 +19,7 @@ const einleitung = 'eVTms Schienenfahrzeuge, Hebebühnen und Krane, Module, Rang
     <div class="breite">
       <Querverweise
         eintraege={[
-          ...gruppen.map((g) => ({ titel: g.titel, text: ohneTodo(g.einleitung), link: `/${sprache}/produkte/${g.slug}/`, marke: g.marke })),
+          ...gruppen.map((g) => ({ titel: g.titel, text: ohneTodo(g.einleitung), bild: g.bild, link: `/${sprache}/produkte/${g.slug}/`, marke: g.marke })),
         ]}
       />
     </div>

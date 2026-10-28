@@ -4,30 +4,35 @@
       "slug": "evtms",
       "titel": "eVTms Schienenfahrzeug",
       "marke": "tafag",
+      "bild": "/uploads/fahrzeuge/vtms-zug.webp",
       "einleitung": "Selbstfahrende Arbeitsfahrzeuge für die Unterhaltsaufgaben rund um Fahrleitungen, Gleisanlagen und Tunnel-Installationen – mm-genau positionierbar, mit wechselbaren Plattformen."
     },
     {
       "slug": "hebebuehne-kran",
       "titel": "Hebebühne / Kran",
       "marke": "tafag",
+      "bild": "/uploads/module/3tl-hebebuehne.webp",
       "einleitung": "Hebebühnen und Krane für eVTms und Tragwagen – für Arbeiten an Fahrleitung und Infrastruktur."
     },
     {
       "slug": "module",
       "titel": "Module",
       "marke": "tafag",
+      "bild": "/uploads/module/trommelboecke.webp",
       "einleitung": "Wechselbare Module für eVTms und Tragwagen: Trommelböcke, TuBeMo, Werkstattmodule und Container-Module."
     },
     {
       "slug": "rangierfahrzeuge",
       "titel": "Rangierfahrzeuge",
       "marke": "tafag",
+      "bild": "/uploads/zagro/schweiz/e-maxi-m-wba-3.webp",
       "einleitung": "ZAGRO Elektrorangierer von 50 bis 2000 t, Unimog-Rangierer und TERBERG/ZAGRO Truck. Für die Schweiz bieten wir drei Elektrorangierer als Standardgeräte in Schweizer Ausführung an. TAFAG ist Generalvertretung der ZAGRO Group."
     },
     {
       "slug": "zweiweg",
       "titel": "Zweiweg",
       "marke": "tafag",
+      "bild": "/uploads/zweiweg/lkw-oberleitung.webp",
       "einleitung": "Zweiwegefahrzeuge auf LKW-Basis für Bau-, Wartungs- und Reparaturarbeiten an Oberleitungen – massgeschneidert, mit allen erforderlichen Zulassungen."
     },
     {
@@ -40,6 +45,7 @@
       "slug": "sonderloesungen",
       "titel": "Sonderlösungen",
       "marke": "tafag",
+      "bild": "/uploads/fahrzeuge/hybridfahrzeug.webp",
       "einleitung": "Montagehilfen, Spezialarbeitsbühnen und Partikelfilter – Lösungen für komplexe Aufgaben, unabhängig vom Anwendungsgebiet."
     }
   ]

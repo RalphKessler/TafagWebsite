@@ -109,6 +109,7 @@ collections:
                   - { name: titel, label: Titel, widget: string }
                   - { name: text, label: Text, widget: text, required: false }
                   - { name: link, label: Link, widget: string }
+                  - { name: bild, label: Bild, widget: image, required: false }
               - { name: hintergrund, label: Hintergrund, widget: select, default: dunkel, required: false, options: [{ label: Weiss, value: weiss }, { label: Hellgrau, value: grau }, { label: Dunkelblau, value: dunkel }] }
           - label: Bild und Text
             name: bildtext
@@ -566,6 +567,7 @@ collections:
             fields:
               - { name: slug, label: 'Adresse (nicht ändern)', widget: string }
               - { name: titel, label: Titel, widget: string }
+              - { name: bild, label: 'Bild (Produktübersicht)', widget: image, required: false }
               - { name: einleitung, label: Einleitung, widget: text }
       - name: bereiche
         label: Bereiche der Startseite

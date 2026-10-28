@@ -9,6 +9,7 @@
 | 5 | Hebebühne / Kran, Module | Beschreibungen und technische Daten für 3TL Hebebühne, PKR290, Trommelböcke, TuBeMo, WM30 und TERBERG-ZAGRO RR 282 | offen |
 | 6 | eVTms | Wofür steht das «e» (elektrisch/Batterie)? Ist der Text von 2021 (diesel-elektrisch mit Partikelfilter) noch aktuell? Technische Daten (Abmessungen, Gewicht, Spurweiten, Leistung), Datenblätter als PDF | offen |
 | 6a | Notstromversorgung | Welche Produkte bzw. Leistungen gehören dazu? Texte, Daten und Bilder (Gruppe ist angelegt, zeigt bis dahin «Beratung und Offerte») | offen |
+| 7f | Produktübersicht | Foto für Notstromversorgung fehlt; für Sonderlösungen vorerst das Hybridfahrzeug – passt das? | offen |
 | 7a | ZAGRO | Fotos fehlen noch für E-MAXI S und XL Hybrid; Datenblätter als PDF auch für die übrigen Modelle? | offen |
 | 7b | ZAGRO | Ordner «E-Maxi XL 20t – bis 1000 t»: Fotos vorerst beim E-MAXI XL VARIO (ZAGRO: bis 1000 t, 7,5–15 t). Richtig, oder eigenes Produkt «E-MAXI XL 20 t»? | offen |
 | 7c | ZAGRO | Abweichende Lasten: Ordner XXL «bis 1700 t» (ZAGRO-Website: 2000 t); Ordner XL WBA «bis 700 t» (Datenblatt Schweiz: 800 t). Welche Werte gelten? | offen |

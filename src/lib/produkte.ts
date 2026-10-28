@@ -3,7 +3,7 @@ import gruppenDaten from '../data/produktgruppen.json';
 import type { Marke } from './marke';
 
 export type Produkt = CollectionEntry<'produkte'>;
-export interface Gruppe { slug: string; titel: string; marke: Marke; einleitung: string }
+export interface Gruppe { slug: string; titel: string; marke: Marke; einleitung: string; bild?: string }
 
 export const gruppen = gruppenDaten.gruppen as Gruppe[];
 export const gruppeVon = (slug: string) => gruppen.find((g) => g.slug === slug)!;

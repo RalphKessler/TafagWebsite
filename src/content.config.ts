@@ -123,7 +123,7 @@ const bausteinQuerverweise = z.object({
   titel: text(),
   text: text(),
   eintraege: liste(
-    eintrag.extend({ marke: z.preprocess(leer, z.enum(['tafag']).default('tafag')) }),
+    eintrag.extend({ bild: text(), marke: z.preprocess(leer, z.enum(['tafag']).default('tafag')) }),
   ),
   hintergrund: z.preprocess(leer, z.enum(['weiss', 'grau', 'dunkel']).default('dunkel')),
 });
