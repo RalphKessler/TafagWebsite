@@ -1,9 +1,9 @@
-titel: ZAGRO E-MAXI XL VARIO
+titel: ZAGRO E-MAXI XL 20TO
 gruppe: rangierfahrzeuge
 kategorie: Elektrorangierer – ZAGRO Programm
-kurz: Modular konfigurierbarer Elektrorangierer für Anhängelasten bis 1000 t.
+kurz: Elektrorangierer mit rund 20 t Eigengewicht für Anhängelasten bis 1000 t.
 beschreibung: |
-  Aus dem Programm der ZAGRO Group – Angaben gemäss Hersteller. Die Tafag AG ist Generalvertretung der ZAGRO Group und berät Sie zur passenden Ausführung für Ihren Einsatz.
+  Elektrorangierer aus dem Programm der ZAGRO Group. Die Tafag AG ist Generalvertretung der ZAGRO Group und berät Sie zur passenden Ausführung für Ihren Einsatz.
 
   ### Vorteile der E-MAXI-Baureihe
 
@@ -16,25 +16,19 @@ beschreibung: |
 technische_daten:
 - name: Max. Anhängelast
   wert: 1000 t in der Ebene
-- name: Abmessungen (L × B × H)
-  wert: ca. 3290 × 2060 × 1690 mm
-- name: Gesamtgewicht
-  wert: 7,5–15 t
-- name: Spurweiten
-  wert: 1000 mm bis 1676 mm
+- name: Eigengewicht
+  wert: ca. 20 t
 - name: Antriebsart
   wert: Batterie
 - name: Antrieb und Lenkung
   wert: Vierradantrieb / Vierradlenkung
-- name: Bauweise
-  wert: variable Bausteine – für jeden Bedarf das passende Gerät
-- name: Häufige Konfiguration
-  wert: verschiedene Kupplungssysteme, Höhenverstellung, Waggonbremsanlage, Fahrerkabine, mechanische Trittroste
+- name: TODO
+  wert: 'TODO: Abmessungen, Spurweiten, Zugkraft, Batterie und Ausstattung vom Kunden (Datenblatt)'
 reihenfolge: 14
 downloads: []
 bild: /uploads/zagro/fotos/e-maxi-xl-20t-1.webp
 bilder:
 - bild: /uploads/zagro/fotos/e-maxi-xl-20t-2.webp
-  alt: ZAGRO E-MAXI XL (20 t) mit Druckluftbehältern auf dem Gleis
+  alt: ZAGRO E-MAXI XL 20TO mit Druckluftbehältern auf dem Gleis
 - bild: /uploads/zagro/fotos/e-maxi-xl-20t-3.webp
-  alt: ZAGRO E-MAXI XL (20 t) von vorne mit Kupplung
+  alt: ZAGRO E-MAXI XL 20TO von vorne mit Kupplung
