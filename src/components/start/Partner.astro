@@ -1,0 +1,42 @@
+---
+import { getEntry } from 'astro:content';
+import { t, type Sprache } from '../../i18n';
+
+interface Props { sprache: Sprache }
+const { sprache } = Astro.props;
+// Einzige Quelle ist der Logo-Baustein auf «Über uns → Partner»; dort wird pro Eintrag gewählt, ob er hier erscheint.
+const seite = await getEntry('seiten', `${sprache}/ueber-uns/partner`);
+const block = seite?.data.bloecke.find((b) => b.type === 'logos');
+const eintraege = block && block.type === 'logos' ? block.eintraege.filter((e) => e.startseite) : [];
+---
+
+{
+  eintraege.length > 0 && (
+    <section class="abschnitt partner">
+      <div class="breite">
+        <div class="kopf">
+          <h2>{t(sprache, 'startPartnerTitel')}</h2>
+          <a class="knopf sekundaer" href={`/${sprache}/ueber-uns/partner/`}>{t(sprache, 'startPartnerLink')}</a>
+        </div>
+        <ul class="reihe">
+          {eintraege.map((e) => (
+            <li>
+              {e.logo ? <img src={e.logo} alt={e.name} loading="lazy" decoding="async" height="48" /> : <span class="wortmarke">{e.name}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .partner { border-top: 1px solid var(--grau-200); }
+  .kopf { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
+  .kopf h2 { margin: 0; }
+  .reihe { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); border-left: 1px solid var(--grau-200); }
+  .reihe li { min-height: 88px; display: flex; align-items: center; justify-content: center; padding: 1rem; border-right: 1px solid var(--grau-200); text-align: center; }
+  .reihe img { max-height: 48px; max-width: 100%; width: auto; height: auto; object-fit: contain; }
+  .wortmarke { font-size: 1.15rem; font-weight: 750; letter-spacing: -.01em; color: var(--navy); line-height: 1.15; }
+  @media (max-width: 520px) { .reihe { grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--grau-200); } .reihe li { border-bottom: 1px solid var(--grau-200); } }
+</style>

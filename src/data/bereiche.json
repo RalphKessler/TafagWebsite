@@ -1,0 +1,45 @@
+{
+  "bereiche": [
+    {
+      "titel": "VTms-Arbeitsfahrzeuge",
+      "link": "/de/produkte/vtms/",
+      "bild": "/uploads/fahrzeuge/vtms-zug.webp",
+      "text": "Selbstfahrende Arbeitsfahrzeuge für Fahrleitung, Gleis und Tunnel – mm-genau positionierbar, mit wechselbaren Plattformen.",
+      "punkte": [
+        { "titel": "VTms", "link": "/de/produkte/vtms/" },
+        { "titel": "Anbaumodule", "link": "/de/produkte/anbaumodule/" }
+      ]
+    },
+    {
+      "titel": "Zweiweg & Rangierer",
+      "link": "/de/produkte/zweiweg/",
+      "bild": "/uploads/zweiweg/unimog-oberleitung.webp",
+      "text": "Zweiwegefahrzeuge auf Unimog- und LKW-Basis sowie ZAGRO Elektrorangierer – wir bringen Fahrzeuge auf die Schiene.",
+      "punkte": [
+        { "titel": "Zweiwegefahrzeuge", "link": "/de/produkte/zweiweg/" },
+        { "titel": "ZAGRO Elektrorangierer", "link": "/de/produkte/zagro-rangierer/" }
+      ]
+    },
+    {
+      "titel": "Sonderlösungen",
+      "link": "/de/produkte/sonderloesungen/",
+      "bild": "/uploads/fahrzeuge/tubemo-wagen.webp",
+      "text": "Montagehilfen, Spezialarbeitsbühnen, Container-Module und Partikelfilter – massgeschneidert für Ihre Aufgabe.",
+      "punkte": [
+        { "titel": "Sonderlösungen", "link": "/de/produkte/sonderloesungen/" },
+        { "titel": "Installationszug Gotthard", "link": "/de/referenzen/installationszug-gotthard/" }
+      ]
+    },
+    {
+      "titel": "Dienstleistungen",
+      "link": "/de/dienstleistungen/",
+      "bild": "/uploads/fahrzeuge/vtms-kran.webp",
+      "text": "Engineering, Revisionen und Umbauten, Service und Inbetriebnahme – und ein Pikettdienst rund um die Uhr.",
+      "punkte": [
+        { "titel": "Engineering", "link": "/de/dienstleistungen/engineering/" },
+        { "titel": "Revisionen & Umbau", "link": "/de/dienstleistungen/revisionen-umbau/" },
+        { "titel": "Pikettdienst", "link": "/de/dienstleistungen/pikettdienst/" }
+      ]
+    }
+  ]
+}

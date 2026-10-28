@@ -1,0 +1,20 @@
+---
+interface Props { bild?: string; alt?: string; legende?: string; breite?: 'normal' | 'breit' | 'voll' }
+const { bild, alt = '', legende, breite = 'normal' } = Astro.props;
+---
+
+{
+  bild && (
+    <figure class:list={['bild', breite]}>
+      <img src={bild} alt={alt} loading="lazy" decoding="async" />
+      {legende && <figcaption>{legende}</figcaption>}
+    </figure>
+  )
+}
+
+<style>
+  .bild { margin: 0; }
+  .bild.normal { max-width: 48rem; }
+  .bild img { border-radius: var(--radius); width: 100%; }
+  figcaption { font-size: .9rem; color: #555; margin-top: .4rem; }
+</style>

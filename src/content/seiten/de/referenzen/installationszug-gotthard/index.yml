@@ -1,0 +1,28 @@
+titel: Installationszug Gotthard-Basistunnel
+beschreibung: Installationszug der Tafag AG für die Montage von über 2800 Hängesäulen und Auslegern im Gotthard-Basistunnel.
+einleitung: In zwei Tunnelröhren von je 57 km mussten über 2800 Hängesäulen und Ausleger montiert werden – die Logistik war die grosse Herausforderung.
+bloecke:
+- type: text
+  inhalt: |
+    Mit unserem Installationszug konnten wir die Arbeiten effizient und prozesssicher erledigen – auch dank unserem VTms, das den Installationszug millimetergenau an die richtige Position manövrierte.
+- type: leistungen
+  titel: Die Lösungen im Detail
+  eintraege:
+  - titel: Führungsschiene
+    text: Die Fahrbahn des Gabelstaplers wurde mit einer Führungsschiene versehen. So war sicheres Arbeiten und optimales Rangieren gewährleistet.
+  - titel: Hubgabel
+    text: Die modifizierte Hubgabel ermöglichte es, die Montageteile auf engstem Raum zu manövrieren.
+  - titel: Wagenverbindung
+    text: Die grösste Herausforderung war das Überbrücken zum nächsten Eisenbahnwagen. Mit einer ausgeklügelten Lösung konnten wir mehrere Wagen aneinanderhängen.
+  - titel: Mobile Handlinggeräte
+    text: Mit einem Hochleistungsmagneten bringen sie die bis zu 150 kg schweren Hängesäulen und Ausleger an die richtige Position.
+  hintergrund: grau
+- type: text
+  inhalt: 'TODO: Fotos des Installationszugs (Führungsschiene, Hubgabel, Verbinder, Handlinggeräte) in guter Auflösung vom Kunden – auf der alten Website nur als kleine Vorschaubilder vorhanden.'
+- type: aufruf
+  titel: Eine ähnliche Aufgabe?
+  text: Wir finden zusammen mit Ihnen eine Lösung – auch für komplexe Herausforderungen.
+  beschriftung: Kontakt aufnehmen
+  link: /de/kontakt/
+  beschriftung2: Sonderlösungen
+  link2: /de/produkte/sonderloesungen/

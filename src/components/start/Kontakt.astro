@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import einstellungen from '../../data/einstellungen.json';
+import { t, type Sprache } from '../../i18n';
+
+interface Props { sprache: Sprache }
+const { sprache } = Astro.props;
+const e = einstellungen;
+const person = (await getCollection('kontakte')).sort((a, b) => a.data.reihenfolge - b.data.reihenfolge)[0]?.data;
+const todo = (s?: string) => !!s && s.startsWith('TODO:');
+---
+
+<section class="abschnitt kontakt dunkel">
+  <div class="breite raster">
+    <div>
+      <h2>{t(sprache, 'startKontaktTitel')}</h2>
+      <p class="lead">{t(sprache, 'startKontaktText')}</p>
+      <p><a class="knopf gelb" href={`/${sprache}/kontakt/`}>{t(sprache, 'startKontaktService')}</a></p>
+    </div>
+    <div class="spalte">
+      <h3>Standort</h3>
+      <p>
+        {e.firma}<br />
+        <span class:list={{ todo: todo(e.strasse) }}>{e.strasse}</span><br />
+        <span class:list={{ todo: todo(e.ort) }}>{e.ort}</span> {e.kanton}
+      </p>
+      <p><a href="https://www.google.com/maps/search/?api=1&query=Tafag+AG+Chr%C3%A4belstrasse+3+6410+Goldau" target="_blank" rel="noopener">Route planen</a></p>
+    </div>
+    <div class="spalte">
+      <h3>Ansprechperson</h3>
+      {person && (
+        <p>
+          <span class:list={{ todo: todo(person.name) }}>{person.name}</span><br />
+          <span class:list={{ todo: todo(person.funktion) }}>{person.funktion}</span>
+        </p>
+      )}
+      <p>
+        {todo(e.telefon) ? <span class="todo">{e.telefon}</span> : <a href={`tel:${e.telefon.replace(/[^+\d]/g, '')}`}>{e.telefon}</a>}<br />
+        {todo(e.email) ? <span class="todo">{e.email}</span> : <a href={`mailto:${e.email}`}>{e.email}</a>}
+      </p>
+      <p><a href={`/${sprache}/dienstleistungen/pikettdienst/`}>{t(sprache, 'pikettdienst')}</a></p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .kontakt { background: var(--navy); color: #c9d6e3; }
+  .raster { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); }
+  h2, h3 { color: var(--weiss); }
+  h3 { font-size: 1.05rem; }
+  .lead { color: #c9d6e3; }
+  a:not(.knopf) { color: var(--weiss); }
+  .spalte { border-top: 1px solid #2c4a67; padding-top: 1.25rem; }
+  span.todo { display: inline-block; margin-bottom: .2rem; }
+  @media (max-width: 860px) { .raster { grid-template-columns: 1fr; } }
+</style>

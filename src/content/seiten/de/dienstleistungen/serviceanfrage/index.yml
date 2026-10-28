@@ -1,0 +1,8 @@
+titel: Serviceanfrage
+beschreibung: Störungen, Wartungen, Revisionen und Ersatzteile online bei der Tafag AG melden.
+einleitung: Melden Sie Störungen, Wartungen, Revisionen und Ersatzteilanfragen direkt an unseren Service.
+bloecke:
+- type: formular
+  titel: Serviceanfrage
+  text: 'Je genauer die Angaben (Fahrzeug, Fahrzeugnummer, Foto des Typenschilds), desto schneller können wir helfen. Dringend? Rufen Sie uns an: +41 41 859 08 20.'
+  formular: serviceanfrage

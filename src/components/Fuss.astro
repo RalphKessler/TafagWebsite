@@ -1,0 +1,77 @@
+---
+import einstellungen from '../data/einstellungen.json';
+import navigation from '../data/navigation.json';
+import { t, type Sprache } from '../i18n';
+import { offeneStellen, stellenLink } from '../lib/stellen';
+
+interface Props { sprache: Sprache }
+const { sprache } = Astro.props;
+const e = einstellungen;
+const dienste = navigation.hauptpunkte.find((h) => h.link === `/${sprache}/dienstleistungen/`);
+const todo = (s: string) => s.startsWith('TODO:');
+const stellen = (await offeneStellen()).slice(0, 3);
+---
+
+<footer class="fuss">
+  <div class="breite fuss-raster">
+    <div class="marke">
+      <picture>
+        <source srcset={e.logo.replace(/\.png$/, '.webp')} type="image/webp" />
+        <img src={e.logo} alt={e.firma} width="800" height="224" loading="lazy" />
+      </picture>
+    </div>
+    <section>
+      <h2>{t(sprache, 'fussKontakt')}</h2>
+      <p>
+        <strong>{e.firma}</strong><br />
+        <span class:list={{ todo: todo(e.strasse) }}>{e.strasse}</span><br />
+        <span class:list={{ todo: todo(e.ort) }}>{e.ort}</span> {e.kanton}
+      </p>
+      <p>
+        {todo(e.telefon) ? <span class="todo">{e.telefon}</span> : <a href={`tel:${e.telefon.replace(/[^+\d]/g, '')}`}>{e.telefon}</a>}<br />
+        {todo(e.email) ? <span class="todo">{e.email}</span> : <a href={`mailto:${e.email}`}>{e.email}</a>}
+      </p>
+    </section>
+    <section>
+      <h2><a href={dienste?.link}>{t(sprache, 'fussDienstleistungen')}</a></h2>
+      <ul>
+        {(dienste?.unterpunkte ?? []).map((u) => <li><a href={u.link}>{u.titel}</a></li>)}
+      </ul>
+    </section>
+    <section>
+      <h2>{t(sprache, 'fussStellen')}</h2>
+      {stellen.length > 0 ? (
+        <ul class="stellen">{stellen.map((s) => <li><a href={stellenLink(s, sprache)}>{s.data.titel}</a></li>)}</ul>
+      ) : (
+        <p>{t(sprache, 'fussStellenText')}</p>
+      )}
+      <p><a href={`/${sprache}/jobs/offene-stellen/`}>{t(sprache, 'fussStellenLink')}</a></p>
+    </section>
+    <section>
+      <h2>{t(sprache, 'fussRechtliches')}</h2>
+      <ul>
+        {e.fusszeile.map((n) => <li><a href={n.link}>{n.titel}</a></li>)}
+        {e.linkedin && <li><a href={e.linkedin} rel="noopener" target="_blank">LinkedIn</a></li>}
+      </ul>
+    </section>
+  </div>
+  <div class="unten klein"><div class="breite">© {new Date().getFullYear()} {e.firma}</div></div>
+</footer>
+
+<style>
+  .fuss { background: var(--grau-50); margin-top: 0; border-top: 1px solid var(--grau-100); }
+  .fuss a { color: var(--text); text-decoration: none; }
+  .fuss a:hover { color: var(--tafag-blau-text); text-decoration: underline; }
+  .fuss-raster { display: grid; grid-template-columns: 1.1fr repeat(4, 1fr); gap: 2.5rem; padding-block: 4rem 3rem; }
+  .marke img { width: 11rem; height: auto; }
+  h2 { font-size: .95rem; margin-bottom: 1rem; letter-spacing: 0; }
+  h2 a { color: var(--text); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li + li { margin-top: .45rem; }
+  p { color: var(--text-2); }
+  .stellen { margin-bottom: 1rem; }
+  .stellen a { font-weight: 600; }
+  .unten { background: var(--navy); color: #9fb3c8; padding-block: 1rem; }
+  @media (max-width: 1000px) { .fuss-raster { grid-template-columns: repeat(2, 1fr); } .marke { grid-column: 1 / -1; } }
+  @media (max-width: 560px) { .fuss-raster { grid-template-columns: 1fr; } }
+</style>

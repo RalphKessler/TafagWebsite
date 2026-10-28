@@ -1,0 +1,57 @@
+---
+import { markdown } from '../../lib/hilfen';
+interface Props {
+  titel?: string; text?: string; eintraege: { titel: string; text?: string; link?: string }[];
+  technik_titel?: string; technik_inhalt?: string;
+}
+const { titel, text, eintraege, technik_titel, technik_inhalt } = Astro.props;
+const spalten = eintraege.length % 3 === 0 || eintraege.length > 4 ? 3 : eintraege.length === 4 ? 4 : 2;
+---
+
+<div class="leistungen">
+  {(titel || text) && (
+    <div class="kopf">
+      {titel && <h2>{titel}</h2>}
+      {text && <p class="lead">{text}</p>}
+    </div>
+  )}
+  <ul class="liste" style={`--spalten:${spalten}`}>
+    {
+      eintraege.map((e) => (
+        <li class:list={['eintrag', { verlinkt: e.link }]}>
+          <h3>{e.link ? <a href={e.link}>{e.titel}</a> : e.titel}</h3>
+          {e.text && <p class:list={{ todo: e.text.startsWith('TODO:') }}>{e.text}</p>}
+        </li>
+      ))
+    }
+  </ul>
+  {
+    technik_inhalt && (
+      <details class="technik">
+        <summary>{technik_titel ?? 'Technische Details'}</summary>
+        <div class="fliesstext" set:html={markdown(technik_inhalt)} />
+      </details>
+    )
+  }
+</div>
+
+<style>
+  .kopf { max-width: 48rem; margin-bottom: 2.25rem; }
+  .kopf .lead { margin: 0; }
+  .liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--spalten), 1fr); gap: 0 2rem; }
+  .eintrag { position: relative; border-top: 2px solid var(--grau-200); padding: 1.25rem 0 1.5rem; }
+  .eintrag.verlinkt:hover { border-top-color: var(--akzent); }
+  h3 { font-size: 1.15rem; margin-bottom: .4rem; }
+  h3 a { color: var(--text); text-decoration: none; }
+  h3 a::after { content: ''; position: absolute; inset: 0; }
+  .eintrag.verlinkt:hover h3 a { color: var(--akzent-text); }
+  h3 a:focus-visible { outline: none; }
+  .eintrag:has(a:focus-visible) { outline: 3px solid var(--akzent); outline-offset: 4px; border-radius: 4px; }
+  p { color: var(--text-2); margin: 0; font-size: .98rem; }
+  :global(.dunkel) p { color: #c9d6e3; }
+  .technik { margin-top: 2rem; border: 1px solid var(--grau-200); border-radius: var(--radius); padding: 0 1.25rem; background: var(--weiss); }
+  .technik summary { cursor: pointer; font-weight: 700; padding: 1rem 0; }
+  .technik[open] summary { border-bottom: 1px solid var(--grau-100); margin-bottom: 1rem; }
+  @media (max-width: 1000px) { .liste { grid-template-columns: repeat(min(var(--spalten), 2), 1fr); } }
+  @media (max-width: 620px) { .liste { grid-template-columns: 1fr; } }
+</style>

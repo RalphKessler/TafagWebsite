@@ -1,0 +1,12 @@
+titel: Produktanfrage
+empfaenger: info@tafag.ch
+betreff: 'Website: Produktanfrage'
+bestaetigung: Vielen Dank. Ihre Anfrage ist bei uns eingegangen – wir melden uns mit einer Offerte oder Rückfragen.
+knopf: Anfrage senden
+felder:
+  - { name: produkt, bezeichnung: 'Fahrzeug oder Produkt', typ: text, pflicht: true }
+  - { name: name, bezeichnung: Name, typ: text, pflicht: true }
+  - { name: firma, bezeichnung: Firma, typ: text, pflicht: false }
+  - { name: email, bezeichnung: E-Mail, typ: email, pflicht: true }
+  - { name: telefon, bezeichnung: Telefon, typ: tel, pflicht: false }
+  - { name: nachricht, bezeichnung: 'Ihre Anforderungen (Einsatz, Spurweite, Termin)', typ: textarea, pflicht: true }

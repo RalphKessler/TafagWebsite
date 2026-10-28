@@ -1,0 +1,34 @@
+{
+  "gruppen": [
+    {
+      "slug": "vtms",
+      "titel": "VTms – selbstfahrende Arbeitsfahrzeuge",
+      "marke": "tafag",
+      "einleitung": "Arbeitsfahrzeuge für die Unterhaltsaufgaben rund um Fahrleitungen, Gleisanlagen und Tunnel-Installationen – diesel-elektrisch mit Partikelfilter, mm-genau positionierbar."
+    },
+    {
+      "slug": "anbaumodule",
+      "titel": "Anbaumodule",
+      "marke": "tafag",
+      "einleitung": "Wechselbare Plattformen und Module für VTms und Tragwagen: Hebebühnen, Kran, Trommelböcke, Werkstattmodule."
+    },
+    {
+      "slug": "zagro-rangierer",
+      "titel": "ZAGRO Elektrorangierer",
+      "marke": "tafag",
+      "einleitung": "Batteriebetriebene Rangierfahrzeuge der ZAGRO Group für Anhängelasten von 200 bis 700 t. TAFAG ist Generalvertretung der ZAGRO Group."
+    },
+    {
+      "slug": "zweiweg",
+      "titel": "Zweiwegefahrzeuge",
+      "marke": "tafag",
+      "einleitung": "Ob Pickup, Transporter, Unimog, Baumaschine oder LKW – wir bringen Fahrzeuge aller Gewichtsklassen auf die Schiene, mit allen erforderlichen Zulassungen."
+    },
+    {
+      "slug": "sonderloesungen",
+      "titel": "Sonderlösungen",
+      "marke": "tafag",
+      "einleitung": "Montagehilfen, Spezialarbeitsbühnen, Container-Module und Partikelfilter – Lösungen für komplexe Aufgaben, unabhängig vom Anwendungsgebiet."
+    }
+  ]
+}

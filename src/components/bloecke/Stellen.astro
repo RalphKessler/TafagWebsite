@@ -1,0 +1,44 @@
+---
+import { offeneStellen, stellenLink } from '../../lib/stellen';
+import { t } from '../../i18n';
+interface Props { titel?: string; nur_lehrstellen?: boolean }
+const { titel, nur_lehrstellen = false } = Astro.props;
+const stellen = (await offeneStellen()).filter((s) => !nur_lehrstellen || s.data.lehrstelle);
+---
+
+<div class="stellen">
+  {titel && <h2>{titel}</h2>}
+  {
+    stellen.length === 0 ? (
+      <p>{t('de', 'keineStellen')} <a href="/de/jobs/spontanbewerbung/">{t('de', 'spontanbewerbung')}</a></p>
+    ) : (
+      <ul>
+        {stellen.map((s) => (
+          <li>
+            <h3><a href={stellenLink(s)}>{s.data.titel}</a></h3>
+            <dl>
+              {s.data.bereich && (<><dt class="visually-hidden">Bereich</dt><dd class="bereich">{s.data.bereich}</dd></>)}
+              {s.data.pensum && (<><dt>{t('de', 'pensum')}</dt><dd>{s.data.pensum}</dd></>)}
+              <dt>{t('de', 'standort')}</dt><dd>{s.data.standort}</dd>
+            </dl>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</div>
+
+<style>
+  ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--grau-200); }
+  li { position: relative; display: flex; justify-content: space-between; gap: 1rem 2rem; flex-wrap: wrap; align-items: center; padding: 1.25rem .5rem; border-bottom: 1px solid var(--grau-200); }
+  li:hover { background: var(--grau-50); }
+  h3 { margin: 0; font-size: 1.2rem; }
+  h3 a { color: var(--text); text-decoration: none; }
+  h3 a::after { content: ''; position: absolute; inset: 0; }
+  li:hover h3 a { color: var(--akzent-text); }
+  dl { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0; color: var(--text-2); font-size: .95rem; }
+  dt { font-weight: 600; }
+  dt:not(.visually-hidden)::after { content: ':'; }
+  dd { margin: 0 0 0 -.9rem; }
+  dd.bereich { margin: 0; font-weight: 600; color: var(--akzent-text); }
+</style>

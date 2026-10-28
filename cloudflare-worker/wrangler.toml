@@ -1,0 +1,7 @@
+name = "tafag-cms-auth"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+ALLOWED_DOMAINS = "test.tafag.ch"
+# GITHUB_CLIENT_ID und GITHUB_CLIENT_SECRET mit «npx wrangler secret put …» setzen

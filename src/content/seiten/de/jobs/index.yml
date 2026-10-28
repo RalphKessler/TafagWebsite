@@ -1,0 +1,16 @@
+titel: Jobs
+beschreibung: Offene Stellen und Spontanbewerbung bei der Tafag AG in Goldau.
+einleitung: Wir sind ein kleines, im Markt etabliertes Unternehmen für Spezialfahrzeuge auf Schiene und Strasse – und freuen uns über Verstärkung.
+bloecke:
+- type: stellen
+  titel: Offene Stellen
+- type: leistungen
+  titel: Karriere bei TAFAG
+  eintraege:
+  - titel: Arbeiten bei TAFAG
+    text: Abwechslungsreiche Arbeit an weltweit einzigartigen Eigenprodukten, in Werkstatt und beim Kunden.
+    link: /de/jobs/arbeiten-bei-tafag/
+  - titel: Spontanbewerbung
+    text: Keine passende Stelle dabei? Wir freuen uns auf Ihre Bewerbung.
+    link: /de/jobs/spontanbewerbung/
+  hintergrund: grau

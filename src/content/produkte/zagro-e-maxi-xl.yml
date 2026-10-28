@@ -1,0 +1,22 @@
+titel: ZAGRO E-MAXI XL
+gruppe: zagro-rangierer
+kategorie: Elektrorangierer
+kurz: Elektrorangierer für Anhängelasten bis 700 t in der Ebene.
+beschreibung: |
+  Batteriebetriebener Elektrorangierer der ZAGRO Group mit Vierradantrieb und Vierradlenkung. Die Tafag AG ist Generalvertretung der ZAGRO Group.
+bild: /uploads/zagro/e-maxi-xl.webp
+technische_daten:
+- name: Max. Anhängelast
+  wert: 700 t in der Ebene
+- name: Abmessungen (L × B × H)
+  wert: ca. 6027 (über Puffer) × 2200 × 1785 mm
+- name: Gesamtgewicht
+  wert: 13–15 t
+- name: Spurweite
+  wert: 1435 mm
+- name: Antriebsart
+  wert: Batterie
+- name: Antrieb und Lenkung
+  wert: Vierradantrieb / Vierradlenkung
+reihenfolge: 3
+downloads: []

@@ -1,0 +1,9 @@
+titel: Offene Stellen
+beschreibung: Offene Stellen bei der Tafag AG in Goldau.
+bloecke:
+- type: stellen
+- type: aufruf
+  titel: Keine passende Stelle?
+  text: Wir freuen uns auch über Ihre Spontanbewerbung.
+  beschriftung: Spontanbewerbung
+  link: /de/jobs/spontanbewerbung/

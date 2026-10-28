@@ -1,0 +1,12 @@
+titel: Kontaktformular
+empfaenger: info@tafag.ch
+betreff: 'Website: Neue Kontaktanfrage'
+bestaetigung: Vielen Dank. Ihre Nachricht ist bei uns eingegangen.
+knopf: Nachricht senden
+felder:
+  - { name: name, bezeichnung: Name, typ: text, pflicht: true }
+  - { name: firma, bezeichnung: Firma, typ: text, pflicht: false }
+  - { name: email, bezeichnung: E-Mail, typ: email, pflicht: true }
+  - { name: telefon, bezeichnung: Telefon, typ: tel, pflicht: false }
+  - { name: bereich, bezeichnung: Bereich, typ: select, pflicht: false, optionen: "Fahrzeuge und Produkte, Dienstleistungen, Service und Ersatzteile, Jobs, Anderes" }
+  - { name: nachricht, bezeichnung: Nachricht, typ: textarea, pflicht: true }

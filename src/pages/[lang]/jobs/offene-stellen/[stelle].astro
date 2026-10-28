@@ -1,0 +1,133 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Basis from '../../../../layouts/Basis.astro';
+import Seitenkopf from '../../../../components/Seitenkopf.astro';
+import Formular from '../../../../components/bloecke/Formular.astro';
+import einstellungen from '../../../../data/einstellungen.json';
+import { htmlBeschreibung } from '../../../../lib/stellen';
+import { istTodo, ohneTodo, zeigeTodo } from '../../../../lib/hilfen';
+import { sprachen, t, type Sprache } from '../../../../i18n';
+
+export async function getStaticPaths() {
+  const stellen = await getCollection('stellen');
+  return sprachen.flatMap((lang) => stellen.map((s) => ({ params: { lang, stelle: s.id }, props: { stelle: s } })));
+}
+const { stelle } = Astro.props;
+const sprache = Astro.params.lang as Sprache;
+// Live: Platzhalter («TODO: …») aus der Stelle entfernen
+const roh = stelle.data;
+const ohne = (l: string[]) => (zeigeTodo ? l : l.filter((p) => !istTodo(p)));
+const d = {
+  ...roh,
+  einleitung: ohneTodo(roh.einleitung),
+  pensum: zeigeTodo || !istTodo(roh.pensum) ? roh.pensum : undefined,
+  eintritt: zeigeTodo || !istTodo(roh.eintritt) ? roh.eintritt : undefined,
+  aufgaben: ohne(roh.aufgaben),
+  anforderungen: ohne(roh.anforderungen),
+  wir_bieten: ohne(roh.wir_bieten),
+};
+const offen = !d.archiviert && (!d.gueltig_bis || d.gueltig_bis >= new Date());
+const person = d.ansprechperson ? (await getEntry('kontakte', d.ansprechperson))?.data : undefined;
+const e = einstellungen;
+const url = new URL(Astro.url.pathname, Astro.site).toString();
+
+// Strukturierte Daten für Google Jobs (JobPosting)
+const jobPosting = {
+  '@context': 'https://schema.org',
+  '@type': 'JobPosting',
+  title: d.titel,
+  description: htmlBeschreibung(d.einleitung, [
+    [t(sprache, 'aufgaben'), d.aufgaben],
+    [t(sprache, 'anforderungen'), d.anforderungen],
+    [t(sprache, 'wirBieten'), d.wir_bieten],
+  ]),
+  datePosted: d.veroeffentlicht.toISOString().slice(0, 10),
+  ...(d.gueltig_bis && { validThrough: d.gueltig_bis.toISOString() }),
+  employmentType: d.anstellung,
+  hiringOrganization: { '@type': 'Organization', name: e.firma, sameAs: Astro.site?.toString(), logo: new URL(e.logo, Astro.site).toString() },
+  jobLocation: {
+    '@type': 'Place',
+    address: { '@type': 'PostalAddress', streetAddress: e.strasse, postalCode: e.ort.split(' ')[0], addressLocality: e.ort.split(' ').slice(1).join(' '), addressRegion: e.kanton, addressCountry: 'CH' },
+  },
+  url,
+};
+const abschnitte = [
+  { titel: t(sprache, 'aufgaben'), punkte: d.aufgaben },
+  { titel: t(sprache, 'anforderungen'), punkte: d.anforderungen },
+  { titel: t(sprache, 'wirBieten'), punkte: d.wir_bieten },
+].filter((a) => a.punkte.length);
+---
+
+<Basis titel={d.titel} beschreibung={d.einleitung ?? `${d.titel} – ${e.firma}, ${d.standort}`} sprache={sprache}>
+  <Fragment slot="kopf">{offen && <script is:inline type="application/ld+json" set:html={JSON.stringify(jobPosting)} />}</Fragment>
+  <Seitenkopf titel={d.titel} einleitung={d.einleitung} marke="tafag" sprache={sprache} pfad={Astro.url.pathname}
+    zwischen={[{ titel: t(sprache, 'offeneStellen'), link: `/${sprache}/jobs/offene-stellen/` }]} />
+  <section class="abschnitt">
+    <div class="breite stelle">
+      <div class="haupt">
+        {!offen && <p class="todo">Diese Stelle ist nicht mehr ausgeschrieben. <a href={`/${sprache}/jobs/offene-stellen/`}>{t(sprache, 'offeneStellen')}</a></p>}
+        {
+          abschnitte.map((a) => (
+            <>
+              <h2>{a.titel}</h2>
+              <ul>{a.punkte.map((p) => <li class:list={{ todo: p.startsWith('TODO:') }}>{p}</li>)}</ul>
+            </>
+          ))
+        }
+      </div>
+      <aside class="seite">
+        <dl class="eckdaten">
+          {d.pensum && (<><dt>{t(sprache, 'pensum')}</dt><dd class:list={{ todo: d.pensum.startsWith('TODO:') }}>{d.pensum}</dd></>)}
+          {d.eintritt && (<><dt>{t(sprache, 'eintritt')}</dt><dd class:list={{ todo: d.eintritt.startsWith('TODO:') }}>{d.eintritt}</dd></>)}
+          <dt>{t(sprache, 'standort')}</dt><dd>{d.standort}</dd>
+          {person && (<><dt>{t(sprache, 'ansprechperson')}</dt><dd>{person.name}{person.funktion && <><br />{person.funktion}</>}{person.email && <><br /><a href={`mailto:${person.email}`}>{person.email}</a></>}</dd></>)}
+        </dl>
+        {offen && <a class="knopf" href="#bewerbung">{t(sprache, 'jetztBewerben')}</a>}
+        <button type="button" class="knopf sekundaer teilen" data-url={url} data-titel={d.titel}>{t(sprache, 'stelleTeilen')}</button>
+      </aside>
+    </div>
+  </section>
+  {
+    offen && (
+      <section class="abschnitt grau" id="bewerbung">
+        <div class="breite">
+          <Formular titel={t(sprache, 'bewerbung')} text={`${d.titel} – ${d.standort}`} formular="bewerbung" werte={{ stelle: d.titel }} />
+        </div>
+      </section>
+    )
+  }
+</Basis>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.teilen').forEach((b) =>
+    b.addEventListener('click', async () => {
+      const { url, titel } = b.dataset;
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: titel, url });
+        } catch {
+          // abgebrochen
+        }
+      } else {
+        await navigator.clipboard?.writeText(url!);
+        b.textContent = 'Link kopiert';
+      }
+    }),
+  );
+</script>
+
+<style>
+  .stelle { display: grid; grid-template-columns: minmax(0, 1fr) 20rem; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  .haupt h2 { font-size: 1.4rem; margin-top: 2rem; }
+  .haupt h2:first-child { margin-top: 0; }
+  .haupt ul { padding-left: 1.2rem; }
+  .haupt li { margin-bottom: .4rem; }
+  .haupt li.todo { list-style: none; margin-left: -1.2rem; }
+  .seite { position: sticky; top: 7rem; border: 1px solid var(--grau-200); border-radius: 18px; padding: 1.5rem; display: grid; gap: 1rem; }
+  .eckdaten { margin: 0; display: grid; gap: .2rem; }
+  .eckdaten dt { font-size: .85rem; color: var(--text-2); font-weight: 600; margin-top: .6rem; }
+  .eckdaten dt:first-child { margin-top: 0; }
+  .eckdaten dd { margin: 0; font-weight: 600; }
+  .seite .knopf { justify-content: center; }
+  @media (max-width: 900px) { .stelle { grid-template-columns: 1fr; } .seite { position: static; } }
+</style>

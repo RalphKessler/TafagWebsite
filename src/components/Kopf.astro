@@ -1,0 +1,171 @@
+---
+import navigation from '../data/navigation.json';
+import einstellungen from '../data/einstellungen.json';
+import { t, type Sprache } from '../i18n';
+import { zeigeTodo } from '../lib/hilfen';
+
+interface Props { sprache: Sprache; pfad: string }
+const { sprache, pfad } = Astro.props;
+const norm = (p: string) => (p.endsWith('/') ? p : `${p}/`);
+const aktuell = norm(pfad);
+const istStart = (link: string) => link === `/${sprache}/`;
+const telefon = einstellungen.telefon;
+const pikett = einstellungen.pikett;
+const todo = (s: string) => s.startsWith('TODO:');
+const tel = (s: string) => `tel:${s.replace(/[^+\d]/g, '')}`;
+const aktiv = (link: string) => (istStart(link) ? aktuell === link : aktuell.startsWith(link));
+---
+
+<div class="servicebalken dunkel">
+  <div class="breite servicebalken-innen klein">
+    <span>{t(sprache, 'telefon')}: {todo(telefon) ? <span class="todo-inline">{telefon}</span> : <a href={tel(telefon)}>{telefon}</a>}</span>
+    {(!todo(pikett) || zeigeTodo) && <span class="pikett">{t(sprache, 'pikettTelefon')}: {todo(pikett) ? <span class="todo-inline">{pikett}</span> : <a href={tel(pikett)}>{pikett}</a>}</span>}
+    <a href={`/${sprache}/dienstleistungen/serviceanfrage/`} class="service-link">{t(sprache, 'serviceanfrage')}</a>
+  </div>
+</div>
+<header class="kopf">
+  <div class="breite kopf-innen">
+    <a href={`/${sprache}/`} class="logo">
+      <picture>
+        <source srcset={einstellungen.logo.replace(/\.png$/, '.webp')} type="image/webp" />
+        <img src={einstellungen.logo} alt={einstellungen.firma} width="800" height="224" />
+      </picture>
+    </a>
+    <button class="menu-knopf" aria-expanded="false" aria-controls="hauptnavigation">
+      <span class="menu-icon" aria-hidden="true"></span>
+      <span>{t(sprache, 'menu')}</span>
+    </button>
+    <nav id="hauptnavigation" aria-label={t(sprache, 'hauptnavigation')}>
+      <ul class="ebene1">
+        {
+          navigation.hauptpunkte.map((h, i) => {
+            const unter = ('unterpunkte' in h && h.unterpunkte) || [];
+            return (
+              <li class:list={[{ aktiv: aktiv(h.link) }]}>
+                <a href={h.link} aria-current={aktuell === h.link ? 'page' : undefined}>{h.titel}</a>
+                {unter.length > 0 && (
+                  <>
+                    <button class="auf" aria-expanded="false" aria-controls={`unter-${i}`}>
+                      <span class="visually-hidden">{t(sprache, 'untermenue', { titel: h.titel })}</span>
+                    </button>
+                    <ul class="ebene2" id={`unter-${i}`}>
+                      {unter.map((u) => (
+                        <li>
+                          <a href={u.link} aria-current={aktuell === u.link ? 'page' : undefined}>{u.titel}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+  <div class="markenbalken" aria-hidden="true"></div>
+</header>
+
+<script>
+  const kopf = document.querySelector('.kopf')!;
+  const menu = kopf.querySelector<HTMLButtonElement>('.menu-knopf')!;
+  const nav = document.getElementById('hauptnavigation')!;
+  const knoepfe = [...kopf.querySelectorAll<HTMLButtonElement>('button.auf')];
+
+  const schliessen = (ausser?: HTMLButtonElement) =>
+    knoepfe.forEach((k) => k !== ausser && k.setAttribute('aria-expanded', 'false'));
+
+  menu.addEventListener('click', () => {
+    const offen = menu.getAttribute('aria-expanded') === 'true';
+    menu.setAttribute('aria-expanded', String(!offen));
+    nav.classList.toggle('offen', !offen);
+  });
+  knoepfe.forEach((k) =>
+    k.addEventListener('click', () => {
+      const offen = k.getAttribute('aria-expanded') === 'true';
+      schliessen(k);
+      k.setAttribute('aria-expanded', String(!offen));
+    }),
+  );
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const offen = knoepfe.find((k) => k.getAttribute('aria-expanded') === 'true');
+    if (offen) { schliessen(); offen.focus(); }
+  });
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target as Node)) schliessen();
+  });
+</script>
+
+<style>
+  .servicebalken { background: var(--navy); color: #c9d6e3; }
+  .servicebalken-innen { display: flex; justify-content: flex-end; gap: 1.5rem; align-items: center; min-height: 2.25rem; flex-wrap: wrap; }
+  .servicebalken a { color: var(--weiss); text-decoration: none; }
+  .servicebalken a:hover { text-decoration: underline; }
+  .service-link { font-weight: 700; color: var(--tafag-gelb) !important; }
+  .todo-inline { color: #ffe9a0; }
+  @media (max-width: 600px) { .servicebalken-innen { justify-content: space-between; gap: .1rem 1rem; font-size: .78rem; padding-block: .3rem; } }
+
+  .kopf { background: rgb(255 255 255 / .96); backdrop-filter: saturate(1.4) blur(8px); position: sticky; top: 0; z-index: 20; box-shadow: 0 1px 0 var(--grau-200); }
+  .kopf-innen { display: flex; align-items: center; gap: 2rem; min-height: 6.5rem; }
+  .logo { flex: none; }
+  .logo img { height: 3.4rem; width: auto; }
+  .markenbalken { height: 4px; background: var(--akzent); }
+
+  nav { margin-left: auto; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  .ebene1 { display: flex; align-items: center; gap: .15rem; }
+  .ebene1 > li { position: relative; display: flex; align-items: center; }
+  .ebene1 > li > a {
+    display: block; padding: .5rem .6rem; text-decoration: none; font-weight: 650; color: var(--text);
+    font-size: .95rem; white-space: nowrap; position: relative; border-radius: 8px;
+  }
+  .ebene1 > li > a:hover { background: var(--grau-50); }
+  /* Die eine bewusste Bewegung: Linie in der Bereichsfarbe unter dem aktiven Punkt */
+  .ebene1 > li > a::after {
+    content: ''; position: absolute; left: .6rem; right: .6rem; bottom: -.9rem; height: 3px; border-radius: 3px;
+    background: var(--akzent); transform: scaleX(0); transform-origin: left; transition: transform .18s ease-out;
+  }
+  .ebene1 > li.aktiv > a::after { transform: scaleX(1); }
+  .ebene1 > li.aktiv > a { color: var(--akzent-text); }
+
+  .auf { width: 1.5rem; height: 2rem; margin-left: -.45rem; border: 0; background: none; cursor: pointer; padding: 0; color: var(--text-2); border-radius: 6px; }
+  .auf::before {
+    content: ''; display: block; width: .4rem; height: .4rem; margin: auto;
+    border-right: 1.75px solid currentColor; border-bottom: 1.75px solid currentColor; transform: translateY(-2px) rotate(45deg);
+  }
+  .auf[aria-expanded='true']::before { transform: translateY(2px) rotate(-135deg); }
+
+  .ebene2 {
+    display: none; position: absolute; top: calc(100% + .9rem); left: 0; min-width: 17rem;
+    background: var(--weiss); border: 1px solid var(--grau-200); border-radius: 12px; padding: .5rem;
+    box-shadow: 0 18px 40px -12px rgb(11 34 57 / .25);
+  }
+  .auf[aria-expanded='true'] + .ebene2 { display: block; }
+  .ebene2 a { display: block; padding: .55rem .8rem; text-decoration: none; color: var(--text); border-radius: 8px; font-weight: 550; }
+  .ebene2 a:hover { background: var(--grau-50); color: var(--akzent-text); }
+  .ebene2 a[aria-current='page'] { background: var(--grau-50); color: var(--akzent-text); font-weight: 700; }
+  .ebene1 > li:nth-last-child(-n + 3) .ebene2 { left: auto; right: 0; }
+
+  .menu-knopf { display: none; margin-left: auto; align-items: center; gap: .6rem; font: inherit; font-weight: 700; background: var(--grau-50); border: 0; border-radius: 999px; padding: .6rem 1rem; cursor: pointer; color: var(--text); }
+  .menu-icon, .menu-icon::before, .menu-icon::after { display: block; width: 1.1rem; height: 2px; background: currentColor; position: relative; border-radius: 2px; }
+  .menu-icon::before, .menu-icon::after { content: ''; position: absolute; }
+  .menu-icon::before { top: -6px; }
+  .menu-icon::after { top: 6px; }
+
+  @media (max-width: 1280px) {
+    .kopf-innen { flex-wrap: wrap; gap: 0 1rem; min-height: 4.25rem; }
+    .logo img { height: 2.6rem; }
+    .menu-knopf { display: inline-flex; }
+    nav { display: none; width: 100%; margin: 0; padding-bottom: 1rem; max-height: calc(100vh - 7rem); overflow-y: auto; }
+    nav.offen { display: block; }
+    .ebene1 { flex-direction: column; align-items: stretch; gap: 0; }
+    .ebene1 > li { flex-wrap: wrap; border-top: 1px solid var(--grau-100); }
+    .ebene1 > li > a { flex: 1; padding: .85rem .25rem; font-size: 1.05rem; }
+    .ebene1 > li > a:hover { background: none; }
+    .ebene1 > li > a::after { display: none; }
+    .auf { width: 3rem; height: 3rem; margin: 0; }
+    .ebene2, .ebene1 > li:nth-last-child(-n + 3) .ebene2 { position: static; width: 100%; border: 0; box-shadow: none; background: var(--grau-50); padding: .25rem; margin-bottom: .75rem; min-width: 0; }
+  }
+</style>

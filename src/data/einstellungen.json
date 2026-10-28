@@ -1,0 +1,16 @@
+{
+  "firma": "Tafag AG",
+  "kurzname": "TAFAG",
+  "logo": "/uploads/marken/tafag-logo.png",
+  "strasse": "Chräbelstrasse 3",
+  "ort": "6410 Goldau",
+  "kanton": "SZ",
+  "telefon": "+41 41 859 08 20",
+  "pikett": "TODO: Pikettnummer bestätigen (Website 2021: +41 41 859 08 29)",
+  "email": "info@tafag.ch",
+  "linkedin": "",
+  "fusszeile": [
+    { "titel": "Impressum", "link": "/de/impressum/" },
+    { "titel": "Datenschutz", "link": "/de/datenschutz/" }
+  ]
+}

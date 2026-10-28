@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Basis from '../../layouts/Basis.astro';
+import Seitenkopf from '../../components/Seitenkopf.astro';
+import Bausteine from '../../components/Bausteine.astro';
+import Startseite from '../../components/start/Startseite.astro';
+import { markeAusPfad } from '../../lib/marke';
+import { zerlegeId } from '../../lib/hilfen';
+import type { Sprache } from '../../i18n';
+
+export async function getStaticPaths() {
+  const seiten = await getCollection('seiten', (s) => !s.data.entwurf);
+  return seiten.map((seite) => {
+    const { sprache, slug } = zerlegeId(seite.id);
+    return { params: { lang: sprache, slug: slug || undefined }, props: { seite, slug } };
+  });
+}
+
+const { seite, slug } = Astro.props;
+const sprache = Astro.params.lang as Sprache;
+const { titel, beschreibung, titelbild, titelbild_alt, einleitung, bloecke, marke } = seite.data;
+const bereich = marke ?? markeAusPfad(slug);
+---
+
+<Basis titel={titel} beschreibung={beschreibung} bild={titelbild} marke={bereich} sprache={sprache} startseite={slug === ''}>
+  {
+    slug === '' ? (
+      <Startseite titel={titel} einleitung={einleitung} bild={titelbild} bildAlt={titelbild_alt} sprache={sprache} />
+    ) : (
+      <>
+        <Seitenkopf titel={titel} einleitung={einleitung} marke={bereich} sprache={sprache} titelbild={titelbild} pfad={Astro.url.pathname} />
+        <Bausteine bloecke={bloecke} />
+      </>
+    )
+  }
+</Basis>

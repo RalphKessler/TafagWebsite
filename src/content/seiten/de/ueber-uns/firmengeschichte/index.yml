@@ -1,0 +1,17 @@
+titel: Firmengeschichte
+beschreibung: 'Die Geschichte der Tafag AG: seit 1968 Schienen- und Spezialfahrzeuge, seit 1978 an der Chräbelstrasse 3 in Goldau.'
+einleitung: Unser Unternehmen steht seit 1968 für herausragende Qualität von Schienen- und Spezialfahrzeugen.
+bloecke:
+- type: zeitstrahl
+  eintraege:
+  - jahr: '1968'
+    titel: Gründung
+    text: Beginn der Tätigkeit für Schienen- und Spezialfahrzeuge.
+  - jahr: '1978'
+    titel: Chräbelstrasse 3, Goldau
+    text: Bezug der Geschäftsräume an der Chräbelstrasse 3 in Goldau.
+  - jahr: TODO
+    titel: 'TODO: Gründer und weitere Meilensteine vom Kunden (z. B. Generalvertretung ZAGRO Group, Einsatz im Lötschberg- und Gotthard-Basistunnel)'
+  - jahr: Heute
+    titel: Fahrzeuge für Schiene und Strasse
+    text: Maschinenbau und Elektromechanik – geschätzt für Flexibilität und unseren Pikettdienst.

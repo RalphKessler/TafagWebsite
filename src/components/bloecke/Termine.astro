@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import { datumText, zeitText } from '../../lib/hilfen';
+interface Props { titel?: string; kategorie?: string; anzahl?: number }
+const { titel, kategorie, anzahl } = Astro.props;
+
+// Vergangene Termine fallen weg – der nächtliche Build hält die Liste aktuell.
+const heute = new Date();
+heute.setHours(0, 0, 0, 0);
+let termine = (await getCollection('termine'))
+  .map((t) => t.data)
+  .filter((t) => (t.bis ?? t.datum) >= heute)
+  .filter((t) => !kategorie || t.kategorie === kategorie)
+  .sort((a, b) => a.datum.getTime() - b.datum.getTime());
+if (anzahl) termine = termine.slice(0, anzahl);
+---
+
+<section class="termine">
+  {titel && <h2>{titel}</h2>}
+  {
+    termine.length === 0 ? (
+      <p>Zurzeit sind keine Termine geplant.</p>
+    ) : (
+      <ul>
+        {termine.map((t) => (
+          <li>
+            <time datetime={t.datum.toISOString()}>
+              {datumText(t.datum)} {zeitText(t.datum)}
+              {t.bis && ` – ${datumText(t.bis)}`}
+            </time>
+            <strong>{t.titel}</strong>
+            {t.ort && <span class="ort">{t.ort}</span>}
+            {t.beschreibung && <p>{t.beschreibung}</p>}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</section>
+
+<style>
+  ul { list-style: none; padding: 0; margin: 0; max-width: 48rem; }
+  li { border-left: 4px solid var(--akzent); padding: .6rem 1rem; background: var(--weiss); margin-bottom: .6rem; }
+  time { display: block; font-size: .9rem; color: #555; }
+  strong { display: block; }
+  .ort { font-size: .9rem; }
+  p { margin: .3rem 0 0; }
+</style>

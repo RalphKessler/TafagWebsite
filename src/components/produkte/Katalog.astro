@@ -1,0 +1,108 @@
+---
+import { gruppeVon, produktLink, produktMarke, type Produkt } from '../../lib/produkte';
+import { t, type Sprache } from '../../i18n';
+import { zeigeTodo } from '../../lib/hilfen';
+
+interface Props { produkte: Produkt[]; filter: 'gruppe' | 'kategorie'; sprache: Sprache }
+const { produkte, filter, sprache } = Astro.props;
+const wert = (p: Produkt) => (filter === 'gruppe' ? p.data.gruppe : (p.data.kategorie ?? ''));
+const optionen = [...new Map(produkte.map((p) => [wert(p), filter === 'gruppe' ? gruppeVon(p.data.gruppe).titel : wert(p)])).entries()].filter(([w]) => w);
+---
+
+<div class="katalog" data-katalog>
+  <div class="werkzeuge">
+    <label class="suche">
+      <span class="visually-hidden">{t(sprache, 'produktSuche')}</span>
+      <input type="search" placeholder={t(sprache, 'produktSuche')} data-suche />
+    </label>
+    {
+      optionen.length > 1 && (
+        <div class="chips" role="group" aria-label={t(sprache, 'produktFilter')}>
+          <button type="button" aria-pressed="true" data-filter="">{t(sprache, 'alle')}</button>
+          {optionen.map(([w, titel]) => <button type="button" aria-pressed="false" data-filter={w}>{titel}</button>)}
+        </div>
+      )
+    }
+  </div>
+  <p class="anzahl klein" aria-live="polite" data-anzahl></p>
+  <ul class="raster">
+    {
+      produkte.map((p) => {
+        const g = gruppeVon(p.data.gruppe);
+        const suchtext = [p.data.titel, p.data.kurz, p.data.kategorie, g.titel, ...p.data.modelle.map((m) => m.name)].join(' ').toLowerCase();
+        return (
+          <li class="karte" data-marke={produktMarke(p)} data-wert={wert(p)} data-text={suchtext}>
+            <div class="bild">{p.data.bild ? <img src={p.data.bild} alt="" loading="lazy" width="600" height="450" /> : <span>{zeigeTodo ? t(sprache, 'bildFolgt') : ''}</span>}</div>
+            <div class="inhalt">
+              <p class="gruppe klein">{p.data.kategorie ?? g.titel}{p.data.status === 'abgekuendigt' && <span class="plakette">{t(sprache, 'abgekuendigt')}</span>}</p>
+              <h3><a href={produktLink(p, sprache)}>{p.data.titel}</a></h3>
+              {p.data.kurz && <p class="kurz">{p.data.kurz}</p>}
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
+  <p class="leer" hidden data-leer>{t(sprache, 'keineProdukte')}</p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-katalog]').forEach((k) => {
+    const suche = k.querySelector<HTMLInputElement>('[data-suche]')!;
+    const knoepfe = [...k.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+    const karten = [...k.querySelectorAll<HTMLElement>('.karte')];
+    const anzahl = k.querySelector<HTMLElement>('[data-anzahl]')!;
+    const leer = k.querySelector<HTMLElement>('[data-leer]')!;
+    let filter = '';
+    const anwenden = () => {
+      const begriffe = suche.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      let sichtbar = 0;
+      karten.forEach((c) => {
+        const ok = (!filter || c.dataset.wert === filter) && begriffe.every((b) => c.dataset.text!.includes(b));
+        c.hidden = !ok;
+        if (ok) sichtbar++;
+      });
+      anzahl.textContent = `${sichtbar} von ${karten.length} Produkten`;
+      leer.hidden = sichtbar > 0;
+    };
+    knoepfe.forEach((b) =>
+      b.addEventListener('click', () => {
+        filter = b.dataset.filter!;
+        knoepfe.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        anwenden();
+      }),
+    );
+    suche.addEventListener('input', anwenden);
+    // Suchbegriff aus der Adresse übernehmen (?q=…)
+    const q = new URLSearchParams(location.search).get('q');
+    if (q) suche.value = q;
+    anwenden();
+  });
+</script>
+
+<style>
+  .werkzeuge { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+  .suche { flex: 1 1 18rem; max-width: 26rem; }
+  .suche input { width: 100%; font: inherit; padding: .7rem 1rem .7rem 2.6rem; border: 1px solid var(--grau-200); border-radius: 999px; background: var(--weiss) no-repeat .95rem center / 1.1rem url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234b5a6a' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E"); }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .chips button { font: inherit; font-size: .9rem; font-weight: 600; padding: .45rem .9rem; border-radius: 999px; border: 1px solid var(--grau-200); background: var(--weiss); color: var(--text); cursor: pointer; }
+  .chips button:hover { border-color: var(--text); }
+  .chips button[aria-pressed='true'] { background: var(--navy); border-color: var(--navy); color: var(--weiss); }
+  .anzahl { color: var(--text-2); margin-bottom: 1.25rem; }
+  .raster { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1.25rem; }
+  .karte { position: relative; background: var(--weiss); border: 1px solid var(--grau-100); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; border-top: 5px solid var(--akzent); }
+  .karte:hover { border-color: var(--grau-200); border-top-color: var(--akzent); }
+  .karte:has(a:focus-visible) { outline: 3px solid var(--akzent); outline-offset: 3px; }
+  .bild { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--weiss); display: grid; place-items: center; color: var(--text-2); font-size: .8rem; font-weight: 600; padding: 1rem; border-bottom: 1px solid var(--grau-100); }
+  .bild:has(span) { background: var(--grau-50); }
+  .bild img { position: absolute; inset: 1rem; width: calc(100% - 2rem); height: calc(100% - 2rem); object-fit: contain; }
+  .inhalt { padding: 1.1rem 1.25rem 1.4rem; }
+  .gruppe { color: var(--akzent-text); font-weight: 700; margin: 0 0 .3rem; }
+  .plakette { margin-left: .5rem; padding: .1rem .5rem; border-radius: 999px; background: var(--grau-100); color: var(--text-2); font-weight: 700; font-size: .75rem; }
+  h3 { font-size: 1.1rem; margin: 0 0 .4rem; }
+  h3 a { color: var(--text); text-decoration: none; }
+  h3 a::after { content: ''; position: absolute; inset: 0; }
+  h3 a:focus-visible { outline: none; }
+  .kurz { color: var(--text-2); font-size: .93rem; margin: 0; }
+  .leer { padding: 2rem 0; color: var(--text-2); }
+</style>

@@ -1,0 +1,55 @@
+---
+interface Props { titel?: string; url: string; vorschaubild?: string }
+const { titel, url, vorschaubild } = Astro.props;
+
+// Datenschutz: Das Video wird erst nach einem Klick von YouTube bzw. Vimeo geladen.
+function einbettung(u: string): { src: string; anbieter: string } | null {
+  const yt = u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+  if (yt) return { src: `https://www.youtube-nocookie.com/embed/${yt[1]}?autoplay=1&rel=0`, anbieter: 'YouTube' };
+  const vi = u.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if (vi) return { src: `https://player.vimeo.com/video/${vi[1]}?autoplay=1&dnt=1`, anbieter: 'Vimeo' };
+  return null;
+}
+const e = einbettung(url);
+---
+
+{
+  e && (
+    <section class="video">
+      {titel && <h2>{titel}</h2>}
+      <div class="rahmen" data-src={e.src} data-titel={titel ?? 'Video'}>
+        {vorschaubild && <img src={vorschaubild} alt="" loading="lazy" />}
+        <div class="hinweis">
+          <button type="button" class="knopf primaer">▶ Video abspielen</button>
+          <p class="klein">
+            Beim Abspielen wird das Video von {e.anbieter} geladen. Dabei werden Daten an {e.anbieter} übermittelt.
+            Mehr dazu in der <a href={`/${Astro.currentLocale ?? 'de'}/datenschutz/`}>Datenschutzerklärung</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<script>
+  document.querySelectorAll<HTMLElement>('.video .rahmen').forEach((rahmen) => {
+    rahmen.querySelector('button')?.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = rahmen.dataset.src!;
+      iframe.title = rahmen.dataset.titel!;
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.allowFullscreen = true;
+      rahmen.replaceChildren(iframe);
+    });
+  });
+</script>
+
+<style>
+  .rahmen { position: relative; aspect-ratio: 16 / 9; max-width: 56rem; background: var(--text); border-radius: var(--radius); overflow: hidden; }
+  .rahmen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .45; }
+  .hinweis { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; padding: 1rem; color: #fff; }
+  .hinweis a { color: #fff; }
+  .hinweis p { max-width: 30rem; }
+  /* Das iframe entsteht erst per JavaScript – darum :global() */
+  .rahmen :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+</style>

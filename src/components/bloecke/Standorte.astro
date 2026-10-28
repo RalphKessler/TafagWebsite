@@ -1,0 +1,85 @@
+---
+import { markdown } from '../../lib/hilfen';
+interface Standort {
+  bezeichnung: string; titel: string; firma?: string; strasse?: string; ort?: string; telefon?: string; email?: string;
+  bild?: string; alt?: string; beschreibung?: string; anreise?: string; hinweis?: string; karte_link?: string;
+}
+interface Props { titel?: string; text?: string; eintraege: Standort[] }
+const { titel, text, eintraege } = Astro.props;
+const tel = (t: string) => t.replace(/[^+\d]/g, '');
+---
+
+<div>
+  {(titel || text) && (
+    <div class="kopf">
+      {titel && <h2>{titel}</h2>}
+      {text && <div class="lead" set:html={markdown(text)} />}
+    </div>
+  )}
+  <ul class="standorte">
+    {
+      eintraege.map((s) => (
+        <li class="standort">
+          {s.bild && <img src={s.bild} alt={s.alt ?? ''} loading="lazy" decoding="async" width="900" height="600" />}
+          <p class="bezeichnung">{s.bezeichnung}</p>
+          <h2>{s.titel}</h2>
+          {s.beschreibung && <p class="beschreibung">{s.beschreibung}</p>}
+          <dl>
+            {(s.firma || s.strasse || s.ort) && (
+              <div>
+                <dt>Adresse</dt>
+                <dd>
+                  <address>
+                    {s.firma && <>{s.firma}<br /></>}
+                    {s.strasse && <>{s.strasse}<br /></>}
+                    {s.ort}
+                  </address>
+                </dd>
+              </div>
+            )}
+            {s.telefon && (
+              <div>
+                <dt>Telefon</dt>
+                <dd><a href={`tel:${tel(s.telefon)}`}>{s.telefon}</a></dd>
+              </div>
+            )}
+            {s.email && (
+              <div>
+                <dt>E-Mail</dt>
+                <dd><a href={`mailto:${s.email}`}>{s.email}</a></dd>
+              </div>
+            )}
+            {s.anreise && (
+              <div>
+                <dt>Anreise</dt>
+                <dd>{s.anreise}</dd>
+              </div>
+            )}
+          </dl>
+          {s.hinweis && <div class="hinweis" set:html={markdown(s.hinweis)} />}
+          {s.karte_link && <p class="route"><a class="knopf sekundaer" href={s.karte_link} target="_blank" rel="noopener">Route planen</a></p>}
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .kopf { max-width: 48rem; margin-bottom: 2.25rem; }
+  .standorte { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem clamp(2rem, 5vw, 4.5rem); }
+  .standort { display: flex; flex-direction: column; border-top: 3px solid var(--akzent); padding-top: 1.5rem; }
+  img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius); margin-bottom: 1.5rem; order: -1; }
+  .bezeichnung { margin: 0 0 .35rem; font-size: .95rem; font-weight: 700; color: var(--akzent-text); }
+  h2 { margin: 0 0 .75rem; }
+  .beschreibung { color: var(--text-2); margin: 0 0 1.5rem; max-width: 36rem; }
+  dl { margin: 0; display: grid; gap: 0; border-top: 1px solid var(--grau-200); }
+  dl > div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid var(--grau-200); }
+  dt { font-weight: 700; color: var(--text); }
+  dd { margin: 0; color: var(--text-2); }
+  address { font-style: normal; }
+  .hinweis { margin-top: 1.25rem; color: var(--text-2); font-size: .95rem; }
+  .hinweis :global(p) { margin: 0; }
+  .route { margin: 1.5rem 0 0; margin-top: auto; padding-top: 1.5rem; }
+  @media (max-width: 860px) { .standorte { grid-template-columns: 1fr; } }
+  @media (max-width: 420px) { dl > div { grid-template-columns: 1fr; gap: .15rem; } }
+</style>

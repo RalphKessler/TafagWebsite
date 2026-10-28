@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+interface Props { titel?: string; bereiche?: string[]; oben?: string[]; titel_rest?: string }
+const { titel, bereiche = [], oben = [], titel_rest } = Astro.props;
+
+// Alle Kontaktpersonen, gruppiert nach Bereich (Reihenfolge wie im CMS)
+const personen = (await getCollection('kontakte')).map((k) => k.data).sort((a, b) => a.reihenfolge - b.reihenfolge);
+const gruppen = new Map<string, typeof personen>();
+for (const p of personen) {
+  const b0 = p.bereich ?? 'Team';
+  if (bereiche.length && !bereiche.includes(b0)) continue;
+  // Mit «oben» gesetzt: nur diese Bereiche einzeln, alle anderen in einer gemeinsamen Gruppe
+  const b = oben.length && !oben.includes(b0) ? (titel_rest ?? '') : b0;
+  gruppen.set(b, [...(gruppen.get(b) ?? []), p]);
+}
+const tel = (t: string) => t.replace(/[^+\d]/g, '');
+const initialen = (n: string) => n.split(/[\s-]+/).map((w) => w[0]).slice(0, 2).join('');
+---
+
+<div class="team">
+  {titel && <h2>{titel}</h2>}
+  {
+    [...gruppen.entries()].map(([bereich, liste]) => (
+      <section class="gruppe">
+        {bereich && <h2>{bereich}</h2>}
+        <ul>
+          {liste.map((p) => (
+            <li>
+              <div class="foto">
+                {p.foto ? <img src={p.foto} alt={p.name} loading="lazy" width="150" height="225" /> : <span aria-hidden="true">{initialen(p.name)}</span>}
+              </div>
+              <h3>{p.name}</h3>
+              {p.funktion && <p class="funktion">{p.funktion}</p>}
+              {p.ausbildung && <p class="ausbildung">{p.ausbildung}</p>}
+              {(p.telefon || p.email) && (
+                <p class="kontakt">
+                  {p.telefon && <a href={`tel:${tel(p.telefon)}`}>{p.telefon}</a>}
+                  {p.email && <a href={`mailto:${p.email}`}>{p.email}</a>}
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .gruppe + .gruppe { margin-top: 3rem; }
+  .gruppe > h2 { font-size: 1.4rem; margin-bottom: 1.25rem; padding-bottom: .6rem; border-bottom: 1px solid var(--grau-200); }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr)); gap: 2rem 1.5rem; }
+  .foto { aspect-ratio: 2 / 3; max-width: 11rem; border-radius: 14px; overflow: hidden; background: var(--grau-100); display: grid; place-items: center; margin-bottom: .9rem; }
+  .foto img { width: 100%; height: 100%; object-fit: cover; }
+  .foto span { font-size: 2rem; font-weight: 750; color: var(--text-2); }
+  h3 { font-size: 1.05rem; margin: 0 0 .2rem; }
+  p { margin: 0; font-size: .92rem; }
+  .funktion { color: var(--text); }
+  .ausbildung { color: var(--text-2); margin-top: .2rem; }
+  .kontakt { display: grid; margin-top: .5rem; overflow-wrap: anywhere; }
+  .kontakt a { text-decoration: none; }
+  .kontakt a:hover { text-decoration: underline; }
+</style>

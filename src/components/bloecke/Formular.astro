@@ -1,0 +1,121 @@
+---
+import { getEntry } from 'astro:content';
+interface Props { titel?: string; text?: string; formular: string; werte?: Record<string, string> }
+const { titel, text, formular, werte = {} } = Astro.props;
+const eintrag = await getEntry('formulare', formular);
+if (!eintrag) throw new Error(`Formular «${formular}» nicht gefunden`);
+const f = eintrag.data;
+const optionen = (o?: string) => (o ?? '').split(/\r?\n|,/).map((s) => s.trim()).filter(Boolean);
+---
+
+<section class="formular">
+  <div class="kopf">
+    {titel && <h2>{titel}</h2>}
+    {text && <p class="lead">{text}</p>}
+  </div>
+  <form method="post" action="/api/formular.php" enctype="multipart/form-data" data-bestaetigung={f.bestaetigung ?? 'Vielen Dank! Ihre Nachricht wurde gesendet.'}>
+    <input type="hidden" name="_formular" value={eintrag.id} />
+    <input type="hidden" name="_zeit" value="" />
+    <!-- Honeypot gegen Spam: für Menschen unsichtbar -->
+    <div class="honig" aria-hidden="true">
+      <label>Bitte leer lassen <input type="text" name="_website" tabindex="-1" autocomplete="off" /></label>
+    </div>
+    {
+      f.felder.map((feld) => {
+        const id = `${eintrag.id}-${feld.name}`;
+        const stern = feld.pflicht ? ' *' : '';
+        if (feld.typ === 'datei')
+          return (
+            <div class="feld">
+              <label for={id}>{feld.bezeichnung}{stern}</label>
+              <input id={id} type="file" name={feld.mehrfach ? `${feld.name}[]` : feld.name} multiple={feld.mehrfach}
+                required={feld.pflicht} accept=".pdf,.jpg,.jpeg,.png,.webp,.heic,.doc,.docx" />
+              <small class="hinweis">{feld.hinweis ?? `PDF, Bild oder Word – max. 10 MB pro Datei${feld.mehrfach ? ', bis 5 Dateien' : ''}.`}</small>
+            </div>
+          );
+        if (feld.typ === 'checkbox')
+          return (
+            <div class="feld checkbox">
+              <label><input type="checkbox" id={id} name={feld.name} value="Ja" required={feld.pflicht} /> {feld.bezeichnung}{stern}</label>
+            </div>
+          );
+        return (
+          <div class="feld">
+            <label for={id}>{feld.bezeichnung}{stern}</label>
+            {feld.typ === 'textarea' ? (
+              <textarea id={id} name={feld.name} rows="6" required={feld.pflicht} />
+            ) : feld.typ === 'select' ? (
+              <select id={id} name={feld.name} required={feld.pflicht}>
+                <option value="">Bitte wählen</option>
+                {optionen(feld.optionen).map((o) => <option>{o}</option>)}
+              </select>
+            ) : (
+              <input id={id} type={feld.typ} name={feld.name} required={feld.pflicht} value={werte[feld.name]}
+                autocomplete={feld.typ === 'email' ? 'email' : feld.typ === 'tel' ? 'tel' : undefined} />
+            )}
+          </div>
+        );
+      })
+    }
+    <p class="klein">* Pflichtfeld. Ihre Angaben verwenden wir nur zur Bearbeitung Ihrer Anfrage (siehe <a href={`/${Astro.currentLocale ?? 'de'}/datenschutz/`}>Datenschutz</a>).</p>
+    <button type="submit" class="knopf primaer">{f.knopf ?? 'Absenden'}</button>
+    <p class="meldung" role="status" aria-live="polite"></p>
+  </form>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.formular form').forEach((form) => {
+    // Felder aus der Adresse vorbelegen, z. B. ?produkt=SMS-2000 oder ?stelle=…
+    const parameter = new URLSearchParams(location.search);
+    parameter.forEach((wert, name) => {
+      const feld = form.querySelector<HTMLInputElement | HTMLTextAreaElement>(`[name="${CSS.escape(name)}"]:not([type=file])`);
+      if (feld && !feld.value) feld.value = wert;
+    });
+    const zeit = form.querySelector<HTMLInputElement>('[name=_zeit]')!;
+    zeit.value = String(Date.now());
+    const meldung = form.querySelector<HTMLElement>('.meldung')!;
+    const knopf = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      knopf.disabled = true;
+      meldung.className = 'meldung';
+      meldung.textContent = 'Wird gesendet …';
+      try {
+        const antwort = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        const daten = await antwort.json().catch(() => ({ ok: false, fehler: 'Unerwartete Antwort vom Server.' }));
+        if (!antwort.ok || !daten.ok) throw new Error(daten.fehler || 'Senden fehlgeschlagen.');
+        form.reset();
+        zeit.value = String(Date.now());
+        meldung.classList.add('ok');
+        meldung.textContent = form.dataset.bestaetigung!;
+      } catch (err) {
+        meldung.classList.add('fehler');
+        meldung.textContent = `${(err as Error).message} Bitte versuchen Sie es erneut oder schreiben Sie uns eine E-Mail.`;
+      } finally {
+        knopf.disabled = false;
+      }
+    });
+  });
+</script>
+
+<style>
+  .formular { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  .kopf { position: sticky; top: 8rem; }
+  form { display: grid; gap: 1rem; background: var(--grau-50); padding: clamp(1.25rem, 3vw, 2rem); border-radius: 18px; }
+  @media (max-width: 860px) { .formular { grid-template-columns: 1fr; } .kopf { position: static; } }
+  .feld { display: grid; gap: .3rem; }
+  label { font-weight: 600; }
+  .checkbox label { font-weight: normal; }
+  input:not([type=checkbox]), textarea, select { font: inherit; padding: .6rem .7rem; border: 1px solid #9aa5b1; border-radius: var(--radius); width: 100%; background: #fff; }
+  .hinweis { color: var(--text-2); font-size: .85rem; }
+  input[type=file] { padding: .5rem; background: var(--weiss); }
+  .honig { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  button { justify-self: start; }
+  .meldung:empty { display: none; }
+  .meldung.ok { color: var(--ok); font-weight: 600; }
+  .meldung.fehler { color: var(--fehler); font-weight: 600; }
+</style>

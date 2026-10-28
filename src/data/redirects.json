@@ -1,0 +1,112 @@
+{
+  "weiterleitungen": [
+    {
+      "von": "/contactus",
+      "nach": "/de/kontakt/"
+    },
+    {
+      "von": "/impressum",
+      "nach": "/de/impressum/"
+    },
+    {
+      "von": "/privacy",
+      "nach": "/de/datenschutz/"
+    },
+    {
+      "von": "/cookie-policy",
+      "nach": "/de/datenschutz/"
+    },
+    {
+      "von": "/de/12/1/index",
+      "nach": "/de/"
+    },
+    {
+      "von": "/de/12/1/",
+      "nach": "/de/"
+    },
+    {
+      "von": "/de/10/101/",
+      "nach": "/de/dienstleistungen/"
+    },
+    {
+      "von": "/de/12/106/",
+      "nach": "/de/dienstleistungen/engineering/"
+    },
+    {
+      "von": "/de/12/107/",
+      "nach": "/de/dienstleistungen/revisionen-umbau/"
+    },
+    {
+      "von": "/de/12/108/",
+      "nach": "/de/dienstleistungen/service-inbetriebnahme/"
+    },
+    {
+      "von": "/de/12/109/",
+      "nach": "/de/dienstleistungen/pikettdienst/"
+    },
+    {
+      "von": "/de/10/102/",
+      "nach": "/de/produkte/"
+    },
+    {
+      "von": "/de/12/112/",
+      "nach": "/de/produkte/vtms/"
+    },
+    {
+      "von": "/de/12/113/",
+      "nach": "/de/produkte/zweiweg/"
+    },
+    {
+      "von": "/de/12/114/",
+      "nach": "/de/produkte/sonderloesungen/montagehilfen/"
+    },
+    {
+      "von": "/de/12/115/",
+      "nach": "/de/produkte/sonderloesungen/container-module/"
+    },
+    {
+      "von": "/de/12/116/",
+      "nach": "/de/produkte/sonderloesungen/partikelfilter/"
+    },
+    {
+      "von": "/de/12/123/",
+      "nach": "/de/referenzen/installationszug-gotthard/"
+    },
+    {
+      "von": "/de/10/103/",
+      "nach": "/de/ueber-uns/"
+    },
+    {
+      "von": "/de/12/118/",
+      "nach": "/de/ueber-uns/leitbild/"
+    },
+    {
+      "von": "/de/12/117/",
+      "nach": "/de/ueber-uns/firmengeschichte/"
+    },
+    {
+      "von": "/de/10/127/",
+      "nach": "/de/referenzen/kunden/"
+    },
+    {
+      "von": "/de/10/129/",
+      "nach": "/de/ueber-uns/partner/"
+    },
+    {
+      "von": "/de/12/120/",
+      "nach": "/de/jobs/"
+    },
+    {
+      "von": "/de/10/104/",
+      "nach": "/de/kontakt/"
+    },
+    {
+      "von": "/de/90/110/",
+      "nach": "/de/kontakt/"
+    },
+    {
+      "von": "/de/10/124/",
+      "nach": "/de/ueber-uns/standort/"
+    }
+  ]
+}

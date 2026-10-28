@@ -1,0 +1,17 @@
+---
+// Das Gleis-Motiv: zwei Schienen mit Schwellen, als Band am unteren Rand dunkler Flächen.
+// Bewusst schlicht – es steht für das, was TAFAG baut: Fahrzeuge auf der Schiene.
+interface Props { class?: string; schiene?: string; schwellen?: string }
+const { class: klasse, schiene = 'var(--tafag-gelb)', schwellen = 'var(--akzent-hell)' } = Astro.props;
+const breite = 4000;
+const abstand = 32;
+const schwellenX = Array.from({ length: Math.floor(breite / abstand) }, (_, i) => i * abstand + 8);
+---
+
+<svg class={klasse} viewBox={`0 0 ${breite} 56`} preserveAspectRatio="xMinYMax slice" aria-hidden="true" focusable="false">
+  <g fill={schwellen}>
+    {schwellenX.map((x) => <rect x={x} y="6" width="12" height="44" rx="2" />)}
+  </g>
+  <rect x="0" y="14" width={breite} height="5" fill={schiene} />
+  <rect x="0" y="37" width={breite} height="5" fill={schiene} />
+</svg>

@@ -1,0 +1,53 @@
+---
+import einstellungen from '../../data/einstellungen.json';
+import { ladeNews } from '../../lib/news';
+import { t, type Sprache } from '../../i18n';
+
+interface Props { sprache: Sprache; anzahl?: number }
+const { sprache, anzahl = 3 } = Astro.props;
+const beitraege = await ladeNews(anzahl);
+const datum = new Intl.DateTimeFormat('de-CH', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+{
+  beitraege.length > 0 && (
+    <section class="abschnitt">
+      <div class="breite">
+        <div class="kopf">
+          <h2>{t(sprache, 'startNewsTitel')}</h2>
+          {einstellungen.linkedin && (
+            <a class="knopf sekundaer" href={einstellungen.linkedin} target="_blank" rel="noopener">{t(sprache, 'startNewsLinkedin')}</a>
+          )}
+        </div>
+        <ul class="liste">
+          {beitraege.map((b) => (
+            <li>
+              <a class="beitrag" href={b.url} target="_blank" rel="noopener">
+                <div class="bild">
+                  {b.bild ? <img src={b.bild} alt="" loading="lazy" width="640" height="400" /> : <span aria-hidden="true" />}
+                </div>
+                {b.datum && <time datetime={b.datum.toISOString()}>{datum.format(b.datum)}</time>}
+                <h3 class:list={{ todo: b.titel.startsWith('TODO:') }}>{b.titel}</h3>
+                <p>{b.anriss}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .kopf { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 2rem; }
+  .kopf h2 { margin: 0; }
+  .liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .beitrag { display: block; color: var(--text); text-decoration: none; }
+  .bild { aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; background: var(--grau-100); margin-bottom: 1rem; }
+  .bild img { width: 100%; height: 100%; object-fit: cover; }
+  time { font-size: .875rem; color: var(--text-2); }
+  h3 { margin: .3rem 0 .5rem; }
+  .beitrag:hover h3 { color: var(--akzent-text); text-decoration: underline; }
+  p { color: var(--text-2); font-size: .98rem; }
+  @media (max-width: 900px) { .liste { grid-template-columns: 1fr; } .bild { aspect-ratio: 16 / 7; } }
+</style>

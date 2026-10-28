@@ -1,0 +1,11 @@
+titel: TuBeMo
+gruppe: anbaumodule
+kategorie: Anbaumodul
+kurz: Anbaumodul für VTms und Tragwagen.
+beschreibung: 'TODO: Beschreibung und technische Daten vom Kunden (auf der bisherigen Website nur mit Bild und Titel).'
+bild: /uploads/module/tubemo.webp
+bilder:
+- bild: /uploads/fahrzeuge/tubemo-wagen.webp
+  alt: Tragwagen mit TuBeMo-Modul im Bahnhof
+reihenfolge: 4
+downloads: []

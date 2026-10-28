@@ -1,0 +1,17 @@
+---
+import { markdown } from '../../lib/hilfen';
+interface Props { titel?: string; inhalt?: string }
+const { titel, inhalt } = Astro.props;
+---
+
+<section class="text">
+  {titel && <h2>{titel}</h2>}
+  <div class="fliesstext" set:html={markdown(inhalt)} />
+</section>
+
+<style>
+  .fliesstext { max-width: 48rem; }
+  .fliesstext :global(img) { border-radius: 0; }
+  .fliesstext :global(table) { border-collapse: collapse; }
+  .fliesstext :global(td), .fliesstext :global(th) { border: 1px solid var(--grau-200); padding: .4rem .6rem; }
+</style>

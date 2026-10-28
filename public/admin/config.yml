@@ -1,0 +1,601 @@
+# Sveltia CMS – Konfiguration des Redaktionsbereichs (/admin)
+# Prüfung im Editor (z. B. VS Code mit YAML-Erweiterung):
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms@0.250.2/schema/sveltia-cms.json
+backend:
+  name: github
+  repo: RalphKessler/TafagWebsite
+  # Während der Testphase: Entwicklungs-Branch. Beim Livegang auf «main» umstellen.
+  branch: entwicklung
+  # Cloudflare-Worker für die GitHub-Anmeldung (siehe cloudflare-worker/README.md).
+  # Sveltia nutzt dasselbe Anmeldeverfahren wie Decap – der Worker bleibt unverändert.
+  # TODO: Adresse des eigenen Workers eintragen (siehe OPEN-QUESTIONS.md)
+  base_url: https://tafag-cms-auth.example.workers.dev
+  auth_endpoint: /auth
+  commit_messages:
+    create: 'Neu: {{collection}} «{{slug}}»'
+    update: 'Geändert: {{collection}} «{{slug}}»'
+    delete: 'Gelöscht: {{collection}} «{{slug}}»'
+    uploadMedia: 'Datei hochgeladen: {{path}}'
+    deleteMedia: 'Datei gelöscht: {{path}}'
+
+# Sprache der Oberfläche wählt Sveltia nach dem Browser (Deutsch vorhanden)
+site_url: https://www.tafag.ch
+logo:
+  src: /uploads/marken/tafag-logo.png
+media_folder: public/uploads
+public_folder: /uploads
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  # ---------------------------------------------------------------- Seiten
+  - name: seiten
+    label: Seiten (Deutsch)
+    label_singular: Seite
+    description: 'Seiten sind nach Bereichen verschachtelt; der Ordner ergibt die Adresse (z. B. automation/steuerungsbau → /de/automation/steuerungsbau/).'
+    folder: src/content/seiten/de
+    extension: yml
+    format: yml
+    create: true
+    nested:
+      depth: 4
+      summary: '{{titel}}'
+    meta:
+      path: { widget: string, label: 'Adresse (Pfad)', index_file: index }
+    summary: '{{titel}}'
+    sortable_fields: [titel]
+    fields:
+      - { name: titel, label: Titel, widget: string }
+      - { name: beschreibung, label: 'Kurzbeschreibung (für Google, max. 160 Zeichen)', widget: text, required: false }
+      - { name: einleitung, label: Einleitungstext, widget: text, required: false }
+      - { name: titelbild, label: Titelbild, widget: image, required: false }
+      - { name: titelbild_alt, label: 'Titelbild: Beschreibung (Alternativtext)', widget: string, required: false }
+      - { name: entwurf, label: 'Entwurf (nicht veröffentlichen)', widget: boolean, default: false, required: false }
+      - name: bloecke
+        label: Bausteine
+        label_singular: Baustein
+        widget: list
+        required: false
+        types:
+          - label: Leistungen (Übersicht)
+            name: leistungen
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: text, label: Einleitung, widget: text, required: false }
+              - name: eintraege
+                label: Einträge
+                label_singular: Eintrag
+                widget: list
+                summary: '{{fields.titel}}'
+                fields:
+                  - { name: titel, label: Titel, widget: string }
+                  - { name: text, label: Text, widget: text, required: false }
+                  - { name: link, label: 'Link (optional)', widget: string, required: false }
+              - { name: technik_titel, label: 'Aufklappbereich: Titel', widget: string, required: false }
+              - { name: technik_inhalt, label: 'Aufklappbereich: Inhalt (z. B. technische Details)', widget: markdown, required: false }
+              - { name: hintergrund, label: Hintergrund, widget: select, default: weiss, required: false, options: [{ label: Weiss, value: weiss }, { label: Hellgrau, value: grau }, { label: Dunkelblau, value: dunkel }] }
+          - label: Ablauf (nummerierte Schritte)
+            name: ablauf
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: text, label: Einleitung, widget: text, required: false }
+              - name: schritte
+                label: Schritte
+                label_singular: Schritt
+                widget: list
+                summary: '{{fields.titel}}'
+                fields:
+                  - { name: titel, label: Titel, widget: string }
+                  - { name: text, label: Text, widget: text, required: false }
+              - { name: hintergrund, label: Hintergrund, widget: select, default: weiss, required: false, options: [{ label: Weiss, value: weiss }, { label: Hellgrau, value: grau }, { label: Dunkelblau, value: dunkel }] }
+          - label: Querverweise auf Bereiche
+            name: querverweise
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: text, label: Einleitung, widget: text, required: false }
+              - name: eintraege
+                label: Verweise
+                label_singular: Verweis
+                widget: list
+                summary: '{{fields.titel}}'
+                fields:
+                  - { name: titel, label: Titel, widget: string }
+                  - { name: text, label: Text, widget: text, required: false }
+                  - { name: link, label: Link, widget: string }
+              - { name: hintergrund, label: Hintergrund, widget: select, default: dunkel, required: false, options: [{ label: Weiss, value: weiss }, { label: Hellgrau, value: grau }, { label: Dunkelblau, value: dunkel }] }
+          - label: Bild und Text
+            name: bildtext
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: inhalt, label: Text, widget: markdown }
+              - { name: bild, label: Bild, widget: image, required: false }
+              - { name: alt, label: Bildbeschreibung, widget: string, required: false }
+              - { name: bild_hinweis, label: 'Hinweis, solange kein Bild da ist', widget: string, required: false }
+              - { name: umgekehrt, label: 'Bild links', widget: boolean, default: false, required: false }
+              - { name: hintergrund, label: Hintergrund, widget: select, default: weiss, required: false, options: [{ label: Weiss, value: weiss }, { label: Hellgrau, value: grau }, { label: Dunkelblau, value: dunkel }] }
+          - label: Handlungsaufruf
+            name: aufruf
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string }
+              - { name: text, label: Text, widget: text, required: false }
+              - { name: beschriftung, label: 'Knopf 1: Beschriftung', widget: string }
+              - { name: link, label: 'Knopf 1: Link', widget: string }
+              - { name: beschriftung2, label: 'Knopf 2: Beschriftung', widget: string, required: false }
+              - { name: link2, label: 'Knopf 2: Link', widget: string, required: false }
+          - label: Standorte (Adressen nebeneinander)
+            name: standorte
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: text, label: Text, widget: text, required: false }
+              - label: Standorte
+                name: eintraege
+                widget: list
+                summary: '{{fields.titel}}'
+                fields:
+                  - { name: bezeichnung, label: 'Bezeichnung (z. B. Hauptsitz)', widget: string }
+                  - { name: titel, label: 'Ort (Überschrift)', widget: string }
+                  - { name: firma, label: Firma, widget: string, required: false }
+                  - { name: strasse, label: Strasse, widget: string, required: false }
+                  - { name: ort, label: 'PLZ und Ort', widget: string, required: false }
+                  - { name: telefon, label: Telefon, widget: string, required: false }
+                  - { name: email, label: E-Mail, widget: string, required: false }
+                  - { name: bild, label: Foto, widget: image, required: false }
+                  - { name: alt, label: 'Bildbeschreibung', widget: string, required: false }
+                  - { name: beschreibung, label: 'Was befindet sich hier?', widget: text, required: false }
+                  - { name: anreise, label: Anreise, widget: string, required: false }
+                  - { name: hinweis, label: Hinweis, widget: markdown, required: false }
+                  - { name: karte_link, label: 'Link Routenplaner', widget: string, required: false }
+              - { name: hintergrund, label: Hintergrund, widget: select, default: weiss, required: false, options: [{ label: Weiss, value: weiss }, { label: Hellgrau, value: grau }, { label: Dunkelblau, value: dunkel }] }
+          - label: Logos (Partner)
+            name: logos
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: text, label: Text, widget: text, required: false }
+              - label: Einträge
+                name: eintraege
+                widget: list
+                summary: '{{fields.name}}'
+                fields:
+                  - { name: name, label: Name, widget: string }
+                  - { name: text, label: Kurzbeschreibung, widget: text, required: false }
+                  - { name: logo, label: 'Logo (ohne Logo erscheint der Name)', widget: image, required: false }
+                  - { name: link, label: Link, widget: string, required: false }
+                  - { name: startseite, label: 'Auch auf der Startseite zeigen', widget: boolean, default: true, required: false }
+              - { name: hintergrund, label: Hintergrund, widget: select, default: weiss, required: false, options: [{ label: Weiss, value: weiss }, { label: Hellgrau, value: grau }, { label: Dunkelblau, value: dunkel }] }
+          - label: Team (alle Kontaktpersonen nach Bereich)
+            name: team
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: bereiche, label: 'Nur diese Bereiche (leer = alle)', widget: list, required: false }
+              - { name: oben, label: 'Diese Bereiche oben mit eigener Überschrift (z. B. Geschäftsleitung); alle anderen gemeinsam darunter', widget: list, required: false }
+              - { name: titel_rest, label: 'Überschrift für alle übrigen (z. B. Mitarbeitende)', widget: string, required: false }
+          - label: Zeitstrahl (Historie)
+            name: zeitstrahl
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - name: eintraege
+                label: Einträge
+                label_singular: Eintrag
+                widget: list
+                summary: '{{fields.jahr}} – {{fields.titel}}'
+                fields:
+                  - { name: jahr, label: 'Jahr (oder «Heute»)', widget: string }
+                  - { name: titel, label: Titel, widget: string }
+                  - { name: text, label: Text, widget: text, required: false }
+          - label: Stellenliste
+            name: stellen
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: nur_lehrstellen, label: Nur Lehrstellen, widget: boolean, default: false, required: false }
+          - label: Text
+            name: text
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Zwischentitel, widget: string, required: false }
+              - { name: inhalt, label: Text, widget: markdown }
+          - label: Bild
+            name: bild
+            widget: object
+            summary: '{{fields.legende}}'
+            fields:
+              - { name: bild, label: Bild, widget: image }
+              - { name: alt, label: 'Bildbeschreibung (für Blinde und Google)', widget: string }
+              - { name: legende, label: Bildlegende, widget: string, required: false }
+              - { name: breite, label: Breite, widget: select, default: normal, options: [{ label: Normal, value: normal }, { label: Breit, value: breit }, { label: Volle Breite, value: voll }] }
+          - label: Bildergalerie
+            name: galerie
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - name: bilder
+                label: Bilder
+                label_singular: Bild
+                widget: list
+                summary: '{{fields.legende}}'
+                fields:
+                  - { name: bild, label: Bild, widget: image }
+                  - { name: alt, label: Bildbeschreibung, widget: string, required: false }
+                  - { name: legende, label: Legende, widget: string, required: false }
+          - label: Downloads
+            name: downloads
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - name: dateien
+                label: Dateien
+                label_singular: Datei
+                widget: list
+                summary: '{{fields.bezeichnung}}'
+                fields:
+                  - { name: datei, label: Datei, widget: file }
+                  - { name: bezeichnung, label: Bezeichnung, widget: string, required: false }
+          - label: Formular
+            name: formular
+            widget: object
+            summary: '{{fields.formular}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: text, label: Einleitung, widget: text, required: false }
+              - { name: anker, label: 'Sprungmarke (z. B. anfrage)', widget: string, required: false }
+              - { name: formular, label: Formular, widget: relation, collection: formulare, value_field: '{{slug}}', search_fields: [titel], display_fields: [titel] }
+          - label: Button
+            name: button
+            widget: object
+            summary: '{{fields.beschriftung}}'
+            fields:
+              - { name: beschriftung, label: Beschriftung, widget: string }
+              - { name: link, label: 'Link (z. B. /kontakt/ oder https://…)', widget: string }
+              - { name: stil, label: Stil, widget: select, default: primaer, options: [{ label: 'Gelb (hervorgehoben)', value: primaer }, { label: 'Weiss', value: sekundaer }] }
+          - label: Kontaktperson
+            name: kontaktperson
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: personen, label: 'Personen (tippen zum Suchen)', widget: relation, collection: kontakte, value_field: '{{slug}}', search_fields: [name, funktion], display_fields: [name], multiple: true }
+          - label: Termine
+            name: termine
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: kategorie, label: 'Nur diese Kategorie (leer = alle)', widget: string, required: false }
+              - { name: anzahl, label: 'Höchstens so viele anzeigen (leer = alle)', widget: number, value_type: int, min: 1, required: false }
+          - label: Video
+            name: video
+            widget: object
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string, required: false }
+              - { name: url, label: 'YouTube- oder Vimeo-Adresse', widget: string, hint: 'Das Video lädt erst, wenn Besucher auf «Abspielen» klicken.' }
+              - { name: vorschaubild, label: 'Vorschaubild (optional, wird selbst ausgeliefert)', widget: image, required: false }
+
+  # ---------------------------------------------------------------- Kontaktpersonen
+  - name: kontakte
+    label: Kontaktpersonen
+    label_singular: Kontaktperson
+    folder: src/content/kontakte
+    extension: yml
+    format: yml
+    create: true
+    slug: '{{name}}'
+    summary: '{{name}} – {{funktion}}'
+    sortable_fields: [name, reihenfolge]
+    fields:
+      - { name: name, label: Name, widget: string }
+      - { name: funktion, label: Funktion, widget: string, required: false }
+      - { name: ausbildung, label: Ausbildung, widget: string, required: false }
+      - { name: bereich, label: 'Bereich (Gruppe auf der Team-Seite, z. B. Geschäftsleitung)', widget: string, required: false }
+      - { name: foto, label: Foto, widget: image, required: false }
+      - { name: telefon, label: Telefon, widget: string, required: false }
+      - { name: email, label: E-Mail, widget: string, required: false }
+      - { name: reihenfolge, label: Reihenfolge, widget: number, value_type: int, default: 100, required: false }
+
+  # ---------------------------------------------------------------- Termine
+  - name: termine
+    label: Termine
+    label_singular: Termin
+    description: 'Vergangene Termine verschwinden automatisch von der Website (nächtlicher Build).'
+    folder: src/content/termine
+    extension: yml
+    format: yml
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{titel}}'
+    summary: '{{datum | date("DD.MM.YYYY")}} – {{titel}}'
+    sortable_fields: [datum, titel]
+    fields:
+      - { name: titel, label: Titel, widget: string }
+      - { name: datum, label: 'Datum / Beginn', widget: datetime, format: 'YYYY-MM-DDTHH:mm:ssZ', date_format: 'DD.MM.YYYY', time_format: 'HH:mm' }
+      - { name: bis, label: 'Bis (mehrtägig, optional)', widget: datetime, format: 'YYYY-MM-DDTHH:mm:ssZ', date_format: 'DD.MM.YYYY', time_format: false, required: false }
+      - { name: ort, label: Ort, widget: string, required: false }
+      - { name: kategorie, label: Kategorie, widget: string, required: false }
+      - { name: beschreibung, label: Beschreibung, widget: text, required: false }
+
+  # ---------------------------------------------------------------- Formulare
+  - name: formulare
+    label: Formulare
+    label_singular: Formular
+    description: 'Einsendungen gehen per Mail an die Empfänger und sind unter /api/liste.php (Passwort) als Excel-Liste abrufbar.'
+    folder: src/content/formulare
+    extension: yml
+    format: yml
+    create: true
+    slug: '{{titel}}'
+    summary: '{{titel}}'
+    fields:
+      - { name: titel, label: Titel, widget: string }
+      - { name: empfaenger, label: 'Empfänger (E-Mail, mehrere mit Komma trennen)', widget: string }
+      - { name: betreff, label: Betreff der Mail, widget: string, required: false }
+      - { name: bestaetigung, label: 'Text nach dem Absenden', widget: string, required: false }
+      - { name: knopf, label: 'Beschriftung des Knopfs', widget: string, default: Absenden, required: false }
+      - { name: loeschfrist_tage, label: 'Einsendungen automatisch löschen nach (Tagen, leer = nie)', widget: number, value_type: int, required: false }
+      - { name: ziel, label: 'Einsendungen senden an', widget: select, default: mail, options: [{ label: 'E-Mail', value: mail }, { label: 'Zammad (Ticket, nur wenn eingerichtet)', value: zammad }], required: false }
+      - { name: zammad_dringend, label: 'Zammad: Auswahlwert für hohe Priorität (z. B. «Anlage steht»)', widget: string, required: false }
+      - name: felder
+        label: Felder
+        label_singular: Feld
+        widget: list
+        summary: '{{fields.bezeichnung}} ({{fields.typ}})'
+        fields:
+          - { name: bezeichnung, label: Bezeichnung, widget: string }
+          - { name: name, label: 'Technischer Name (klein, ohne Leerzeichen)', widget: string, pattern: ['^[a-z0-9_-]+$', 'Nur Kleinbuchstaben, Ziffern, - und _'] }
+          - name: typ
+            label: Art
+            widget: select
+            default: text
+            options:
+              - { label: Textzeile, value: text }
+              - { label: E-Mail, value: email }
+              - { label: Telefon, value: tel }
+              - { label: Mehrzeiliger Text, value: textarea }
+              - { label: Auswahlliste, value: select }
+              - { label: Ankreuzfeld, value: checkbox }
+              - { label: Datum, value: date }
+              - { label: Datei-Upload, value: datei }
+          - { name: pflicht, label: Pflichtfeld, widget: boolean, default: false, required: false }
+          - { name: mehrfach, label: 'Mehrere Dateien (nur Datei-Upload)', widget: boolean, default: false, required: false }
+          - { name: hinweis, label: 'Hinweis unter dem Feld', widget: string, required: false }
+          - { name: optionen, label: 'Auswahlmöglichkeiten (nur Auswahlliste, mit Komma trennen)', widget: string, required: false }
+
+  # ---------------------------------------------------------------- Produkte
+  - name: produkte
+    label: Produkte
+    label_singular: Produkt
+    description: 'Produktkatalog: erscheint unter /de/produkte/ mit Filter und Suche. Kein Preis, Anfrage statt Warenkorb.'
+    folder: src/content/produkte
+    extension: yml
+    format: yml
+    create: true
+    slug: '{{titel}}'
+    summary: '{{titel}} – {{kategorie}}'
+    sortable_fields: [titel, gruppe, reihenfolge]
+    view_groups: [{ label: Gruppe, field: gruppe }]
+    fields:
+      - { name: titel, label: Titel, widget: string }
+      - name: gruppe
+        label: Produktgruppe
+        widget: select
+        options:
+          - { label: 'VTms – selbstfahrende Arbeitsfahrzeuge', value: vtms }
+          - { label: Anbaumodule, value: anbaumodule }
+          - { label: ZAGRO Elektrorangierer, value: zagro-rangierer }
+          - { label: Zweiwegefahrzeuge, value: zweiweg }
+          - { label: Sonderlösungen, value: sonderloesungen }
+      - { name: kategorie, label: 'Kategorie (für den Filter)', widget: string, required: false }
+      - { name: kurz, label: Kurzbeschreibung, widget: text, required: false }
+      - { name: beschreibung, label: Beschreibung, widget: markdown, required: false }
+      - { name: bild, label: Bild, widget: image, required: false }
+      - name: bilder
+        label: Weitere Bilder
+        label_singular: Bild
+        widget: list
+        required: false
+        fields:
+          - { name: bild, label: Bild, widget: image }
+          - { name: alt, label: 'Beschreibung (Alternativtext)', widget: string, required: false }
+      - name: technische_daten
+        label: Technische Daten
+        label_singular: Wert
+        widget: list
+        required: false
+        summary: '{{fields.name}}: {{fields.wert}}'
+        fields:
+          - { name: name, label: Merkmal, widget: string }
+          - { name: wert, label: Wert, widget: string }
+      - name: modelle
+        label: Modelle und Ausführungen
+        label_singular: Modell
+        widget: list
+        required: false
+        summary: '{{fields.name}}'
+        fields:
+          - { name: name, label: Name, widget: string }
+          - { name: text, label: Beschreibung, widget: string, required: false }
+      - name: downloads
+        label: Downloads
+        label_singular: Datei
+        widget: list
+        required: false
+        summary: '{{fields.bezeichnung}}'
+        fields:
+          - { name: datei, label: Datei, widget: file }
+          - { name: bezeichnung, label: Bezeichnung, widget: string, required: false }
+      - { name: reihenfolge, label: Reihenfolge, widget: number, value_type: int, default: 100, required: false }
+      - { name: status, label: Status, widget: select, default: aktiv, options: [{ label: Aktiv, value: aktiv }, { label: Abgekündigt, value: abgekuendigt }], required: false }
+      - { name: hinweis, label: 'Hinweis oben auf der Seite (z. B. Abkündigung)', widget: text, required: false }
+      - { name: entwurf, label: 'Entwurf (nicht veröffentlichen)', widget: boolean, default: false, required: false }
+
+  # ---------------------------------------------------------------- Stellen
+  - name: stellen
+    label: Stellen
+    label_singular: Stelle
+    description: 'Jede Stelle erhält eine eigene, teilbare Adresse unter /de/jobs/offene-stellen/. Archivierte Stellen verschwinden aus der Liste.'
+    folder: src/content/stellen
+    extension: yml
+    format: yml
+    create: true
+    slug: '{{titel}}'
+    summary: '{{titel}} {{archiviert}}'
+    sortable_fields: [titel, veroeffentlicht]
+    fields:
+      - { name: titel, label: Titel, widget: string }
+      - { name: bereich, label: Bereich, widget: string, required: false }
+      - { name: pensum, label: 'Pensum (z. B. 80–100 %)', widget: string, required: false }
+      - { name: eintritt, label: 'Eintritt (z. B. nach Vereinbarung)', widget: string, required: false }
+      - { name: standort, label: Standort, widget: string, default: Goldau SZ }
+      - name: anstellung
+        label: Anstellungsart
+        widget: select
+        default: FULL_TIME
+        options:
+          - { label: Vollzeit, value: FULL_TIME }
+          - { label: Teilzeit, value: PART_TIME }
+          - { label: Befristet, value: TEMPORARY }
+          - { label: 'Lehre / Praktikum', value: INTERN }
+      - { name: lehrstelle, label: Lehrstelle, widget: boolean, default: false, required: false }
+      - { name: einleitung, label: Einleitung, widget: text, required: false }
+      - { name: aufgaben, label: Aufgaben, widget: list, required: false }
+      - { name: anforderungen, label: Anforderungen, widget: list, required: false }
+      - { name: wir_bieten, label: Wir bieten, widget: list, required: false }
+      - { name: ansprechperson, label: Ansprechperson, widget: relation, collection: kontakte, value_field: '{{slug}}', search_fields: [name], display_fields: [name], required: false }
+      - { name: veroeffentlicht, label: Veröffentlicht am, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD.MM.YYYY', time_format: false }
+      - { name: gueltig_bis, label: 'Ausgeschrieben bis (optional)', widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD.MM.YYYY', time_format: false, required: false }
+      - { name: archiviert, label: Archiviert, widget: boolean, default: false, required: false }
+
+  # ---------------------------------------------------------------- News
+  - name: news
+    label: News
+    label_singular: Beitrag
+    description: 'Beiträge für «Aktuelles» auf der Startseite (Übergangslösung zu LinkedIn). Link zeigt auf den LinkedIn-Beitrag.'
+    folder: src/content/news
+    extension: yml
+    format: yml
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{titel}}'
+    summary: '{{datum | date("DD.MM.YYYY")}} – {{titel}}'
+    sortable_fields: [datum, titel]
+    fields:
+      - { name: titel, label: Titel, widget: string }
+      - { name: anriss, label: Anriss, widget: text }
+      - { name: datum, label: Datum, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD.MM.YYYY', time_format: false }
+      - { name: bild, label: Bild, widget: image, required: false }
+      - { name: url, label: 'Link zum LinkedIn-Beitrag', widget: string }
+
+  # ---------------------------------------------------------------- Einstellungen
+  - name: einstellungen
+    label: Einstellungen
+    files:
+      - name: allgemein
+        label: Firma und Fusszeile
+        file: src/data/einstellungen.json
+        fields:
+          - { name: firma, label: Firmenname, widget: string }
+          - { name: kurzname, label: Kurzname, widget: string }
+          - { name: logo, label: Logo, widget: image }
+          - { name: strasse, label: Strasse, widget: string }
+          - { name: ort, label: PLZ Ort, widget: string }
+          - { name: kanton, label: Kanton, widget: string }
+          - { name: telefon, label: Telefon, widget: string }
+          - { name: pikett, label: 'Pikett-Nummer (ausserhalb der Bürozeiten)', widget: string }
+          - { name: email, label: E-Mail, widget: string }
+          - { name: linkedin, label: 'LinkedIn-Unternehmensseite (Adresse)', widget: string, required: false }
+          - name: fusszeile
+            label: Links Rechtliches
+            label_singular: Link
+            widget: list
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string }
+              - { name: link, label: Link, widget: string }
+      - name: navigation
+        label: Hauptnavigation
+        file: src/data/navigation.json
+        fields:
+          - name: hauptpunkte
+            label: Hauptpunkte
+            label_singular: Hauptpunkt
+            widget: list
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string }
+              - { name: link, label: 'Link (z. B. /de/automation/)', widget: string }
+              - name: unterpunkte
+                label: Unterpunkte
+                label_singular: Unterpunkt
+                widget: list
+                required: false
+                summary: '{{fields.titel}}'
+                fields:
+                  - { name: titel, label: Titel, widget: string }
+                  - { name: link, label: Link, widget: string }
+      - name: produktgruppen
+        label: Produktgruppen
+        file: src/data/produktgruppen.json
+        fields:
+          - name: gruppen
+            label: Gruppen
+            widget: list
+            allow_add: false
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: slug, label: 'Adresse (nicht ändern)', widget: string }
+              - { name: titel, label: Titel, widget: string }
+              - { name: einleitung, label: Einleitung, widget: text }
+      - name: bereiche
+        label: Bereiche der Startseite
+        file: src/data/bereiche.json
+        fields:
+          - name: bereiche
+            label: Bereiche
+            label_singular: Bereich
+            widget: list
+            summary: '{{fields.titel}}'
+            fields:
+              - { name: titel, label: Titel, widget: string }
+              - { name: link, label: Link, widget: string }
+              - { name: bild, label: Bild, widget: image, required: false }
+              - { name: text, label: Text, widget: text }
+              - name: punkte
+                label: Unterpunkte
+                label_singular: Unterpunkt
+                widget: list
+                summary: '{{fields.titel}}'
+                fields:
+                  - { name: titel, label: Titel, widget: string }
+                  - { name: link, label: Link, widget: string }
+      - name: weiterleitungen
+        label: Weiterleitungen alter Adressen
+        file: src/data/redirects.json
+        fields:
+          - name: weiterleitungen
+            label: Weiterleitungen
+            label_singular: Weiterleitung
+            widget: list
+            summary: '{{fields.von}} → {{fields.nach}}'
+            fields:
+              - { name: von, label: 'Alte Adresse (z. B. /ueber-uns.html)', widget: string }
+              - { name: nach, label: 'Neue Adresse (z. B. /team/)', widget: string }

@@ -1,0 +1,29 @@
+---
+interface Props { titel?: string; dateien: { datei: string; bezeichnung?: string }[] }
+const { titel, dateien } = Astro.props;
+const endung = (d: string) => d.split('.').pop()?.toUpperCase() ?? '';
+const name = (d: string) => decodeURIComponent(d.split('/').pop() ?? d);
+---
+
+<section class="downloads">
+  {titel && <h2>{titel}</h2>}
+  <ul>
+    {
+      dateien.map((d) => (
+        <li>
+          <a href={d.datei} download>
+            <span class="typ">{endung(d.datei)}</span>
+            {d.bezeichnung ?? name(d.datei)}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  ul { list-style: none; padding: 0; margin: 0; max-width: 48rem; }
+  li + li { border-top: 1px solid var(--grau-200); }
+  a { display: flex; align-items: center; gap: .8rem; padding: .7rem 0; text-decoration: none; font-weight: 600; }
+  .typ { background: var(--text); color: #fff; font-family: var(--schrift); font-size: .75rem; padding: .2rem .45rem; min-width: 3rem; text-align: center; }
+</style>

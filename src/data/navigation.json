@@ -1,0 +1,55 @@
+{
+  "hauptpunkte": [
+    { "titel": "Startseite", "link": "/de/" },
+    {
+      "titel": "Fahrzeuge & Produkte",
+      "link": "/de/produkte/",
+      "unterpunkte": [
+        { "titel": "VTms – Arbeitsfahrzeuge", "link": "/de/produkte/vtms/" },
+        { "titel": "Anbaumodule", "link": "/de/produkte/anbaumodule/" },
+        { "titel": "ZAGRO Elektrorangierer", "link": "/de/produkte/zagro-rangierer/" },
+        { "titel": "Zweiwegefahrzeuge", "link": "/de/produkte/zweiweg/" },
+        { "titel": "Sonderlösungen", "link": "/de/produkte/sonderloesungen/" }
+      ]
+    },
+    {
+      "titel": "Dienstleistungen",
+      "link": "/de/dienstleistungen/",
+      "unterpunkte": [
+        { "titel": "Engineering", "link": "/de/dienstleistungen/engineering/" },
+        { "titel": "Revisionen & Umbau", "link": "/de/dienstleistungen/revisionen-umbau/" },
+        { "titel": "Service & Inbetriebnahme", "link": "/de/dienstleistungen/service-inbetriebnahme/" },
+        { "titel": "Pikettdienst", "link": "/de/dienstleistungen/pikettdienst/" },
+        { "titel": "Serviceanfrage", "link": "/de/dienstleistungen/serviceanfrage/" }
+      ]
+    },
+    {
+      "titel": "Referenzen",
+      "link": "/de/referenzen/",
+      "unterpunkte": [
+        { "titel": "Installationszug Gotthard-Basistunnel", "link": "/de/referenzen/installationszug-gotthard/" },
+        { "titel": "Kunden", "link": "/de/referenzen/kunden/" }
+      ]
+    },
+    {
+      "titel": "Über uns",
+      "link": "/de/ueber-uns/",
+      "unterpunkte": [
+        { "titel": "Leitbild", "link": "/de/ueber-uns/leitbild/" },
+        { "titel": "Firmengeschichte", "link": "/de/ueber-uns/firmengeschichte/" },
+        { "titel": "Partner", "link": "/de/ueber-uns/partner/" },
+        { "titel": "Standort & Anfahrt", "link": "/de/ueber-uns/standort/" }
+      ]
+    },
+    {
+      "titel": "Jobs",
+      "link": "/de/jobs/",
+      "unterpunkte": [
+        { "titel": "Offene Stellen", "link": "/de/jobs/offene-stellen/" },
+        { "titel": "Arbeiten bei TAFAG", "link": "/de/jobs/arbeiten-bei-tafag/" },
+        { "titel": "Spontanbewerbung", "link": "/de/jobs/spontanbewerbung/" }
+      ]
+    },
+    { "titel": "Kontakt", "link": "/de/kontakt/" }
+  ]
+}

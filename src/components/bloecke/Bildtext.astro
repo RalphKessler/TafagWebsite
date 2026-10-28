@@ -1,0 +1,36 @@
+---
+import { markdown, zeigeTodo } from '../../lib/hilfen';
+interface Props { titel?: string; inhalt?: string; bild?: string; alt?: string; bild_hinweis?: string; umgekehrt?: boolean }
+const { titel, inhalt, bild, alt = '', bild_hinweis, umgekehrt = false } = Astro.props;
+// Live ohne Bild: kein Platzhalter, der Text steht allein
+const mitBild = !!bild || zeigeTodo;
+---
+
+<div class:list={['bildtext', { umgekehrt, 'ohne-bild': !mitBild }]}>
+  <div class="text">
+    {titel && <h2>{titel}</h2>}
+    <div class="fliesstext" set:html={markdown(inhalt)} />
+  </div>
+  {mitBild && <figure>
+    {
+      bild ? (
+        <img src={bild} alt={alt} loading="lazy" decoding="async" width="900" height="675" />
+      ) : (
+        <div class="platzhalter" title={bild_hinweis}><span>Bild folgt</span></div>
+      )
+    }
+  </figure>}
+</div>
+
+<style>
+  .bildtext { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .umgekehrt figure { order: -1; }
+  .ohne-bild { grid-template-columns: minmax(0, 48rem); }
+  figure { margin: 0; }
+  img, .platzhalter { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 18px; }
+  .platzhalter { display: grid; place-items: end start; padding: 1.25rem; background: var(--grau-100); border: 1px dashed var(--grau-200); }
+  .platzhalter span { color: var(--text-2); font-size: .85rem; font-weight: 600; }
+  .fliesstext :global(ul) { padding-left: 1.2rem; }
+  .fliesstext :global(li) { margin-bottom: .35rem; }
+  @media (max-width: 860px) { .bildtext { grid-template-columns: 1fr; } .umgekehrt figure { order: 0; } }
+</style>

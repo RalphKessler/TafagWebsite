@@ -1,0 +1,79 @@
+---
+import type { Baustein } from '../content.config';
+import { bereinigeBausteine } from '../lib/hilfen';
+import Text from './bloecke/Text.astro';
+import Bild from './bloecke/Bild.astro';
+import Galerie from './bloecke/Galerie.astro';
+import Downloads from './bloecke/Downloads.astro';
+import Formular from './bloecke/Formular.astro';
+import Button from './bloecke/Button.astro';
+import Kontaktperson from './bloecke/Kontaktperson.astro';
+import Termine from './bloecke/Termine.astro';
+import Video from './bloecke/Video.astro';
+import Leistungen from './bloecke/Leistungen.astro';
+import Ablauf from './bloecke/Ablauf.astro';
+import Querverweise from './bloecke/Querverweise.astro';
+import Bildtext from './bloecke/Bildtext.astro';
+import Aufruf from './bloecke/Aufruf.astro';
+import Stellen from './bloecke/Stellen.astro';
+import Zeitstrahl from './bloecke/Zeitstrahl.astro';
+import Team from './bloecke/Team.astro';
+import Logos from './bloecke/Logos.astro';
+import Standorte from './bloecke/Standorte.astro';
+
+interface Props { bloecke: Baustein[] }
+const bloecke = bereinigeBausteine(Astro.props.bloecke);
+const komponenten = {
+  text: Text,
+  bild: Bild,
+  galerie: Galerie,
+  downloads: Downloads,
+  formular: Formular,
+  button: Button,
+  kontaktperson: Kontaktperson,
+  termine: Termine,
+  video: Video,
+  leistungen: Leistungen,
+  ablauf: Ablauf,
+  querverweise: Querverweise,
+  bildtext: Bildtext,
+  aufruf: Aufruf,
+  stellen: Stellen,
+  zeitstrahl: Zeitstrahl,
+  team: Team,
+  logos: Logos,
+  standorte: Standorte,
+} as const;
+// Jeder Baustein ist ein eigener Abschnitt über die volle Breite (Hintergrund wählbar).
+const hg = (b: Baustein) => ('hintergrund' in b && b.hintergrund) || 'weiss';
+---
+
+<div class="bausteine">
+  {
+    bloecke.map((b) => {
+      const Komponente = komponenten[b.type] as any;
+      return (
+        <section
+          class:list={['baustein', `baustein-${b.type}`, `hg-${hg(b)}`, { dunkel: hg(b) === 'dunkel' }]}
+          id={b.type === 'formular' ? (b.anker ?? 'anfrage') : undefined}
+        >
+          <div class="breite">
+            <Komponente {...b} />
+          </div>
+        </section>
+      );
+    })
+  }
+</div>
+
+<style>
+  .baustein { padding-block: clamp(2rem, 4.5vw, 3rem); scroll-margin-top: 6rem; }
+  .bausteine > .baustein:first-child { padding-top: clamp(3rem, 7vw, 5rem); }
+  .bausteine > .baustein:last-child { padding-bottom: clamp(3.5rem, 8vw, 6rem); }
+  .hg-grau, .hg-dunkel { padding-block: clamp(3.5rem, 8vw, 5.5rem) !important; }
+  .hg-grau { background: var(--grau-50); }
+  .hg-dunkel { background: var(--navy); color: #c9d6e3; }
+  .hg-dunkel :global(h2), .hg-dunkel :global(h3) { color: var(--weiss); }
+  .hg-weiss + .hg-weiss { padding-top: 0; }
+  .baustein-aufruf { padding-block: clamp(3rem, 6vw, 4rem); }
+</style>

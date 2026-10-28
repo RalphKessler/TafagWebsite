@@ -1,0 +1,28 @@
+titel: Referenzen
+beschreibung: Projekte und Kunden der Tafag AG – vom Installationszug für den Gotthard-Basistunnel bis zu Bahnen und Bauunternehmen.
+einleitung: Unsere Fahrzeuge waren im Lötschberg- und im Gotthard-Basistunnel für die Vor- und Fertigmontage im Dauereinsatz.
+bloecke:
+- type: querverweise
+  eintraege:
+  - titel: Installationszug Gotthard-Basistunnel
+    text: Über 2800 Hängesäulen und Ausleger in zwei Tunnelröhren von je 57 km.
+    link: /de/referenzen/installationszug-gotthard/
+  - titel: Kunden
+    text: Bahnen, Bauunternehmen und Fahrleitungsbauer, die auf uns zählen.
+    link: /de/referenzen/kunden/
+  hintergrund: weiss
+- type: galerie
+  titel: Fahrzeuge im Einsatz
+  bilder:
+  - bild: /uploads/fahrzeuge/vtms-db-793.webp
+    alt: VTms-Arbeitsfahrzeug mit Tragwagen
+  - bild: /uploads/fahrzeuge/vtms-zug.webp
+    alt: VTms-Zug mit Kran und Arbeitsplattformen
+  - bild: /uploads/fahrzeuge/vtms-tunnel.webp
+    alt: VTms mit Trommelböcken im Tunnel
+  - bild: /uploads/fahrzeuge/tubemo-wagen.webp
+    alt: Tragwagen mit TuBeMo-Modul
+  - bild: /uploads/fahrzeuge/hybridfahrzeug.webp
+    alt: Gelbes Hybrid-Arbeitsfahrzeug mit Kran auf dem Gleis
+  - bild: /uploads/zweiweg/unimog-oberleitung.webp
+    alt: Zweiwege-Unimog mit Arbeitsbühne an der Oberleitung

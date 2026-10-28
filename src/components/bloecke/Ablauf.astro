@@ -1,0 +1,37 @@
+---
+interface Props { titel?: string; text?: string; schritte: { titel: string; text?: string }[] }
+const { titel, text, schritte } = Astro.props;
+---
+
+<div class="ablauf">
+  {titel && <h2>{titel}</h2>}
+  {text && <p class="lead">{text}</p>}
+  <!-- Hier ist die Reihenfolge Inhalt – darum eine nummerierte Liste -->
+  <ol style={`--anzahl:${schritte.length}`}>
+    {
+      schritte.map((s) => (
+        <li>
+          <h3>{s.titel}</h3>
+          {s.text && <p>{s.text}</p>}
+        </li>
+      ))
+    }
+  </ol>
+</div>
+
+<style>
+  ol { list-style: none; counter-reset: schritt; margin: 2.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--anzahl), 1fr); gap: 1.5rem; }
+  li { counter-increment: schritt; position: relative; padding-top: 3.75rem; }
+  li::before {
+    content: counter(schritt); position: absolute; top: 0; left: 0; width: 2.75rem; height: 2.75rem; border-radius: 50%;
+    display: grid; place-items: center; background: var(--akzent); color: var(--weiss); font-weight: 800; font-size: 1.1rem; z-index: 1;
+  }
+  li:not(:last-child)::after { content: ''; position: absolute; top: 1.35rem; left: 2.75rem; right: -1.5rem; height: 2px; background: var(--grau-200); }
+  h3 { font-size: 1.1rem; margin-bottom: .35rem; }
+  p { color: var(--text-2); font-size: .95rem; margin: 0; }
+  @media (max-width: 860px) {
+    ol { grid-template-columns: 1fr; gap: 0; }
+    li { padding: 0 0 1.75rem 4rem; min-height: 3.5rem; }
+    li:not(:last-child)::after { top: 2.75rem; bottom: 0; left: 1.35rem; right: auto; width: 2px; height: auto; }
+  }
+</style>

@@ -1,0 +1,24 @@
+titel: Leitbild
+beschreibung: 'Das Leitbild der Tafag AG: Kunden, Mitarbeitende, Lieferanten, Organisation und Umwelt.'
+einleitung: 'Unser Motto: «Wir wollen, dass der Kunde zurückkommt und nicht das Produkt.»'
+bloecke:
+- type: text
+  titel: Unser Unternehmen lebt
+  inhalt: |
+    Wir sind ein unabhängiges Produktionsunternehmen in den Bereichen Fahrzeuge für Schiene und Strasse, Maschinenbau und Elektromechanik. Wir sind ein schlankes, flexibles und voll auf die Kundenbedürfnisse ausgerichtetes Unternehmen.
+
+    Wir erbringen täglich Topleistungen und verbessern diese laufend. Das sichert unsere Zukunft.
+- type: leistungen
+  titel: Wofür wir stehen
+  eintraege:
+  - titel: Die Kunden sind unsere Partner
+    text: Zufriedene Kunden als aktive Referenzen zu gewinnen und zu behalten, ist unsere wichtigste Aufgabe. Wir gehen auf Kundenwünsche ein, beraten umfassend, bieten ein optimales Preis-Leistungs-Verhältnis und arbeiten zuverlässig und termintreu.
+  - titel: Unsere Mitarbeitenden sind unsere Basis
+    text: Motivierte, engagierte und qualifizierte Mitarbeitende mit grosser Eigenverantwortung und hohem Qualitätsbewusstsein bilden die Basis unseres Erfolgs. Auch in hektischen Zeiten pflegen wir einen guten Umgangston.
+  - titel: Lieferanten sind kompetent
+    text: Unsere Lieferanten sind kompetente Partner. Wir stellen an sie die gleich hohen Ansprüche wie an uns selbst.
+  - titel: Organisation und Infrastruktur sind zukunftsorientiert
+    text: Unsere Organisation und unser Arbeitsumfeld motivieren. Die Infrastruktur ist modern und zweckmässig; Arbeitssicherheit und Gesundheitsschutz haben einen hohen Stellenwert.
+  - titel: Unsere Umwelt ist uns wichtig
+    text: Wir tragen mit unserem Tun und Handeln stets Sorge zu unserer Umwelt.
+  hintergrund: grau

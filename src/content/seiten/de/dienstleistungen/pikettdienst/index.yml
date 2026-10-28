@@ -1,0 +1,23 @@
+titel: Pikettdienst
+beschreibung: 'Pikettdienst der Tafag AG: rund um die Uhr erreichbar und in der Schweiz innert 1 bis 3 Stunden vor Ort.'
+einleitung: Wir sind rund um die Uhr erreichbar und in der Schweiz innert 1 bis 3 Stunden vor Ort.
+bloecke:
+- type: text
+  titel: Zielsetzung
+  inhalt: |
+    Bei Not- und Störungsfällen an Ihrer Infrastruktur infolge eines technischen Defektes oder höherer Gewalt will die Tafag AG schweizweit rund um die Uhr und während des ganzen Jahres erreichbar und innerhalb weniger Stunden einsatzbereit sein.
+- type: leistungen
+  titel: So erreichen Sie uns
+  eintraege:
+  - titel: Während der Bürozeiten
+    text: Über die Hauptnummer +41 41 859 08 20 an Ihre übliche Kontaktperson. Sie koordiniert den Einsatz zusammen mit dem Montageleiter.
+  - titel: Ausserhalb der Bürozeiten
+    text: 'TODO: Pikettnummer bestätigen (Website 2021: +41 41 859 08 29). Der Pikett-Verantwortliche koordiniert den Einsatz selbständig.'
+  - titel: Wochenenden und Feiertage
+    text: Auch während verlängerter Wochenenden und an Feiertagen halten wir einen Pikettdienst für Notfälle bereit.
+  hintergrund: grau
+- type: aufruf
+  titel: Kein Notfall?
+  text: Planbare Wartungen und Reparaturen melden Sie am einfachsten über die Serviceanfrage.
+  beschriftung: Serviceanfrage
+  link: /de/dienstleistungen/serviceanfrage/

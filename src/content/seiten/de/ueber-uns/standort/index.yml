@@ -1,0 +1,22 @@
+titel: Standort & Anfahrt
+beschreibung: 'So finden Sie die Tafag AG: Chräbelstrasse 3, 6410 Goldau SZ.'
+einleitung: Seit 1978 an der Chräbelstrasse 3 in Goldau.
+bloecke:
+- type: standorte
+  eintraege:
+  - bezeichnung: Werk und Büro
+    titel: Goldau
+    firma: Tafag AG
+    strasse: Chräbelstrasse 3
+    ort: 6410 Goldau
+    telefon: +41 41 859 08 20
+    email: info@tafag.ch
+    anreise: 'TODO: Anreise (Auto, öffentlicher Verkehr, Parkplätze) vom Kunden.'
+    karte_link: https://www.google.com/maps/search/?api=1&query=Tafag+AG+Chr%C3%A4belstrasse+3+6410+Goldau
+- type: aufruf
+  titel: Besuch vereinbaren
+  text: Melden Sie sich vor Ihrem Besuch kurz an.
+  beschriftung: +41 41 859 08 20
+  link: tel:+41418590820
+  beschriftung2: Kontaktformular
+  link2: /de/kontakt/

@@ -1,0 +1,22 @@
+titel: Kontakt
+beschreibung: Kontakt zur Tafag AG, Chräbelstrasse 3, 6410 Goldau – Telefon +41 41 859 08 20, info@tafag.ch.
+einleitung: Kontaktieren Sie uns bezüglich unserer Firma, unserer Fahrzeuge und Dienstleistungen. Wir melden uns so schnell wie möglich.
+bloecke:
+- type: formular
+  titel: Kontaktformular
+  formular: kontakt
+- type: kontaktperson
+  titel: Geschäftsleitung
+  personen:
+  - alex-mueri
+- type: standorte
+  eintraege:
+  - bezeichnung: Werk und Büro
+    titel: Goldau
+    firma: Tafag AG
+    strasse: Chräbelstrasse 3
+    ort: 6410 Goldau
+    telefon: +41 41 859 08 20
+    email: info@tafag.ch
+    karte_link: https://www.google.com/maps/search/?api=1&query=Tafag+AG+Chr%C3%A4belstrasse+3+6410+Goldau
+  hintergrund: grau

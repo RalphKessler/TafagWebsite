@@ -1,0 +1,17 @@
+titel: Bewerbung
+empfaenger: info@tafag.ch
+betreff: 'Website: Bewerbung'
+bestaetigung: Vielen Dank für Ihre Bewerbung. Wir melden uns bei Ihnen.
+knopf: Bewerbung senden
+loeschfrist_tage: 180
+felder:
+  - { name: stelle, bezeichnung: Stelle, typ: text, pflicht: true }
+  - { name: vorname, bezeichnung: Vorname, typ: text, pflicht: true }
+  - { name: nachname, bezeichnung: Nachname, typ: text, pflicht: true }
+  - { name: email, bezeichnung: E-Mail, typ: email, pflicht: true }
+  - { name: telefon, bezeichnung: Telefon, typ: tel, pflicht: false }
+  - { name: lebenslauf, bezeichnung: Lebenslauf, typ: datei, pflicht: true }
+  - { name: zeugnisse, bezeichnung: Zeugnisse, typ: datei, pflicht: false, mehrfach: true }
+  - { name: motivation, bezeichnung: Motivationsschreiben, typ: datei, pflicht: false }
+  - { name: nachricht, bezeichnung: Nachricht, typ: textarea, pflicht: false }
+  - { name: einwilligung, bezeichnung: 'Ich bin einverstanden, dass meine Unterlagen für das Bewerbungsverfahren gespeichert und nach 6 Monaten gelöscht werden.', typ: checkbox, pflicht: true }

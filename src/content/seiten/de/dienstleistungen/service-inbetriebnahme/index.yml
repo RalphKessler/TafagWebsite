@@ -1,0 +1,31 @@
+titel: Service & Inbetriebnahme
+beschreibung: Aufbau und Test im eigenen Werk, Schulung, Dokumentation, Service und Ersatzteile – Tafag AG, Goldau.
+einleitung: Nur sorgfältig fertiggestellte und erfolgreich getestete Systeme verlassen unser Werk.
+bloecke:
+- type: bildtext
+  titel: Im eigenen Werk aufgebaut und getestet
+  inhalt: |
+    Die Tafag AG legt grossen Wert darauf, ihre Fahrzeuge, Speziallösungen und Anlagen wann immer möglich im eigenen Werk vollständig aufzubauen und in Betrieb zu setzen. Erst danach werden sie zum Kunden transportiert und dort wieder aufgebaut.
+  bild: /uploads/fahrzeuge/vtms-kran.webp
+  alt: VTms mit Kran und Tragwagen auf einem Abstellgleis
+- type: leistungen
+  titel: Zum Lieferumfang gehören
+  eintraege:
+  - titel: Produktdokumentation
+    text: Ausführliche Dokumentation zu jedem Fahrzeug und jeder Anlage.
+  - titel: Schulung
+    text: Intensive Schulungen, wahlweise bei uns im Werk oder vor Ort.
+  - titel: Beratung, Service und Ersatzteile
+    text: Kompetente Unterstützung über die ganze, lange Lebensdauer Ihrer Betriebsmittel.
+  - titel: Service vor Ort
+    text: Kundendienstmitarbeitende mit komplett ausgerüsteten Servicefahrzeugen.
+  - titel: Unterhalts-Container
+    text: Auf grösseren Baustellen bis Projektende vor Ort im Einsatz.
+  hintergrund: grau
+- type: aufruf
+  titel: Service anfragen
+  text: Wartung, Störung oder Ersatzteil – wir kümmern uns darum.
+  beschriftung: Serviceanfrage
+  link: /de/dienstleistungen/serviceanfrage/
+  beschriftung2: Pikettdienst
+  link2: /de/dienstleistungen/pikettdienst/

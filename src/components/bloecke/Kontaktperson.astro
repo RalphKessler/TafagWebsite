@@ -1,0 +1,41 @@
+---
+import { getEntry } from 'astro:content';
+import { zeigeTodo } from '../../lib/hilfen';
+interface Props { titel?: string; personen: string[] }
+const { titel, personen } = Astro.props;
+const eintraege = (await Promise.all(personen.map((id) => getEntry('kontakte', id)))).filter((p) => !!p);
+const tel = (t: string) => t.replace(/[^+\d]/g, '');
+---
+
+<section class="kontakte">
+  {titel && <h2>{titel}</h2>}
+  {eintraege.length === 0 && zeigeTodo && <p class="todo">TODO: Personen im CMS unter «Kontaktpersonen» erfassen und hier auswählen.</p>}
+  <ul>
+    {
+      eintraege.map(({ data: p }) => (
+        <li class="karte">
+          {p.foto ? (
+            <img src={p.foto} alt={p.name} loading="lazy" width="120" height="120" />
+          ) : (
+            <span class="platzhalter" aria-hidden="true" />
+          )}
+          <div>
+            <strong>{p.name}</strong>
+            {p.funktion && <div>{p.funktion}</div>}
+            {p.ausbildung && <div class="ausbildung">{p.ausbildung}</div>}
+            {p.telefon && <div><a href={`tel:${tel(p.telefon)}`}>{p.telefon}</a></div>}
+            {p.email && <div><a href={`mailto:${p.email}`}>{p.email}</a></div>}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: 1.5rem; }
+  .karte { display: flex; gap: 1rem; align-items: flex-start; border-top: 1px solid var(--grau-200); padding-top: 1.25rem; }
+  img, .platzhalter { width: 6rem; height: 7.5rem; object-fit: cover; flex: none; border-radius: var(--radius); }
+  .ausbildung { color: var(--text-2); font-size: .9rem; }
+  .platzhalter { background: var(--grau-100); border-radius: var(--radius); }
+</style>

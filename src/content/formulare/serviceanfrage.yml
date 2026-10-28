@@ -1,0 +1,18 @@
+titel: Serviceanfrage
+empfaenger: info@tafag.ch
+betreff: 'Website: Serviceanfrage'
+bestaetigung: Vielen Dank. Ihre Serviceanfrage ist bei uns eingegangen – wir melden uns so schnell wie möglich.
+knopf: Serviceanfrage senden
+ziel: mail
+felder:
+  - { name: anliegen, bezeichnung: Anliegen, typ: select, pflicht: true, optionen: "Störung / Reparatur, Wartung / Service, Revision / Umbau, Ersatzteile, Anderes" }
+  - { name: fahrzeug, bezeichnung: Fahrzeug / Gerät, typ: text, pflicht: true }
+  - { name: fahrzeugnummer, bezeichnung: 'Fahrzeug- oder Seriennummer', typ: text, pflicht: false }
+  - { name: dringlichkeit, bezeichnung: Dringlichkeit, typ: select, pflicht: true, optionen: "Fahrzeug steht, Eingeschränkter Betrieb, Nicht dringend / Planung" }
+  - { name: standort, bezeichnung: 'Standort des Fahrzeugs', typ: text, pflicht: false }
+  - { name: beschreibung, bezeichnung: Beschreibung der Störung oder des Anliegens, typ: textarea, pflicht: true }
+  - { name: fotos, bezeichnung: 'Fotos (z. B. Typenschild, Störung)', typ: datei, pflicht: false, mehrfach: true }
+  - { name: name, bezeichnung: Name, typ: text, pflicht: true }
+  - { name: firma, bezeichnung: Firma, typ: text, pflicht: true }
+  - { name: email, bezeichnung: E-Mail, typ: email, pflicht: true }
+  - { name: telefon, bezeichnung: Telefon, typ: tel, pflicht: true }

@@ -1,0 +1,60 @@
+---
+import '@fontsource-variable/archivo/standard.css';
+import '../styles/global.css';
+import einstellungen from '../data/einstellungen.json';
+import Kopf from '../components/Kopf.astro';
+import Fuss from '../components/Fuss.astro';
+import { noindex } from '../lib/hilfen';
+import { sprachen, t, type Sprache } from '../i18n';
+import type { Marke } from '../lib/marke';
+
+interface Props {
+  titel: string;
+  beschreibung?: string;
+  bild?: string;
+  marke?: Marke;
+  sprache?: Sprache;
+  startseite?: boolean;
+}
+const { titel, beschreibung, bild, marke = 'tafag', sprache = 'de', startseite = false } = Astro.props;
+const e = einstellungen;
+const seitentitel = startseite ? `${e.firma} – Goldau SZ` : `${titel} | ${e.firma}`;
+const pfad = Astro.url.pathname;
+const kanonisch = new URL(pfad, Astro.site);
+// Weitere Sprachen: gleiche Seite unter /<sprache>/…
+const alternativ = sprachen.map((s) => ({ s, url: new URL(pfad.replace(/^\/[a-z]{2}\//, `/${s}/`), Astro.site) }));
+const ogBild = new URL(bild ?? '/og-bild.png', Astro.site);
+---
+
+<!doctype html>
+<html lang={sprache === 'de' ? 'de-CH' : sprache}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{seitentitel}</title>
+    {beschreibung && <meta name="description" content={beschreibung} />}
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={kanonisch} />
+    {alternativ.map((a) => <link rel="alternate" hreflang={a.s} href={a.url} />)}
+    <link rel="alternate" hreflang="x-default" href={alternativ[0].url} />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:title" content={seitentitel} />
+    {beschreibung && <meta property="og:description" content={beschreibung} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={kanonisch} />
+    <meta property="og:image" content={ogBild} />
+    <meta property="og:locale" content={sprache === 'de' ? 'de_CH' : sprache} />
+    <meta property="og:site_name" content={e.firma} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <slot name="kopf" />
+  </head>
+  <body data-marke={marke}>
+    <a class="skip" href="#inhalt">{t(sprache, 'skip')}</a>
+    <Kopf sprache={sprache} pfad={pfad} />
+    <main id="inhalt">
+      <slot />
+    </main>
+    <Fuss sprache={sprache} />
+  </body>
+</html>

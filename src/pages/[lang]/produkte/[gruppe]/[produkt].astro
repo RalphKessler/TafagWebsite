@@ -1,0 +1,149 @@
+---
+import Basis from '../../../../layouts/Basis.astro';
+import Seitenkopf from '../../../../components/Seitenkopf.astro';
+import Katalog from '../../../../components/produkte/Katalog.astro';
+import { alleProdukte, gruppeVon, produktMarke } from '../../../../lib/produkte';
+import { istTodo, markdown, ohneTodo, zeigeTodo } from '../../../../lib/hilfen';
+import { sprachen, t, type Sprache } from '../../../../i18n';
+
+export async function getStaticPaths() {
+  const produkte = await alleProdukte();
+  return sprachen.flatMap((lang) => produkte.map((p) => ({ params: { lang, gruppe: p.data.gruppe, produkt: p.id }, props: { produkt: p, alle: produkte } })));
+}
+const { produkt, alle } = Astro.props;
+const sprache = Astro.params.lang as Sprache;
+const d = produkt.data;
+const gruppe = gruppeVon(d.gruppe);
+const marke = produktMarke(produkt);
+const weitere = alle.filter((p) => p.data.gruppe === d.gruppe && p.id !== produkt.id);
+const hinweis = ohneTodo(d.hinweis);
+// Live: Platzhalter-Zeilen in den technischen Daten ausblenden
+const daten = d.technische_daten.filter((z) => zeigeTodo || (!istTodo(z.name) && !istTodo(z.wert)));
+const anfrage = `/${sprache}/produkte/anfrage/?produkt=${encodeURIComponent(d.titel)}`;
+---
+
+<Basis titel={d.titel} beschreibung={d.kurz} bild={d.bild} marke={marke} sprache={sprache}>
+  <Seitenkopf titel={d.titel} einleitung={d.kurz} marke={marke} sprache={sprache} pfad={Astro.url.pathname}
+    zwischen={[{ titel: gruppe.titel, link: `/${sprache}/produkte/${gruppe.slug}/` }]} />
+  <section class="abschnitt">
+    <div class="breite detail">
+      <div class="haupt">
+        {hinweis && (
+          <p class:list={['hinweis', { abgekuendigt: d.status === 'abgekuendigt' }]} role="note">
+            {d.status === 'abgekuendigt' && <strong>{t(sprache, 'abgekuendigt')}: </strong>}{hinweis}
+          </p>
+        )}
+        {(d.bild || zeigeTodo) && <figure class="bild">{d.bild ? <img src={d.bild} alt={d.titel} /> : <span>{t(sprache, 'bildFolgt')}</span>}</figure>}
+        {d.beschreibung && <div class="fliesstext" set:html={markdown(d.beschreibung)} />}
+        {
+          d.bilder.length > 0 && (
+            <ul class="bilder">
+              {d.bilder.map((b) => <li><img src={b.bild} alt={b.alt ?? ''} loading="lazy" decoding="async" width="800" height="600" /></li>)}
+            </ul>
+          )
+        }
+        {
+          d.modelle.length > 0 && (
+            <>
+              <h2>{t(sprache, 'modelle')}</h2>
+              <dl class="modelle">
+                {d.modelle.map((m) => (<><dt>{m.name}</dt><dd>{m.text ?? ''}</dd></>))}
+              </dl>
+            </>
+          )
+        }
+        {
+          daten.length > 0 && (
+            <>
+              <h2>{t(sprache, 'technischeDaten')}</h2>
+              <table class="daten">
+                <tbody>
+                  {daten.map((z) => (<tr><th scope="row">{z.name}</th><td>{z.wert}</td></tr>))}
+                </tbody>
+              </table>
+            </>
+          )
+        }
+        <h2>{t(sprache, 'downloads')}</h2>
+        {
+          d.downloads.length > 0 ? (
+            <ul class="downloads">
+              {d.downloads.map((x) => <li><a href={x.datei} download>{x.bezeichnung ?? x.datei.split('/').pop()}</a></li>)}
+            </ul>
+          ) : d.status === 'abgekuendigt' ? (
+            <p>{t(sprache, 'unterlagenAufAnfrage')}</p>
+          ) : zeigeTodo ? (
+            <p class="todo">TODO: Datenblätter und Dokumentationen vom Kunden.</p>
+          ) : (
+            <p>{t(sprache, 'unterlagenAufAnfrage')}</p>
+          )
+        }
+      </div>
+      <aside class="seite">
+        {d.status === 'abgekuendigt' ? (
+          <div class="box akzent dunkel">
+            <h2>{t(sprache, 'bestehendeAnlagen')}</h2>
+            <p>{t(sprache, 'bestehendeAnlagenText')}</p>
+            <a class="knopf gelb" href={`/${sprache}/dienstleistungen/serviceanfrage/`}>{t(sprache, 'serviceanfrage')}</a>
+          </div>
+        ) : (
+          <div class="box akzent dunkel">
+            <h2>{t(sprache, 'produktAnfragen')}</h2>
+            <p>{t(sprache, 'anfrageText')}</p>
+            <a class="knopf gelb" href={anfrage}>{t(sprache, 'produktAnfragen')}</a>
+          </div>
+        )}
+        <div class="box">
+          <h2>{t(sprache, 'serviceErsatzteile')}</h2>
+          <p>{t(sprache, 'serviceText')}</p>
+          <ul>
+            <li><a href={`/${sprache}/dienstleistungen/service-inbetriebnahme/`}>Service & Inbetriebnahme</a></li>
+            <li><a href={`/${sprache}/dienstleistungen/revisionen-umbau/`}>Revisionen & Umbau</a></li>
+            <li><a href={`/${sprache}/dienstleistungen/pikettdienst/`}>{t(sprache, 'pikettdienst')}</a></li>
+            <li><a href={`/${sprache}/dienstleistungen/serviceanfrage/`}>{t(sprache, 'serviceanfrage')}</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+  {
+    weitere.length > 0 && (
+      <section class="abschnitt grau">
+        <div class="breite">
+          <h2>{t(sprache, 'weitereProdukte')}</h2>
+          <Katalog produkte={weitere} filter="kategorie" sprache={sprache} />
+        </div>
+      </section>
+    )
+  }
+</Basis>
+
+<style>
+  .detail { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  .hinweis { border-radius: 14px; padding: 1rem 1.25rem; background: var(--grau-50); border-left: 5px solid var(--akzent); margin: 0 0 2rem; }
+  .hinweis.abgekuendigt { background: #fff4e5; border-left-color: #b25e00; color: #4a2a00; }
+  .haupt h2 { font-size: 1.5rem; margin-top: 2.5rem; }
+  .bild { position: relative; margin: 0 0 2rem; aspect-ratio: 4 / 3; max-height: 30rem; width: 100%; border-radius: 18px; overflow: hidden; background: var(--weiss); border: 1px solid var(--grau-100); display: grid; place-items: center; color: var(--text-2); font-weight: 600; font-size: .85rem; padding: 1.5rem; }
+  .bild:has(span) { background: var(--grau-50); border: 0; }
+  /* Nicht über die Originalgrösse vergrössern (Quellbilder sind teils klein) */
+  .bild img { position: absolute; inset: 0; margin: auto; max-width: calc(100% - 3rem); max-height: calc(100% - 3rem); width: auto; height: auto; object-fit: contain; }
+  table { border-collapse: collapse; width: 100%; max-width: 44rem; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; vertical-align: top; padding: .7rem .75rem; border-bottom: 1px solid var(--grau-100); overflow-wrap: anywhere; hyphens: auto; }
+  th { width: 40%; color: var(--text-2); font-weight: 600; }
+  .modelle { display: grid; grid-template-columns: max-content 1fr; gap: .6rem 1.5rem; margin: 0; }
+  .modelle dt { font-weight: 700; }
+  .modelle dd { margin: 0; color: var(--text-2); }
+  .modelle dt, .modelle dd { overflow-wrap: anywhere; }
+  @media (max-width: 600px) { .modelle { grid-template-columns: minmax(0, 1fr); gap: .15rem; } .modelle dd { margin-bottom: .6rem; } }
+  .bilder { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 1rem; }
+  .bilder img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+  .downloads { padding-left: 1.2rem; }
+  .seite { position: sticky; top: 7rem; display: grid; gap: 1rem; }
+  .box { border: 1px solid var(--grau-200); border-radius: 18px; padding: 1.5rem; }
+  .box h2 { font-size: 1.2rem; margin-bottom: .5rem; }
+  .box ul { list-style: none; padding: 0; margin: 0; }
+  .box li + li { margin-top: .35rem; }
+  .box.akzent { background: var(--akzent); border-color: var(--akzent); color: rgb(255 255 255 / .9); }
+  .box.akzent h2 { color: var(--weiss); }
+  @media (max-width: 900px) { .detail { grid-template-columns: minmax(0, 1fr); } .seite { position: static; } }
+</style>

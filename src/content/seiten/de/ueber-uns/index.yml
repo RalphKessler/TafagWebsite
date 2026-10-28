@@ -1,0 +1,19 @@
+titel: Über uns
+beschreibung: 'Die Tafag AG in Goldau SZ: unabhängiges Produktionsunternehmen für Fahrzeuge für Schiene und Strasse, Maschinenbau und Elektromechanik seit 1968.'
+einleitung: Wir sind ein unabhängiges Produktionsunternehmen in den Bereichen Fahrzeuge für Schiene und Strasse, Maschinenbau und Elektromechanik – seit 1968.
+bloecke:
+- type: querverweise
+  eintraege:
+  - titel: Leitbild
+    text: «Wir wollen, dass der Kunde zurückkommt und nicht das Produkt.»
+    link: /de/ueber-uns/leitbild/
+  - titel: Firmengeschichte
+    text: Seit 1968 Schienen- und Spezialfahrzeuge, seit 1978 in Goldau.
+    link: /de/ueber-uns/firmengeschichte/
+  - titel: Partner
+    text: Generalvertretung der ZAGRO Group und weitere starke Partner.
+    link: /de/ueber-uns/partner/
+  - titel: Standort & Anfahrt
+    text: Chräbelstrasse 3, 6410 Goldau.
+    link: /de/ueber-uns/standort/
+  hintergrund: weiss

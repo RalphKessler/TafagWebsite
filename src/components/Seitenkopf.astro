@@ -1,0 +1,70 @@
+---
+import navigation from '../data/navigation.json';
+import Gleis from './Gleis.astro';
+import { markenLogo, type Marke } from '../lib/marke';
+import { t, type Sprache } from '../i18n';
+
+interface Props { titel: string; einleitung?: string; marke: Marke; sprache: Sprache; titelbild?: string; pfad: string; zwischen?: { titel: string; link: string }[] }
+const { titel, einleitung, marke, sprache, titelbild, pfad, zwischen = [] } = Astro.props;
+const logo = markenLogo[marke];
+
+// Brotkrumen aus der Navigation
+const norm = (p: string) => (p.endsWith('/') ? p : `${p}/`);
+const hier = norm(pfad);
+const haupt = navigation.hauptpunkte.find((h) => h.link !== `/${sprache}/` && hier.startsWith(h.link));
+const krumen = [{ titel: t(sprache, 'startseite'), link: `/${sprache}/` }];
+if (haupt && haupt.link !== hier) krumen.push({ titel: haupt.titel, link: haupt.link });
+krumen.push(...zwischen);
+---
+
+<header class="seitenkopf dunkel">
+  <Gleis class="gleis" />
+  <div class="breite innen">
+    <nav aria-label={t(sprache, 'brotkrumen')} class="krumen klein">
+      <ol>
+        {krumen.map((k) => <li><a href={k.link}>{k.titel}</a></li>)}
+        <li aria-current="page">{titel}</li>
+      </ol>
+    </nav>
+    <div class="zeile">
+      <div class="text">
+        <h1>{titel}</h1>
+        {einleitung && <p class="einleitung">{einleitung}</p>}
+      </div>
+      {
+        logo && (
+          <div class="bereich">
+            <picture>
+              <source srcset={logo.src.replace(/\.png$/, '.webp')} type="image/webp" />
+              <img src={logo.src} alt={logo.alt} width={logo.breite} height={logo.hoehe} />
+            </picture>
+          </div>
+        )
+      }
+    </div>
+  </div>
+  {
+    titelbild && (
+      <div class="breite">
+        <img class="titelbild" src={titelbild} alt="" width="1600" height="700" />
+      </div>
+    )
+  }
+</header>
+
+<style>
+  .seitenkopf { position: relative; overflow: hidden; background: var(--navy); color: #d4dfeb; }
+  .seitenkopf :global(.gleis) { position: absolute; left: 0; bottom: 0; width: 100%; height: 2rem; opacity: .3; }
+  .innen { position: relative; padding-block: 2rem clamp(3rem, 7vw, 5.5rem); }
+  .krumen ol { list-style: none; display: flex; flex-wrap: wrap; gap: .35rem; margin: 0 0 clamp(2rem, 5vw, 3.5rem); padding: 0; color: #9fb3c8; }
+  .krumen li + li::before { content: '/'; margin-right: .35rem; color: #5f7890; }
+  .krumen a { color: #c9d6e3; text-decoration: none; }
+  .krumen a:hover { color: var(--weiss); text-decoration: underline; }
+  .zeile { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap; }
+  .text { max-width: 50rem; }
+  h1 { color: var(--weiss); margin-bottom: .35em; }
+  .einleitung { font-size: clamp(1.1rem, 1.6vw, 1.3rem); max-width: 58ch; margin: 0; }
+  .bereich { background: var(--weiss); border-radius: 14px; padding: 1rem 1.25rem; max-width: 17rem; border-bottom: 4px solid var(--akzent); }
+  .bereich img { height: 3.4rem; width: auto; }
+  .titelbild { position: relative; margin-bottom: 3rem; width: 100%; aspect-ratio: 16 / 7; object-fit: cover; border-radius: var(--radius); }
+  </style>

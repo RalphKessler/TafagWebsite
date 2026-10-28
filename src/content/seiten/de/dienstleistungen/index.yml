@@ -1,0 +1,26 @@
+titel: Dienstleistungen
+beschreibung: Engineering, Revisionen und Umbauten, Service und Inbetriebnahme sowie Pikettdienst rund um die Uhr – Tafag AG, Goldau.
+einleitung: Unsere besondere Kompetenz liegt im Bereich Maschinenbau und Elektromechanik. Langjährige Kunden schätzen an uns besonders die Flexibilität und unseren Pikettdienst.
+bloecke:
+- type: leistungen
+  titel: Was wir für Sie tun
+  eintraege:
+  - titel: Engineering
+    text: Projektleitung, Entwicklung und Konstruktion – von der Idee bis zum Serienprodukt.
+    link: /de/dienstleistungen/engineering/
+  - titel: Revisionen & Umbau
+    text: Wir revidieren und reparieren Loks, Hebebühnen, Krane und Strassenfahrzeuge und bauen sie auf den neusten Stand um.
+    link: /de/dienstleistungen/revisionen-umbau/
+  - titel: Service & Inbetriebnahme
+    text: Aufbau und Test im eigenen Werk, Schulung, Dokumentation, Service und Ersatzteile über die ganze Lebensdauer.
+    link: /de/dienstleistungen/service-inbetriebnahme/
+  - titel: Pikettdienst
+    text: Rund um die Uhr erreichbar und in der Schweiz innert 1 bis 3 Stunden vor Ort.
+    link: /de/dienstleistungen/pikettdienst/
+- type: aufruf
+  titel: Störung oder Wartung?
+  text: Melden Sie Ihr Anliegen online oder rufen Sie uns direkt an.
+  beschriftung: Serviceanfrage
+  link: /de/dienstleistungen/serviceanfrage/
+  beschriftung2: +41 41 859 08 20
+  link2: tel:+41418590820

@@ -1,0 +1,8 @@
+titel: Spontanbewerbung
+beschreibung: Spontanbewerbung bei der Tafag AG in Goldau.
+einleitung: Keine passende Stelle ausgeschrieben? Senden Sie uns Ihre Unterlagen.
+bloecke:
+- type: formular
+  titel: Ihre Bewerbung
+  text: Lebenslauf und Zeugnisse als PDF genügen. Wir behandeln Ihre Unterlagen vertraulich.
+  formular: spontanbewerbung

@@ -1,0 +1,32 @@
+---
+import Basis from '../../../../layouts/Basis.astro';
+import Seitenkopf from '../../../../components/Seitenkopf.astro';
+import Katalog from '../../../../components/produkte/Katalog.astro';
+import Aufruf from '../../../../components/bloecke/Aufruf.astro';
+import { alleProdukte, gruppen, gruppeVon } from '../../../../lib/produkte';
+import { sprachen, t, type Sprache } from '../../../../i18n';
+
+export const getStaticPaths = () => sprachen.flatMap((lang) => gruppen.map((g) => ({ params: { lang, gruppe: g.slug } })));
+const sprache = Astro.params.lang as Sprache;
+const gruppe = gruppeVon(Astro.params.gruppe!);
+const produkte = (await alleProdukte()).filter((p) => p.data.gruppe === gruppe.slug);
+---
+
+<Basis titel={gruppe.titel} beschreibung={gruppe.einleitung} marke={gruppe.marke} sprache={sprache}>
+  <Seitenkopf titel={gruppe.titel} einleitung={gruppe.einleitung} marke={gruppe.marke} sprache={sprache} pfad={Astro.url.pathname} />
+  <section class="abschnitt">
+    <div class="breite">
+      <Katalog produkte={produkte} filter="kategorie" sprache={sprache} />
+    </div>
+  </section>
+  <section class="abschnitt-unten">
+    <div class="breite">
+      <Aufruf titel={t(sprache, 'serviceErsatzteile')} text={t(sprache, 'serviceText')} beschriftung={t(sprache, 'serviceErsatzteile')}
+        link={`/${sprache}/dienstleistungen/service-inbetriebnahme/`} beschriftung2={t(sprache, 'serviceanfrage')} link2={`/${sprache}/dienstleistungen/serviceanfrage/`} />
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .abschnitt-unten { padding-bottom: clamp(3.5rem, 8vw, 6rem); }
+</style>

@@ -1,0 +1,12 @@
+---
+import Basis from '../layouts/Basis.astro';
+import Seitenkopf from '../components/Seitenkopf.astro';
+import { t } from '../i18n';
+---
+
+<Basis titel={t('de', 'nichtGefunden')}>
+  <Seitenkopf titel={t('de', 'nichtGefunden')} einleitung={t('de', 'nichtGefundenText')} marke="tafag" sprache="de" pfad="/de/404/" />
+  <div class="breite" style="padding-block:2rem">
+    <a class="knopf" href="/de/">{t('de', 'zurStartseite')}</a>
+  </div>
+</Basis>

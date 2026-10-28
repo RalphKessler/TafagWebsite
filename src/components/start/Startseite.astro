@@ -1,0 +1,18 @@
+---
+import Hero from './Hero.astro';
+import Bereiche from './Bereiche.astro';
+import News from './News.astro';
+import Kontakt from './Kontakt.astro';
+import Partner from './Partner.astro';
+import type { Sprache } from '../../i18n';
+
+interface Props { titel: string; einleitung?: string; bild?: string; bildAlt?: string; sprache: Sprache }
+const { titel, einleitung, bild, bildAlt, sprache } = Astro.props;
+// Partner aus der Seite «Über uns → Partner»; Logos erst mit Freigabe (siehe ASSETS.md).
+---
+
+<Hero titel={titel} einleitung={einleitung} bild={bild} bildAlt={bildAlt} sprache={sprache} />
+<Bereiche sprache={sprache} />
+<News sprache={sprache} anzahl={3} />
+<Partner sprache={sprache} />
+<Kontakt sprache={sprache} />

@@ -1,0 +1,33 @@
+titel: Engineering
+beschreibung: 'Kundenspezifische Lösungen: Projektleitung, Entwicklung und Konstruktion bei der Tafag AG.'
+einleitung: Kundenspezifische Lösungen – von der Ideenfindung bis zum Serienprodukt.
+bloecke:
+- type: text
+  titel: Projektleitung
+  inhalt: |
+    Die Tafag AG übernimmt die Projektleitung und bildet das Bindeglied zwischen dem Kunden und den Partnerfirmen. Sie informiert den Kunden in regelmässigen Abständen über den Stand des Projektes. Ein Projekt kann eine Anfrage oder einen Erstauftrag beinhalten.
+
+    Der Projektleiter ist dafür verantwortlich, dass zusammen mit dem Kunden die benötigten Prüfanweisungen erstellt werden, und koordiniert die Abnahme der Produkte. Nach Abschluss des Erstauftrages führt er mit dem Kunden einen Projektreview durch, damit Folgeaufträge von den gewonnenen Erkenntnissen profitieren.
+- type: text
+  titel: Entwicklung und Konstruktion
+  inhalt: |
+    Unsere Kompetenzen in Entwicklung und Konstruktion helfen Ihnen, auch komplexe Aufgaben zu realisieren – von der Ideenfindung bis zum Serienprodukt. Durch die enge Zusammenarbeit von Entwicklung, Prototypenbau und Produktion werden Schnittstellen eliminiert und der Koordinationsaufwand reduziert.
+
+    Fertigungs- und montagetechnische Aspekte beziehen wir in einer frühen Phase der Entwicklung mit ein.
+- type: ablauf
+  titel: So läuft ein Projekt
+  schritte:
+  - titel: Anfrage
+    text: Sie schildern uns Aufgabe und Rahmenbedingungen.
+  - titel: Entwicklung und Konstruktion
+    text: Wir erarbeiten die Lösung und beziehen Fertigung und Montage früh mit ein.
+  - titel: Prüfanweisungen und Abnahme
+    text: Gemeinsam mit Ihnen legen wir die Prüfungen fest und koordinieren die Abnahme.
+  - titel: Projektreview
+    text: Nach dem Erstauftrag halten wir die Erkenntnisse für Folgeaufträge fest.
+  hintergrund: grau
+- type: aufruf
+  titel: Ihre Aufgabe, unsere Lösung
+  text: «Unmöglich» ist für uns ein Fremdwort. Gerne machen wir Ihnen einen Lösungsvorschlag.
+  beschriftung: Projekt anfragen
+  link: /de/kontakt/

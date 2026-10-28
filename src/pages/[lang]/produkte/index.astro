@@ -1,0 +1,36 @@
+---
+import Basis from '../../../layouts/Basis.astro';
+import Seitenkopf from '../../../components/Seitenkopf.astro';
+import Katalog from '../../../components/produkte/Katalog.astro';
+import Querverweise from '../../../components/bloecke/Querverweise.astro';
+import { alleProdukte, gruppen } from '../../../lib/produkte';
+import { sprachen, t, type Sprache } from '../../../i18n';
+
+export const getStaticPaths = () => sprachen.map((lang) => ({ params: { lang } }));
+const sprache = Astro.params.lang as Sprache;
+const produkte = await alleProdukte();
+const einleitung = 'Selbstfahrende Arbeitsfahrzeuge (VTms), Anbaumodule, ZAGRO Elektrorangierer, Zweiwegefahrzeuge und Sonderlösungen für die Bahninfrastruktur. Kein Webshop – Anfrage statt Warenkorb.';
+---
+
+<Basis titel={t(sprache, 'produkte')} beschreibung={einleitung} sprache={sprache}>
+  <Seitenkopf titel={t(sprache, 'produkte')} einleitung={einleitung} marke="tafag" sprache={sprache} pfad={Astro.url.pathname} />
+  <section class="abschnitt-oben">
+    <div class="breite">
+      <Querverweise
+        eintraege={[
+          ...gruppen.map((g) => ({ titel: g.titel, text: g.einleitung, link: `/${sprache}/produkte/${g.slug}/`, marke: g.marke })),
+        ]}
+      />
+    </div>
+  </section>
+  <section class="abschnitt grau">
+    <div class="breite">
+      <h2>Alle Fahrzeuge und Produkte</h2>
+      <Katalog produkte={produkte} filter="gruppe" sprache={sprache} />
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .abschnitt-oben { padding-block: clamp(3rem, 7vw, 4.5rem); }
+</style>

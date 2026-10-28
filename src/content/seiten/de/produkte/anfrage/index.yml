@@ -1,0 +1,8 @@
+titel: Anfrage
+beschreibung: Anfrage für Fahrzeuge, Anbaumodule und Sonderlösungen der Tafag AG.
+einleitung: Kein Webshop, keine Preise – wir erstellen Ihnen eine Offerte.
+bloecke:
+- type: formular
+  titel: Ihre Anfrage
+  text: Nennen Sie uns Fahrzeug oder Produkt, Einsatz und Termin – wir melden uns mit einer Offerte oder Rückfragen.
+  formular: produktanfrage

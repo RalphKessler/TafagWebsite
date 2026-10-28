@@ -1,0 +1,7 @@
+---
+interface Props { beschriftung: string; link: string; stil?: 'primaer' | 'sekundaer' }
+const { beschriftung, link, stil = 'primaer' } = Astro.props;
+const extern = /^https?:\/\//.test(link);
+---
+
+<p><a class:list={['knopf', stil]} href={link} rel={extern ? 'noopener' : undefined}>{beschriftung}</a></p>

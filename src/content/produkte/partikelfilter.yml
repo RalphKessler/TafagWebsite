@@ -1,0 +1,20 @@
+titel: Partikelfilter
+gruppe: sonderloesungen
+kategorie: Abgasnachbehandlung
+kurz: Wir rüsten Dieselmotoren mit Partikelfiltern aus und übernehmen die Regenerierung der Filteranlage.
+beschreibung: |
+  Der Dieselmotor zeichnet sich durch überlegene Betriebssicherheit und einen hervorragenden Wirkungsgrad aus. Bei allen Dieselmotoren – neuen wie alten – entstehen jedoch Emissionen von Russpartikeln, da keine vollständige Verbrennung stattfindet. Hier kommen wir ins Spiel: Wir rüsten Ihren Dieselmotor mit dem passenden Partikelfilter aus und nehmen die Regenerierung der Filteranlage vor.
+
+  Der Partikelfilter reinigt die Dieselabgase wirkungsvoll von Partikeln und wirkt zugleich als Schalldämpfer. Der Russ wird nahezu vollständig abgeschieden, während der Betriebszeit in einem robusten Filter angelagert und in der Betriebspause elektrisch verbrannt.
+
+  ### Wartung
+
+  Alle Partikelfilter sind als Standardsystem (Reinbrennung auf dem Fahrzeug) oder als Wechselfilter (Reinbrennung extern) erhältlich.
+bild: ''
+modelle:
+- name: Standardsystem
+  text: Reinbrennung auf dem Fahrzeug
+- name: Wechselfilter
+  text: Reinbrennung extern
+reihenfolge: 3
+downloads: []

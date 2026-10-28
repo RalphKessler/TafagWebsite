@@ -1,0 +1,37 @@
+titel: VTms – selbstfahrendes Arbeitsfahrzeug
+gruppe: vtms
+kategorie: Arbeitsfahrzeug
+kurz: Diesel-elektrisch mit Partikelfilter, mm-genau positionierbar, im Güterverkehr mit 100 km/h unterwegs – das Arbeitsfahrzeug für Fahrleitung, Gleis und Tunnel.
+beschreibung: |
+  Die Bahninfrastruktur erfordert zahlreiche Hilfsmittel für die Unterhaltsaufgaben rund um Fahrleitungen, Gleisanlagen und Tunnel-Installationen. Rationelle, moderne Hilfsmittel steigern Qualität und Effizienz dieser Arbeit – die Tafag AG ist Ihr Partner für VTms (selbstfahrende Arbeitsfahrzeuge).
+
+  Diesel-elektrisch angetrieben und mit Partikelfilter ausgerüstet, ist das VTms ein ideales Hilfsmittel für Arbeiten im Tunnel. Unsere Fahrzeuge waren im Lötschberg- und im Gotthard-Basistunnel für die Vor- und Fertigmontage im Dauereinsatz.
+
+  ### Antrieb
+
+  Der elektromechanische Antrieb ist das Herzstück. Jede Arbeitsposition kann aus dem Führerhaus oder von der Arbeitsplattform aus millimetergenau angefahren werden. Die Strecke zum Einsatzort fährt das VTms im regulären Güterverkehr mit 100 km/h.
+
+  ### Ausrüsten mit Twistlock
+
+  Dazu erhältlich sind zahlreiche, nach Ihren Wünschen ausgestattete, wechselbare Plattformen mit Unterhaltshilfsmitteln wie Kranen, Arbeitsbühnen, Kabelverlegeeinrichtungen oder Inspektionsausrüstungen – siehe [Anbaumodule](/de/produkte/anbaumodule/).
+bild: /uploads/fahrzeuge/vtms-db-793.webp
+bilder:
+- bild: /uploads/fahrzeuge/vtms-zug.webp
+  alt: VTms-Zug mit Kran und mehreren Tragwagen
+- bild: /uploads/fahrzeuge/vtms-kran.webp
+  alt: VTms mit Kran und Arbeitsplattform im Bahnhof
+- bild: /uploads/fahrzeuge/vtms-tunnel.webp
+  alt: VTms mit Trommelböcken im Tunnel
+technische_daten:
+- name: Antrieb
+  wert: diesel-elektrisch, mit Partikelfilter
+- name: Positionierung
+  wert: mm-genau, aus dem Führerhaus oder von der Arbeitsplattform
+- name: Überführung
+  wert: im regulären Güterverkehr mit 100 km/h
+- name: Aufbauten
+  wert: wechselbare Plattformen mit Twistlock
+- name: TODO
+  wert: 'TODO: Abmessungen, Gewicht, Spurweiten, Motorleistung vom Kunden'
+reihenfolge: 1
+downloads: []

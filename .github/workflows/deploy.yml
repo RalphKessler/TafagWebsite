@@ -1,0 +1,125 @@
+# Baut die Website und lädt sie zu Hostpoint hoch.
+#   main          → Live-Ordner   (vars.LIVE_PFAD, vars.LIVE_URL)
+#   entwicklung   → Test-Ordner   (vars.TEST_PFAD, vars.TEST_URL, mit noindex)
+# Nächtlich wird neu gebaut, damit vergangene Termine verschwinden.
+#
+# Benötigte Einstellungen (Repository → Settings → Secrets and variables → Actions):
+#   Secrets:   HOSTPOINT_SSH_KEY (privater Schlüssel), HOSTPOINT_HOST, HOSTPOINT_USER
+#              FORMULAR_PASSWORT (optional: Passwort für /api/liste.php)
+#              ZAMMAD_TOKEN (optional: API-Token für Tickets aus der Serviceanfrage)
+#   Variables: LIVE_PFAD, LIVE_URL, TEST_PFAD, TEST_URL, optional ZAMMAD_URL, ZAMMAD_GRUPPE
+name: Deploy
+
+on:
+  push:
+    branches: [main, entwicklung]
+  schedule:
+    - cron: '17 1 * * *' # täglich ca. 03:17 Uhr Schweizer Zeit
+  workflow_dispatch:
+
+# Neuer Build bricht einen laufenden auf demselben Branch ab – «cancelled» ist dann normal.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ziel bestimmen
+        id: ziel
+        run: |
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            echo "pfad=${{ vars.LIVE_PFAD }}" >> "$GITHUB_OUTPUT"
+            echo "url=${{ vars.LIVE_URL }}" >> "$GITHUB_OUTPUT"
+            echo "noindex=false" >> "$GITHUB_OUTPUT"
+          elif [ "$GITHUB_REF_NAME" = "entwicklung" ]; then
+            echo "pfad=${{ vars.TEST_PFAD }}" >> "$GITHUB_OUTPUT"
+            echo "url=${{ vars.TEST_URL }}" >> "$GITHUB_OUTPUT"
+            echo "noindex=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Branch $GITHUB_REF_NAME wird nicht veröffentlicht."
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Prüfen (astro check)
+        run: npx astro check
+
+      - name: Build
+        run: npm run build
+        env:
+          SITE_URL: ${{ steps.ziel.outputs.url }}
+          PUBLIC_NOINDEX: ${{ steps.ziel.outputs.noindex }}
+          ASTRO_TELEMETRY_DISABLED: 1
+
+      - name: SSH einrichten
+        if: steps.ziel.outputs.pfad != ''
+        env:
+          SSH_KEY: ${{ secrets.HOSTPOINT_SSH_KEY }}
+          HOST: ${{ secrets.HOSTPOINT_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
+
+      - name: Hochladen (rsync)
+        if: steps.ziel.outputs.pfad != ''
+        env:
+          HOST: ${{ secrets.HOSTPOINT_HOST }}
+          USER: ${{ secrets.HOSTPOINT_USER }}
+          PFAD: ${{ steps.ziel.outputs.pfad }}
+        # Hostpoint läuft auf FreeBSD: auf dem Server nur einfache, POSIX-kompatible Befehle verwenden.
+        run: |
+          rsync -rlptvz --delete --exclude '.well-known/' \
+            -e "ssh -i ~/.ssh/id_deploy" \
+            dist/ "$USER@$HOST:$PFAD/"
+
+      - name: Server-Konfiguration schreiben (Liste, Zammad)
+        if: steps.ziel.outputs.pfad != ''
+        env:
+          HOST: ${{ secrets.HOSTPOINT_HOST }}
+          USER: ${{ secrets.HOSTPOINT_USER }}
+          PFAD: ${{ steps.ziel.outputs.pfad }}
+          PASSWORT: ${{ secrets.FORMULAR_PASSWORT }}
+          ZAMMAD_TOKEN: ${{ secrets.ZAMMAD_TOKEN }}
+          ZAMMAD_URL: ${{ vars.ZAMMAD_URL }}
+          ZAMMAD_GRUPPE: ${{ vars.ZAMMAD_GRUPPE || 'Users' }}
+        run: |
+          if [ -z "$PASSWORT" ] && [ -z "$ZAMMAD_TOKEN" ]; then echo "Keine Secrets gesetzt – übersprungen."; exit 0; fi
+          BASIS="$(dirname "$PFAD")/formulardaten"
+          php -r '
+            $c = [];
+            if (getenv("PASSWORT")) { $c["passwort_hash"] = password_hash(getenv("PASSWORT"), PASSWORD_DEFAULT); }
+            if (getenv("ZAMMAD_TOKEN") && getenv("ZAMMAD_URL")) { $c["zammad"] = ["url" => getenv("ZAMMAD_URL"), "token" => getenv("ZAMMAD_TOKEN"), "gruppe" => getenv("ZAMMAD_GRUPPE")]; }
+            echo "<?php return " . var_export($c, true) . ";\n";
+          ' > config.php
+          ssh -i ~/.ssh/id_deploy "$USER@$HOST" "mkdir -p '$BASIS' && chmod 700 '$BASIS'"
+          scp -i ~/.ssh/id_deploy config.php "$USER@$HOST:$BASIS/config.php"
+          ssh -i ~/.ssh/id_deploy "$USER@$HOST" "chmod 600 '$BASIS/config.php'"
+          rm config.php
+
+  # Zeitgesteuerte Läufe starten nur auf main – den Test-Branch darum zusätzlich anstossen.
+  naechtlich-test:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test-Branch neu bauen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh api "repos/$GITHUB_REPOSITORY/branches/entwicklung" > /dev/null 2>&1; then
+            gh workflow run deploy.yml --ref entwicklung --repo "$GITHUB_REPOSITORY"
+          fi

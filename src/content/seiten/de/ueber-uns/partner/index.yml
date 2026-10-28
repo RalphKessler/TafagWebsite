@@ -1,0 +1,47 @@
+titel: Partner
+beschreibung: Partner der Tafag AG – Generalvertretung der ZAGRO Group und weitere Partner.
+einleitung: Die Tafag AG ist Generalvertretung der ZAGRO Group. Mit diesen Partnern arbeiten wir zusammen.
+bloecke:
+- type: text
+  inhalt: 'TODO: Partnerliste stammt von der Website 2021 – Aktualität, Namen und Links vom Kunden bestätigen lassen; Logos nur mit Freigabe.'
+- type: logos
+  eintraege:
+  - name: ZAGRO Group
+    text: Generalvertretung für die Schweiz – Elektrorangierer und Zweiwegefahrzeuge.
+    link: https://www.zagro.de/
+    startseite: true
+  - name: ZWEIWEG
+    text: Zweiwegefahrzeuge und Schienenführungen.
+    link: https://www.zweiweg.de/
+    startseite: true
+  - name: SPÄNI Elektro-Mechanik AG
+    text: Steuerungen und Elektromechanik.
+    link: https://www.elektro-spaeni.ch/
+    startseite: true
+  - name: Josef Meyer Rail
+    link: https://www.josefmeyerrail.com/
+    startseite: true
+  - name: BLS
+    link: https://www.bls.ch/
+    startseite: true
+  - name: Hatz Diesel
+    link: https://www.hatz-diesel.com/
+    startseite: false
+  - name: Kubota
+    link: https://www.kubota.com/
+    startseite: false
+  - name: John Deere
+    startseite: false
+  - name: SDMO
+    startseite: false
+  - name: Europower
+    startseite: false
+  - name: Ackermann Fahrzeugbau
+    link: https://www.ackermann-fahrzeugbau.ch/
+    startseite: false
+  - name: Rimmele Engineering
+    startseite: false
+  - name: Zeoli
+    startseite: false
+  - name: 'TODO: Name prüfen (Logo «Brienz AG», Link emwb.ch)'
+    startseite: false

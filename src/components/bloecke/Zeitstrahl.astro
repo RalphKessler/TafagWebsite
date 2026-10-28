@@ -1,0 +1,38 @@
+---
+interface Props { titel?: string; eintraege: { jahr: string; titel: string; text?: string }[] }
+const { titel, eintraege } = Astro.props;
+---
+
+<div class="zeitstrahl">
+  {titel && <h2>{titel}</h2>}
+  <ol>
+    {
+      eintraege.map((e) => (
+        <li>
+          <span class:list={['jahr', { todo: e.jahr.startsWith('TODO') }]}>{e.jahr}</span>
+          <div>
+            <h3>{e.titel}</h3>
+            {e.text && <p class:list={{ todo: e.text.startsWith('TODO:') }}>{e.text}</p>}
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</div>
+
+<style>
+  ol { list-style: none; margin: 2rem 0 0; padding: 0; position: relative; max-width: 52rem; }
+  ol::before { content: ''; position: absolute; left: 6.25rem; top: .6rem; bottom: .6rem; width: 2px; background: var(--grau-200); }
+  li { display: grid; grid-template-columns: 5rem 1fr; gap: 2.5rem; position: relative; padding-bottom: 2rem; }
+  li::before { content: ''; position: absolute; left: calc(6.25rem - 6px); top: .45rem; width: 14px; height: 14px; border-radius: 50%; background: var(--akzent); box-shadow: 0 0 0 4px var(--weiss); }
+  .jahr { font-weight: 800; font-size: 1.35rem; color: var(--akzent-text); font-variant-numeric: tabular-nums; line-height: 1.3; text-align: right; }
+  .jahr.todo { font-size: .8rem; padding: .2rem .3rem; text-align: left; }
+  h3 { font-size: 1.15rem; margin: 0 0 .3rem; }
+  p { margin: 0; color: var(--text-2); }
+  @media (max-width: 560px) {
+    ol::before { left: .45rem; }
+    li { grid-template-columns: 1fr; gap: .25rem; padding-left: 2rem; }
+    li::before { left: 0; }
+    .jahr { text-align: left; }
+  }
+</style>

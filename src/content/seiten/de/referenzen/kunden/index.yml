@@ -1,0 +1,38 @@
+titel: Kunden
+beschreibung: Bahnen, Bauunternehmen und Fahrleitungsbauer, für die die Tafag AG tätig ist.
+einleitung: Zufriedene Kunden als aktive Referenzen zu gewinnen und zu behalten, ist unsere wichtigste Aufgabe.
+bloecke:
+- type: text
+  inhalt: 'TODO: Kundenliste stammt von der Website 2021 – Aktualität und Freigabe der Namen bzw. Logos durch den Kunden bestätigen lassen.'
+- type: logos
+  eintraege:
+  - name: SBB
+    startseite: false
+  - name: Rhätische Bahn
+    startseite: false
+  - name: Appenzeller Bahnen
+    startseite: false
+  - name: Rigi Bahnen
+    startseite: false
+  - name: Zillertalbahn
+    startseite: false
+  - name: Siemens
+    startseite: false
+  - name: Furrer+Frey
+    startseite: false
+  - name: Kummler+Matter
+    startseite: false
+  - name: Balfour Beatty
+    startseite: false
+  - name: Baresel
+    startseite: false
+  - name: Losinger
+    startseite: false
+  - name: Elbatech
+    startseite: false
+  - name: EBS
+    startseite: false
+  - name: Transtec
+    startseite: false
+  - name: Schumacher
+    startseite: false

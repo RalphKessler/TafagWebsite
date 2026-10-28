@@ -1,0 +1,23 @@
+titel: Revisionen & Umbau
+beschreibung: Revision, Reparatur und Umbau von Dieselloks, Stollenloks, Dampflokomotiven, Hebebühnen, Kranen und Strassenfahrzeugen.
+einleitung: Wir revidieren, reparieren und modernisieren Ihre Fahrzeuge – für maximale Verfügbarkeit.
+bloecke:
+- type: bildtext
+  titel: Revisionen
+  inhalt: |
+    Wir revidieren und reparieren zum Beispiel Dieselloks, Stollenloks und Dampflokomotiven, aber auch Hebebühnen, Krane, Strassenfahrzeuge und vieles mehr.
+
+    Durch vorbeugende Instandstellungsmassnahmen verhindern wir Schäden im Betrieb und sichern so die maximale Verfügbarkeit Ihrer Fahrzeuge.
+  bild: /uploads/fahrzeuge/unimog-transport.webp
+  alt: Zweiwege-Unimog auf einem Tieflader vor der Werkstatt der Tafag AG
+- type: text
+  titel: Umbau
+  inhalt: |
+    Ihre Lok ist nicht mehr auf dem neusten technischen Stand? Wir bauen sie komplett um – ob mit neuem Dieselmotor, Getriebe oder Funkfernsteuerung.
+- type: aufruf
+  titel: Revision oder Umbau planen
+  text: Schildern Sie uns Fahrzeug und Zustand – wir melden uns mit einem Vorschlag.
+  beschriftung: Serviceanfrage
+  link: /de/dienstleistungen/serviceanfrage/
+  beschriftung2: +41 41 859 08 20
+  link2: tel:+41418590820

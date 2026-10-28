@@ -1,0 +1,34 @@
+titel: Arbeiten bei TAFAG
+beschreibung: 'Arbeiten bei der Tafag AG: Spezialfahrzeuge für Schiene und Strasse, gut ausgestattete Werkstatt, abwechslungsreiche Aufgaben.'
+einleitung: Herstellung, Service und Weiterentwicklung von Spezialfahrzeugen – in einem kleinen Team mit grosser Eigenverantwortung.
+bloecke:
+- type: leistungen
+  titel: Ihre Arbeit bei uns
+  eintraege:
+  - titel: Eigenprodukte
+    text: Herstellung und Aufbau unserer weltweit einzigartigen Eigenprodukte.
+  - titel: Reparatur und Wartung
+    text: Elektrische, elektronische und mechanische Reparaturen, Wartung und Modifikationen an Fahrzeugen, Systemen und Geräten.
+  - titel: Beim Kunden
+    text: Inbetriebnahme, Unterhaltsarbeiten und Störungsbehebung vor Ort.
+  - titel: Vielfältige Technik
+    text: Arbeiten an Geräten von Palfinger Railway, Europower, Unimog, ZAGRO, ZWEIWEG und weiteren Herstellern.
+- type: leistungen
+  titel: Wir bieten
+  eintraege:
+  - titel: Abwechslung
+    text: Eine abwechslungsreiche, interessante Arbeitsstelle.
+  - titel: Werkstatt
+    text: Eine gut ausgestattete Werkstatt.
+  - titel: Servicefahrzeug
+    text: Ein gut eingerichtetes Servicefahrzeug.
+  - titel: Lohn
+    text: Einen leistungs- und zeitgerechten Lohn.
+  hintergrund: grau
+- type: aufruf
+  titel: Interessiert?
+  text: Schauen Sie sich unsere offenen Stellen an oder bewerben Sie sich spontan.
+  beschriftung: Offene Stellen
+  link: /de/jobs/offene-stellen/
+  beschriftung2: Spontanbewerbung
+  link2: /de/jobs/spontanbewerbung/

@@ -1,0 +1,31 @@
+/* Design-Tokens – abgeleitet aus dem TAFAG-Logo und dem Gelb der Fahrzeuge. Begründung und Kontraste in DESIGN-TOKENS.md. */
+:root {
+  --weiss: #ffffff;
+  --grau-50: #f4f6fa;
+  --grau-100: #e7ecf4;
+  --grau-200: #d2dae7;
+  --text: #121c2e;
+  --text-2: #4a5568;
+  --navy: #0e1c36;
+  --navy-2: #172a4d;
+
+  /* Logofarbe und Fahrzeuggelb */
+  --tafag-blau: #3055a5;
+  --tafag-blau-text: #2a4c96;
+  --tafag-gelb: #ffcb05;
+  --tafag-hellblau: #8fa9db;
+
+  /* Akzentfarbe: über data-marke umschaltbar, TAFAG hat nur eine Marke */
+  --akzent: var(--tafag-blau);
+  --akzent-text: var(--tafag-blau-text);
+  --akzent-hell: var(--tafag-hellblau);
+
+  --fehler: #b3261e;
+  --ok: #1e7b34;
+
+  --schrift: 'Archivo Variable', 'Segoe UI', Roboto, Arial, sans-serif;
+  --inhalt: 76rem;
+  --rand: clamp(1rem, 4vw, 2.5rem);
+  --radius: 10px;
+  --zeile: 70ch;
+}

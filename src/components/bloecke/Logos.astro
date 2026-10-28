@@ -1,0 +1,51 @@
+---
+import { markdown } from '../../lib/hilfen';
+interface Eintrag { name: string; text?: string; logo?: string; link?: string }
+interface Props { titel?: string; text?: string; eintraege: Eintrag[] }
+const { titel, text, eintraege } = Astro.props;
+---
+
+<div>
+  {(titel || text) && (
+    <div class="kopf">
+      {titel && <h2>{titel}</h2>}
+      {text && <div class="lead" set:html={markdown(text)} />}
+    </div>
+  )}
+  <ul class="raster">
+    {
+      eintraege.map((e) => (
+        <li class:list={['zelle', { verlinkt: e.link }]}>
+          {/* Ohne Logo steht der Name als Wortmarke an der Stelle des Logos */}
+          {e.logo && (
+            <div class="marke">
+              <img src={e.logo} alt="" loading="lazy" decoding="async" height="56" />
+            </div>
+          )}
+          <h3 class:list={{ 'marke wortmarke': !e.logo }}>{e.link ? <a href={e.link}>{e.name}</a> : e.name}</h3>
+          {e.text && <p class:list={{ todo: e.text.startsWith('TODO:') }}>{e.text}</p>}
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .kopf { max-width: 48rem; margin-bottom: 2.25rem; }
+  .kopf .lead :global(p) { margin: 0; }
+  .raster { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--grau-200); border-left: 1px solid var(--grau-200); }
+  .zelle { position: relative; padding: 1.5rem 1.25rem 1.6rem; border-right: 1px solid var(--grau-200); border-bottom: 1px solid var(--grau-200); background: var(--weiss); }
+  .zelle.verlinkt:hover { box-shadow: inset 0 3px 0 var(--akzent); }
+  .marke { height: 64px; display: flex; align-items: center; margin-bottom: 1.1rem; }
+  .marke img { max-height: 56px; max-width: min(180px, 100%); width: auto; height: auto; object-fit: contain; }
+  h3.wortmarke { font-size: 1.35rem; margin: 0 0 1.1rem; font-weight: 750; letter-spacing: -.01em; color: var(--navy); line-height: 1.1; }
+  h3 { font-size: 1rem; margin: 0 0 .3rem; }
+  h3 a { color: inherit; text-decoration: none; }
+  h3 a::after { content: ''; position: absolute; inset: 0; }
+  h3 a:focus-visible { outline: none; }
+  .zelle:has(a:focus-visible) { outline: 3px solid var(--akzent); outline-offset: -3px; }
+  .zelle.verlinkt:hover h3 a { color: var(--akzent-text); }
+  p { color: var(--text-2); margin: 0; font-size: .95rem; }
+  @media (max-width: 1000px) { .raster { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .raster { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,4 @@
+# Nur die beiden Einstiegspunkte sind von aussen aufrufbar
+<FilesMatch "^(_gemeinsam\.php|formulare\.php|\.user\.ini)$">
+  Require all denied
+</FilesMatch>
