@@ -12,9 +12,9 @@ Tafag AG, Chräbelstrasse 3, 6410 Goldau SZ – seit 1968 Schienen- und Spezialf
 Unabhängiges Produktionsunternehmen: Fahrzeuge für Schiene und Strasse, Maschinenbau und Elektromechanik.
 Generalvertretung der ZAGRO Group.
 
-- **Fahrzeuge & Produkte:** VTms (selbstfahrende Arbeitsfahrzeuge), Anbaumodule (3TL Hebebühne, PKR290,
-  Trommelböcke, TuBeMo, WM30), ZAGRO Elektrorangierer (E-MAXI M/L/XL), Zweiwegefahrzeuge (Unimog, LKW),
-  Sonderlösungen (Montagehilfen, Container-Module, Partikelfilter).
+- **Produkte:** eVTms Schienenfahrzeug, Hebebühne / Kran (3TL, PKR290), Module (Trommelböcke, TuBeMo, WM30,
+  Container-Module), Rangiergeräte (ZAGRO E-MAXI M/L/XL), Zweiweg (Unimog, LKW, TERBERG-ZAGRO RR 282),
+  Notstromversorgung (Inhalte folgen), Sonderlösungen (Montagehilfen, Partikelfilter).
 - **Dienstleistungen:** Engineering, Revisionen & Umbau, Service & Inbetriebnahme, Pikettdienst 24 h.
 - **Zielgruppen:** Bahnen, Fahrleitungsbau, Bauunternehmen, Tunnelbau.
 
@@ -36,7 +36,7 @@ Nicht genutzt: Zammad (alle Formulare per Mail), News und Termine (Sammlungen le
 ## 5. Seitenstruktur (Hauptmenü, verbindliche Reihenfolge)
 
 1. Startseite
-2. Fahrzeuge & Produkte – VTms, Anbaumodule, ZAGRO Elektrorangierer, Zweiwegefahrzeuge, Sonderlösungen
+2. Produkte – eVTms Schienenfahrzeug, Hebebühne / Kran, Module, Rangiergeräte, Zweiweg, Notstromversorgung, Sonderlösungen (Reihenfolge vom Kunden, 28.10.2026)
 3. Dienstleistungen – Engineering, Revisionen & Umbau, Service & Inbetriebnahme, Pikettdienst, Serviceanfrage
 4. Referenzen – Installationszug Gotthard-Basistunnel, Kunden
 5. Über uns – Leitbild, Firmengeschichte, Partner, Standort & Anfahrt

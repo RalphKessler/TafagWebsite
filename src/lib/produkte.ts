@@ -9,8 +9,13 @@ export const gruppen = gruppenDaten.gruppen as Gruppe[];
 export const gruppeVon = (slug: string) => gruppen.find((g) => g.slug === slug)!;
 
 export async function alleProdukte(): Promise<Produkt[]> {
+  // Sortiert nach Reihenfolge der Gruppen (produktgruppen.json), dann innerhalb der Gruppe
+  const gruppenIndex = (p: Produkt) => gruppen.findIndex((g) => g.slug === p.data.gruppe);
   return (await getCollection('produkte', (p) => !p.data.entwurf)).sort(
-    (a, b) => a.data.reihenfolge - b.data.reihenfolge || a.data.titel.localeCompare(b.data.titel, 'de'),
+    (a, b) =>
+      gruppenIndex(a) - gruppenIndex(b) ||
+      a.data.reihenfolge - b.data.reihenfolge ||
+      a.data.titel.localeCompare(b.data.titel, 'de'),
   );
 }
 

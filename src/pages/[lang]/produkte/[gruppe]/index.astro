@@ -5,18 +5,31 @@ import Katalog from '../../../../components/produkte/Katalog.astro';
 import Aufruf from '../../../../components/bloecke/Aufruf.astro';
 import { alleProdukte, gruppen, gruppeVon } from '../../../../lib/produkte';
 import { sprachen, t, type Sprache } from '../../../../i18n';
+import { ohneTodo } from '../../../../lib/hilfen';
 
 export const getStaticPaths = () => sprachen.flatMap((lang) => gruppen.map((g) => ({ params: { lang, gruppe: g.slug } })));
 const sprache = Astro.params.lang as Sprache;
 const gruppe = gruppeVon(Astro.params.gruppe!);
 const produkte = (await alleProdukte()).filter((p) => p.data.gruppe === gruppe.slug);
+// Live: Platzhalter in der Einleitung abschneiden
+const einleitung = ohneTodo(gruppe.einleitung);
 ---
 
-<Basis titel={gruppe.titel} beschreibung={gruppe.einleitung} marke={gruppe.marke} sprache={sprache}>
-  <Seitenkopf titel={gruppe.titel} einleitung={gruppe.einleitung} marke={gruppe.marke} sprache={sprache} pfad={Astro.url.pathname} />
+<Basis titel={gruppe.titel} beschreibung={einleitung} marke={gruppe.marke} sprache={sprache}>
+  <Seitenkopf titel={gruppe.titel} einleitung={einleitung} marke={gruppe.marke} sprache={sprache} pfad={Astro.url.pathname} />
   <section class="abschnitt">
     <div class="breite">
-      <Katalog produkte={produkte} filter="kategorie" sprache={sprache} />
+      {
+        produkte.length > 0 ? (
+          <Katalog produkte={produkte} filter="kategorie" sprache={sprache} />
+        ) : (
+          <div class="leer">
+            <h2>{t(sprache, 'gruppeLeerTitel')}</h2>
+            <p class="lead">{t(sprache, 'gruppeLeerText')}</p>
+            <a class="knopf" href={`/${sprache}/produkte/anfrage/?produkt=${encodeURIComponent(gruppe.titel)}`}>{t(sprache, 'produktAnfragen')}</a>
+          </div>
+        )
+      }
     </div>
   </section>
   <section class="abschnitt-unten">

@@ -99,7 +99,7 @@ const optionen = [...new Map(produkte.map((p) => [wert(p), filter === 'gruppe' ?
   .inhalt { padding: 1.1rem 1.25rem 1.4rem; }
   .gruppe { color: var(--akzent-text); font-weight: 700; margin: 0 0 .3rem; }
   .plakette { margin-left: .5rem; padding: .1rem .5rem; border-radius: 999px; background: var(--grau-100); color: var(--text-2); font-weight: 700; font-size: .75rem; }
-  h3 { font-size: 1.1rem; margin: 0 0 .4rem; }
+  h3 { font-size: 1.1rem; margin: 0 0 .4rem; overflow-wrap: anywhere; hyphens: auto; }
   h3 a { color: var(--text); text-decoration: none; }
   h3 a::after { content: ''; position: absolute; inset: 0; }
   h3 a:focus-visible { outline: none; }

@@ -1,33 +1,59 @@
 {
   "bereiche": [
     {
-      "titel": "VTms-Arbeitsfahrzeuge",
-      "link": "/de/produkte/vtms/",
+      "titel": "eVTms Schienenfahrzeug",
+      "link": "/de/produkte/evtms/",
       "bild": "/uploads/fahrzeuge/vtms-zug.webp",
       "text": "Selbstfahrende Arbeitsfahrzeuge für Fahrleitung, Gleis und Tunnel – mm-genau positionierbar, mit wechselbaren Plattformen.",
       "punkte": [
-        { "titel": "VTms", "link": "/de/produkte/vtms/" },
-        { "titel": "Anbaumodule", "link": "/de/produkte/anbaumodule/" }
+        {
+          "titel": "eVTms",
+          "link": "/de/produkte/evtms/"
+        },
+        {
+          "titel": "Hebebühne / Kran",
+          "link": "/de/produkte/hebebuehne-kran/"
+        },
+        {
+          "titel": "Module",
+          "link": "/de/produkte/module/"
+        }
       ]
     },
     {
-      "titel": "Zweiweg & Rangierer",
+      "titel": "Zweiweg & Rangiergeräte",
       "link": "/de/produkte/zweiweg/",
       "bild": "/uploads/zweiweg/unimog-oberleitung.webp",
-      "text": "Zweiwegefahrzeuge auf Unimog- und LKW-Basis sowie ZAGRO Elektrorangierer – wir bringen Fahrzeuge auf die Schiene.",
+      "text": "Zweiwegefahrzeuge auf Unimog- und LKW-Basis sowie ZAGRO Rangiergeräte – wir bringen Fahrzeuge auf die Schiene.",
       "punkte": [
-        { "titel": "Zweiwegefahrzeuge", "link": "/de/produkte/zweiweg/" },
-        { "titel": "ZAGRO Elektrorangierer", "link": "/de/produkte/zagro-rangierer/" }
+        {
+          "titel": "Zweiweg",
+          "link": "/de/produkte/zweiweg/"
+        },
+        {
+          "titel": "Rangiergeräte",
+          "link": "/de/produkte/rangiergeraete/"
+        }
       ]
     },
     {
-      "titel": "Sonderlösungen",
+      "titel": "Notstrom & Sonderlösungen",
       "link": "/de/produkte/sonderloesungen/",
       "bild": "/uploads/fahrzeuge/tubemo-wagen.webp",
-      "text": "Montagehilfen, Spezialarbeitsbühnen, Container-Module und Partikelfilter – massgeschneidert für Ihre Aufgabe.",
+      "text": "Notstromversorgung, Montagehilfen, Spezialarbeitsbühnen und Partikelfilter – massgeschneidert für Ihre Aufgabe.",
       "punkte": [
-        { "titel": "Sonderlösungen", "link": "/de/produkte/sonderloesungen/" },
-        { "titel": "Installationszug Gotthard", "link": "/de/referenzen/installationszug-gotthard/" }
+        {
+          "titel": "Notstromversorgung",
+          "link": "/de/produkte/notstromversorgung/"
+        },
+        {
+          "titel": "Sonderlösungen",
+          "link": "/de/produkte/sonderloesungen/"
+        },
+        {
+          "titel": "Installationszug Gotthard",
+          "link": "/de/referenzen/installationszug-gotthard/"
+        }
       ]
     },
     {
@@ -36,9 +62,18 @@
       "bild": "/uploads/fahrzeuge/vtms-kran.webp",
       "text": "Engineering, Revisionen und Umbauten, Service und Inbetriebnahme – und ein Pikettdienst rund um die Uhr.",
       "punkte": [
-        { "titel": "Engineering", "link": "/de/dienstleistungen/engineering/" },
-        { "titel": "Revisionen & Umbau", "link": "/de/dienstleistungen/revisionen-umbau/" },
-        { "titel": "Pikettdienst", "link": "/de/dienstleistungen/pikettdienst/" }
+        {
+          "titel": "Engineering",
+          "link": "/de/dienstleistungen/engineering/"
+        },
+        {
+          "titel": "Revisionen & Umbau",
+          "link": "/de/dienstleistungen/revisionen-umbau/"
+        },
+        {
+          "titel": "Pikettdienst",
+          "link": "/de/dienstleistungen/pikettdienst/"
+        }
       ]
     }
   ]

@@ -8,5 +8,5 @@ felder:
   - { name: firma, bezeichnung: Firma, typ: text, pflicht: false }
   - { name: email, bezeichnung: E-Mail, typ: email, pflicht: true }
   - { name: telefon, bezeichnung: Telefon, typ: tel, pflicht: false }
-  - { name: bereich, bezeichnung: Bereich, typ: select, pflicht: false, optionen: "Fahrzeuge und Produkte, Dienstleistungen, Service und Ersatzteile, Jobs, Anderes" }
+  - { name: bereich, bezeichnung: Bereich, typ: select, pflicht: false, optionen: "Produkte, Dienstleistungen, Service und Ersatzteile, Jobs, Anderes" }
   - { name: nachricht, bezeichnung: Nachricht, typ: textarea, pflicht: true }

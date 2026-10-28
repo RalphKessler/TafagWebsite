@@ -19,7 +19,7 @@
   "brotkrumen": "Sie sind hier",
   "mehrZu": "Mehr zu {titel}",
   "startBereicheTitel": "Unser Angebot",
-  "startBereicheText": "Arbeitsfahrzeuge, Zweiwegefahrzeuge, Anbaumodule und Sonderlösungen aus Goldau – mit Service und Pikettdienst über die ganze Lebensdauer.",
+  "startBereicheText": "Schienenfahrzeuge, Hebebühnen und Krane, Module, Rangiergeräte, Zweiwegefahrzeuge und Notstromversorgung aus Goldau – mit Service und Pikettdienst über die ganze Lebensdauer.",
   "startNewsTitel": "Aktuelles",
   "startNewsLinkedin": "Zu LinkedIn",
   "startPartnerTitel": "Unsere Partner",
@@ -67,5 +67,7 @@
   "pikettTelefon": "Pikett 24 h",
   "pikettdienst": "Pikettdienst",
   "kontaktAufnehmen": "Kontakt aufnehmen",
-  "fussDienstleistungen": "Dienstleistungen"
+  "fussDienstleistungen": "Dienstleistungen",
+  "gruppeLeerTitel": "Beratung und Offerte",
+  "gruppeLeerText": "Zu diesem Bereich beraten wir Sie gerne persönlich und erstellen Ihnen eine Offerte."
 }

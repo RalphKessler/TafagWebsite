@@ -400,11 +400,13 @@ collections:
         label: Produktgruppe
         widget: select
         options:
-          - { label: 'VTms – selbstfahrende Arbeitsfahrzeuge', value: vtms }
-          - { label: Anbaumodule, value: anbaumodule }
-          - { label: ZAGRO Elektrorangierer, value: zagro-rangierer }
-          - { label: Zweiwegefahrzeuge, value: zweiweg }
-          - { label: Sonderlösungen, value: sonderloesungen }
+          - { label: 'eVTms Schienenfahrzeug', value: evtms }
+          - { label: 'Hebebühne / Kran', value: hebebuehne-kran }
+          - { label: 'Module', value: module }
+          - { label: 'Rangiergeräte', value: rangiergeraete }
+          - { label: 'Zweiweg', value: zweiweg }
+          - { label: 'Notstromversorgung', value: notstromversorgung }
+          - { label: 'Sonderlösungen', value: sonderloesungen }
       - { name: kategorie, label: 'Kategorie (für den Filter)', widget: string, required: false }
       - { name: kurz, label: Kurzbeschreibung, widget: text, required: false }
       - { name: beschreibung, label: Beschreibung, widget: markdown, required: false }

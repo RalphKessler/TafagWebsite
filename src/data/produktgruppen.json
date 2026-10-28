@@ -1,34 +1,46 @@
 {
   "gruppen": [
     {
-      "slug": "vtms",
-      "titel": "VTms – selbstfahrende Arbeitsfahrzeuge",
+      "slug": "evtms",
+      "titel": "eVTms Schienenfahrzeug",
       "marke": "tafag",
-      "einleitung": "Arbeitsfahrzeuge für die Unterhaltsaufgaben rund um Fahrleitungen, Gleisanlagen und Tunnel-Installationen – diesel-elektrisch mit Partikelfilter, mm-genau positionierbar."
+      "einleitung": "Selbstfahrende Arbeitsfahrzeuge für die Unterhaltsaufgaben rund um Fahrleitungen, Gleisanlagen und Tunnel-Installationen – mm-genau positionierbar, mit wechselbaren Plattformen."
     },
     {
-      "slug": "anbaumodule",
-      "titel": "Anbaumodule",
+      "slug": "hebebuehne-kran",
+      "titel": "Hebebühne / Kran",
       "marke": "tafag",
-      "einleitung": "Wechselbare Plattformen und Module für VTms und Tragwagen: Hebebühnen, Kran, Trommelböcke, Werkstattmodule."
+      "einleitung": "Hebebühnen und Krane für eVTms und Tragwagen – für Arbeiten an Fahrleitung und Infrastruktur."
     },
     {
-      "slug": "zagro-rangierer",
-      "titel": "ZAGRO Elektrorangierer",
+      "slug": "module",
+      "titel": "Module",
       "marke": "tafag",
-      "einleitung": "Batteriebetriebene Rangierfahrzeuge der ZAGRO Group für Anhängelasten von 200 bis 700 t. TAFAG ist Generalvertretung der ZAGRO Group."
+      "einleitung": "Wechselbare Module für eVTms und Tragwagen: Trommelböcke, TuBeMo, Werkstattmodule und Container-Module."
+    },
+    {
+      "slug": "rangiergeraete",
+      "titel": "Rangiergeräte",
+      "marke": "tafag",
+      "einleitung": "Batteriebetriebene Rangiergeräte der ZAGRO Group für Anhängelasten von 200 bis 700 t. TAFAG ist Generalvertretung der ZAGRO Group."
     },
     {
       "slug": "zweiweg",
-      "titel": "Zweiwegefahrzeuge",
+      "titel": "Zweiweg",
       "marke": "tafag",
       "einleitung": "Ob Pickup, Transporter, Unimog, Baumaschine oder LKW – wir bringen Fahrzeuge aller Gewichtsklassen auf die Schiene, mit allen erforderlichen Zulassungen."
+    },
+    {
+      "slug": "notstromversorgung",
+      "titel": "Notstromversorgung",
+      "marke": "tafag",
+      "einleitung": "Notstromversorgung von TAFAG – sprechen Sie uns an. TODO: Produkte, Beschreibung und Bilder vom Kunden."
     },
     {
       "slug": "sonderloesungen",
       "titel": "Sonderlösungen",
       "marke": "tafag",
-      "einleitung": "Montagehilfen, Spezialarbeitsbühnen, Container-Module und Partikelfilter – Lösungen für komplexe Aufgaben, unabhängig vom Anwendungsgebiet."
+      "einleitung": "Montagehilfen, Spezialarbeitsbühnen und Partikelfilter – Lösungen für komplexe Aufgaben, unabhängig vom Anwendungsgebiet."
     }
   ]
 }

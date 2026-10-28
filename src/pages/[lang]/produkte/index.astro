@@ -5,11 +5,12 @@ import Katalog from '../../../components/produkte/Katalog.astro';
 import Querverweise from '../../../components/bloecke/Querverweise.astro';
 import { alleProdukte, gruppen } from '../../../lib/produkte';
 import { sprachen, t, type Sprache } from '../../../i18n';
+import { ohneTodo } from '../../../lib/hilfen';
 
 export const getStaticPaths = () => sprachen.map((lang) => ({ params: { lang } }));
 const sprache = Astro.params.lang as Sprache;
 const produkte = await alleProdukte();
-const einleitung = 'Selbstfahrende Arbeitsfahrzeuge (VTms), Anbaumodule, ZAGRO Elektrorangierer, Zweiwegefahrzeuge und Sonderlösungen für die Bahninfrastruktur. Kein Webshop – Anfrage statt Warenkorb.';
+const einleitung = 'eVTms Schienenfahrzeuge, Hebebühnen und Krane, Module, Rangiergeräte, Zweiwegefahrzeuge, Notstromversorgung und Sonderlösungen für die Bahninfrastruktur. Kein Webshop – Anfrage statt Warenkorb.';
 ---
 
 <Basis titel={t(sprache, 'produkte')} beschreibung={einleitung} sprache={sprache}>
@@ -18,14 +19,14 @@ const einleitung = 'Selbstfahrende Arbeitsfahrzeuge (VTms), Anbaumodule, ZAGRO E
     <div class="breite">
       <Querverweise
         eintraege={[
-          ...gruppen.map((g) => ({ titel: g.titel, text: g.einleitung, link: `/${sprache}/produkte/${g.slug}/`, marke: g.marke })),
+          ...gruppen.map((g) => ({ titel: g.titel, text: ohneTodo(g.einleitung), link: `/${sprache}/produkte/${g.slug}/`, marke: g.marke })),
         ]}
       />
     </div>
   </section>
   <section class="abschnitt grau">
     <div class="breite">
-      <h2>Alle Fahrzeuge und Produkte</h2>
+      <h2>Alle Produkte</h2>
       <Katalog produkte={produkte} filter="gruppe" sprache={sprache} />
     </div>
   </section>

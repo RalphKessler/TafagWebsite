@@ -294,7 +294,7 @@ const produkte = defineCollection({
   loader: glob({ pattern: '**/*.yml', base: './src/content/produkte' }),
   schema: z.object({
     titel: z.string(),
-    gruppe: z.enum(['vtms', 'anbaumodule', 'zagro-rangierer', 'zweiweg', 'sonderloesungen']),
+    gruppe: z.enum(['evtms', 'hebebuehne-kran', 'module', 'rangiergeraete', 'zweiweg', 'notstromversorgung', 'sonderloesungen']),
     // Produktmarke; leer = Marke der Produktgruppe
     marke: z.preprocess(leer, z.enum(['tafag']).optional()),
     kategorie: text(),
