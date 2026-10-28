@@ -73,6 +73,13 @@ Einstellungen im Repository unter *Settings → Secrets and variables → Action
 
 Fehlt ein Pfad, wird gebaut, aber nicht hochgeladen.
 
+## Vorschau auf GitHub Pages
+
+`.github/workflows/vorschau-pages.yml` baut bei jedem Push auf den Entwicklungs-Branch die Test-Version
+(Platzhalter sichtbar, `noindex`) und veröffentlicht sie unter https://ralphkessler.github.io/TafagWebsite/.
+`scripts/vorschau-relativ.mjs` macht die Links relativ, weil Pages im Unterordner `/TafagWebsite/` ausliefert.
+Formulare und `/admin` funktionieren dort nicht (kein PHP). Einmalig: *Settings → Pages → Source: GitHub Actions*.
+
 ## Formulare
 
 - Das Formular schickt an `/api/formular.php` (auch Datei-Uploads: PDF, Bilder, Word; max. 10 MB pro Datei, 20 MB gesamt, 5 Dateien pro Feld; Dateien bis 15 MB hängen an der Mail). Spamschutz: verstecktes Honeypot-Feld, Mindestzeit von 3 Sekunden,

@@ -1,0 +1,53 @@
+# Vorschau der Test-Version auf GitHub Pages (https://ralphkessler.github.io/TafagWebsite/).
+# Platzhalter («TODO: …») sind sichtbar, Suchmaschinen ausgeschlossen (noindex).
+# Formulare und /admin funktionieren hier nicht (kein PHP, kein CMS) – dafür ist Hostpoint da.
+#
+# Einmalig einrichten: Repository → Settings → Pages → Source: «GitHub Actions».
+name: Vorschau (GitHub Pages)
+
+on:
+  push:
+    branches: [claude/beautiful-thompson-b799yu, entwicklung]
+  workflow_dispatch:
+
+concurrency:
+  group: vorschau-pages
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Test-Version bauen
+        env:
+          PUBLIC_NOINDEX: 'true'
+          SITE_URL: https://ralphkessler.github.io/TafagWebsite
+        run: npx astro build
+      - name: Für Pages aufbereiten
+        run: |
+          rm -rf dist/api dist/admin dist/.htaccess
+          node scripts/vorschau-relativ.mjs dist
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - id: pages
+        uses: actions/deploy-pages@v4
