@@ -1,17 +1,26 @@
 titel: Firmengeschichte
-beschreibung: 'Die Geschichte der Tafag AG: seit 1968 Schienen- und Spezialfahrzeuge, seit 1978 an der Chräbelstrasse 3 in Goldau.'
-einleitung: Unser Unternehmen steht seit 1968 für herausragende Qualität von Schienen- und Spezialfahrzeugen.
+beschreibung: 'Die Geschichte der Tafag AG: gegründet 1978 von Hans Müri in Goldau, vom ersten VTms bis zum eVTms Hybridfahrzeug.'
+einleitung: Von der Gründung 1978 durch Hans Müri bis zum eVTms Hybridfahrzeug.
 bloecke:
 - type: zeitstrahl
   eintraege:
-  - jahr: '1968'
-    titel: Gründung
-    text: Beginn der Tätigkeit für Schienen- und Spezialfahrzeuge.
   - jahr: '1978'
-    titel: Chräbelstrasse 3, Goldau
-    text: Bezug der Geschäftsräume an der Chräbelstrasse 3 in Goldau.
-  - jahr: TODO
-    titel: 'TODO: Gründer und weitere Meilensteine vom Kunden (z. B. Generalvertretung ZAGRO Group, Einsatz im Lötschberg- und Gotthard-Basistunnel)'
-  - jahr: Heute
-    titel: Fahrzeuge für Schiene und Strasse
-    text: Maschinenbau und Elektromechanik – geschätzt für Flexibilität und unseren Pikettdienst.
+    titel: Gründung durch Hans Müri
+  - jahr: '2008'
+    titel: Herstellung des ersten VTms
+  - jahr: '2011'
+    titel: Entwicklung der Fahrleitungszugmaschine
+  - jahr: '2015'
+    titel: Herstellung des ersten VTms G2
+  - jahr: '2017'
+    titel: Herstellung des Tunnellüftungsmoduls für Furrer+Frey
+  - jahr: '2018'
+    titel: Geschäftsübernahme durch Alex Müri, Ralph Kessler und Adrian Oberberger
+  - jahr: '2020'
+    titel: Herstellung des Tunnellüftungsmoduls für die SBB
+  - jahr: '2021'
+    titel: Neuentwicklung eVTms Hybridfahrzeug
+  - jahr: '2022'
+    titel: Auslieferung von 6 Hybridfahrzeugen
+  - jahr: '2024'
+    titel: Auslieferung von 5 Hybridfahrzeugen

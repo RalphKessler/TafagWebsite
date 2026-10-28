@@ -1,5 +1,6 @@
 # Aufgaben
 
+- [x] Firmengeschichte (Zeitstrahl vom Kunden)
 - [x] Vorlage aus dem SPÄNI-Projekt übernommen, SPÄNI-Inhalte entfernt
 - [x] Farben, Schrift, Logo, Favicon, Gleis-Motiv
 - [x] Navigation, Startseite, Produktkatalog (15 Produkte in 7 Gruppen), Dienstleistungen, Referenzen, Über uns, Jobs, Kontakt

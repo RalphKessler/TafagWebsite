@@ -16,7 +16,7 @@
 | 7e | Rangierfahrzeuge | Unimog-Rangierer: Foto zeigt vorerst den Zweiwege-Unimog auf dem Tieflader – eigene Fotos eines Unimog-Rangierers? TERBERG/ZAGRO Truck: Bild zeigt RR 282 6x4, Text beschreibt RR283 (2800 t) – passt das, Daten zum RR 282? | offen |
 | 7d | ZAGRO | E-MAXI L WBA: Fotos zurzeit in der Galerie des E-MAXI L. Eigenes Produkt mit Datenblatt gewünscht? | offen |
 | 7 | Bilder | Bilder für Container-Module, Partikelfilter, Montagehilfen und Installationszug in guter Auflösung | offen |
-| 8 | Firmengeschichte | Gründer, Gründungsort, weitere Meilensteine (Generalvertretung ZAGRO seit?) | offen |
+| 8 | Firmengeschichte | Zeitstrahl vom Kunden erhalten (28.10.2026). Offen: Startseite, «Über uns» und Stelleninserat sagen «Qualität und Erfahrung seit 1968» (Website 2021), der Zeitstrahl beginnt mit der Gründung 1978 – was gilt? | offen |
 | 9 | Jobs | Aktuelle offene Stellen? Die Ausschreibung von 2021 ist als archiviertes Muster erfasst (live als «nicht mehr ausgeschrieben» erreichbar) – löschen oder aktualisieren? | offen |
 | 10 | Team | Sollen Mitarbeitende mit Foto gezeigt werden (Baustein «Team»)? Zurzeit nur Alex Müri, Geschäftsführer. | offen |
 | 11 | Hosting | Wo wird die Website betrieben (Vorlage: Hostpoint)? Zugang für GitHub Actions, Test-Domain (Vorschlag test.tafag.ch) | offen |
