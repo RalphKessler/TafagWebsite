@@ -2,7 +2,7 @@ titel: TuBeMo
 gruppe: module
 kategorie: Modul
 kurz: Modul für eVTms und Tragwagen.
-beschreibung: 'TODO: Beschreibung und technische Daten vom Kunden (auf der bisherigen Website nur mit Bild und Titel).'
+beschreibung: 'TODO: Beschreibung und technische Daten vom Kunden.'
 bild: /uploads/module/tubemo.webp
 bilder:
 - bild: /uploads/fahrzeuge/tubemo-wagen.webp

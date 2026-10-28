@@ -3,7 +3,7 @@ beschreibung: Bahnen, Bauunternehmen und Fahrleitungsbauer, für die die Tafag A
 einleitung: Zufriedene Kunden als aktive Referenzen zu gewinnen und zu behalten, ist unsere wichtigste Aufgabe.
 bloecke:
 - type: text
-  inhalt: 'TODO: Kundenliste stammt von der Website 2021 – Aktualität und Freigabe der Namen bzw. Logos durch den Kunden bestätigen lassen.'
+  inhalt: 'TODO: Kundenliste – Aktualität und Freigabe der Namen bzw. Logos durch den Kunden bestätigen lassen.'
 - type: logos
   eintraege:
   - name: SBB
