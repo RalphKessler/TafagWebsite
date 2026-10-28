@@ -164,7 +164,7 @@ $gespeichert = @file_put_contents(
 
 // --- Zammad: Ticket anlegen (z. B. Serviceanfrage) ----------------------------
 // Zugang in <Webroot>/../formulardaten/config.php:
-//   'zammad' => ['url' => 'https://support.example.ch', 'token' => '…', 'gruppe' => 'Users']
+//   'zammad' => ['url' => 'https://support.tafag.ch', 'token' => '…', 'gruppe' => 'Users']
 // Klappt die Übergabe nicht, geht die Einsendung wie jedes Formular per Mail raus.
 $ticketNummer = null;
 $zammad = einstellungen()['zammad'] ?? null;
@@ -184,7 +184,7 @@ if (($formular['ziel'] ?? '') === 'zammad' && is_array($zammad) && !empty($zamma
         }
     }
     $titel = $formular['titel'];
-    foreach (['Maschine / Anlage', 'Bereich'] as $feld) {
+    foreach (['Fahrzeug / Gerät', 'Maschine / Anlage', 'Anliegen', 'Bereich'] as $feld) {
         if (!empty($werte[$feld])) {
             $titel .= ': ' . $werte[$feld];
             break;

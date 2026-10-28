@@ -95,7 +95,7 @@ jobs:
           PFAD: ${{ steps.ziel.outputs.pfad }}
           PASSWORT: ${{ secrets.FORMULAR_PASSWORT }}
           ZAMMAD_TOKEN: ${{ secrets.ZAMMAD_TOKEN }}
-          ZAMMAD_URL: ${{ vars.ZAMMAD_URL }}
+          ZAMMAD_URL: ${{ vars.ZAMMAD_URL || 'https://support.tafag.ch' }}
           ZAMMAD_GRUPPE: ${{ vars.ZAMMAD_GRUPPE || 'Users' }}
         run: |
           if [ -z "$PASSWORT" ] && [ -z "$ZAMMAD_TOKEN" ]; then echo "Keine Secrets gesetzt – übersprungen."; exit 0; fi

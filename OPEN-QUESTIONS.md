@@ -18,6 +18,7 @@
 | 9 | Jobs | Aktuelle offene Stellen? Die Ausschreibung von 2021 ist als archiviertes Muster erfasst (live als «nicht mehr ausgeschrieben» erreichbar) – löschen oder aktualisieren? | offen |
 | 10 | Team | Sollen Mitarbeitende mit Foto gezeigt werden (Baustein «Team»)? Zurzeit nur Alex Müri, Geschäftsführer. | offen |
 | 11 | Hosting | Wo wird die Website betrieben (Vorlage: Hostpoint)? Zugang für GitHub Actions, Test-Domain (Vorschlag test.tafag.ch) | offen |
+| 11a | Zammad | API-Token für support.tafag.ch (Secret `ZAMMAD_TOKEN`), Gruppe für neue Tickets (Standard «Users»)? | offen |
 | 12 | CMS | Cloudflare-Worker und GitHub-OAuth-App für die Anmeldung einrichten; Adresse in `public/admin/config.yml` (`base_url`) eintragen | offen |
 | 13 | LinkedIn | Gibt es eine Unternehmensseite (die aktuelle Website verlinkt «Folgen Sie uns»)? | offen |
 | 14 | Rechtliches | Impressum und Datenschutz freigeben; AGB vorhanden? | offen |

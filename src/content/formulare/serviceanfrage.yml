@@ -3,7 +3,8 @@ empfaenger: info@tafag.ch
 betreff: 'Website: Serviceanfrage'
 bestaetigung: Vielen Dank. Ihre Serviceanfrage ist bei uns eingegangen – wir melden uns so schnell wie möglich.
 knopf: Serviceanfrage senden
-ziel: mail
+ziel: zammad
+zammad_dringend: Fahrzeug steht
 felder:
   - { name: anliegen, bezeichnung: Anliegen, typ: select, pflicht: true, optionen: "Störung / Reparatur, Wartung / Service, Revision / Umbau, Ersatzteile, Anderes" }
   - { name: fahrzeug, bezeichnung: Fahrzeug / Gerät, typ: text, pflicht: true }

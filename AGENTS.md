@@ -31,7 +31,7 @@ tragen die Seite. Details in `DESIGN-TOKENS.md`.
 
 Vorlage: SPÄNI-Projekt, gleiche Module (`docs/ANLEITUNG-NEUE-WEBSITE.md`). Harte Vorgaben: 360 px ohne
 seitliches Scrollen, WCAG AA, revDSG (keine Cookies/Tracker), Weiterleitungen alter Adressen (`REDIRECTS.md`).
-Nicht genutzt: Zammad (alle Formulare per Mail), News und Termine (Sammlungen leer, Bereiche blenden sich aus).
+Zammad (support.tafag.ch) für die Serviceanfrage, übrige Formulare per Mail. Nicht genutzt: News und Termine (Sammlungen leer, Bereiche blenden sich aus).
 
 ## 5. Seitenstruktur (Hauptmenü, verbindliche Reihenfolge)
 

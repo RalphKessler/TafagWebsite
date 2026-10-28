@@ -6,3 +6,8 @@ bloecke:
   titel: Serviceanfrage
   text: 'Je genauer die Angaben (Fahrzeug, Fahrzeugnummer, Foto des Typenschilds), desto schneller können wir helfen. Dringend? Rufen Sie uns an: +41 41 859 08 20.'
   formular: serviceanfrage
+- type: aufruf
+  titel: Support-Portal
+  text: Bestehende Tickets einsehen und verfolgen.
+  beschriftung: Zum Support-Portal
+  link: https://support.tafag.ch

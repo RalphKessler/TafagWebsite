@@ -87,7 +87,7 @@ Formulare und `/admin` funktionieren dort nicht (kein PHP). Einmalig: *Settings 
 - Empfänger und erlaubte Felder kommen aus dem CMS und werden beim Build in `/api/formulare.php` geschrieben
   (von aussen nicht lesbar). Nur Felder, die im CMS definiert sind, werden angenommen.
 - Einsendungen werden **ausserhalb des Webroots** gespeichert: `<Webroot>/../formulardaten/<Ordnername>/<formular>.jsonl`.
-- **Zammad** (optional, bei TAFAG zurzeit nicht genutzt): Mit `ziel: zammad` legt `formular.php` über die Zammad-API ein Ticket an. Dazu Variable `ZAMMAD_URL` und Secret `ZAMMAD_TOKEN` setzen. Alle Formulare stehen auf `ziel: mail`.
+- **Zammad** (support.tafag.ch): Die Serviceanfrage steht auf `ziel: zammad`. `formular.php` legt über die Zammad-API ein Ticket an (Kunde per E-Mail, Priorität «3 high» bei «Fahrzeug steht», Fotos als Anhang). Dafür das Secret `ZAMMAD_TOKEN` setzen (optional `ZAMMAD_URL`, Standard `https://support.tafag.ch`, und `ZAMMAD_GRUPPE`, Standard `Users`). Ohne Token oder wenn Zammad nicht erreichbar ist, geht die Anfrage per Mail an info@tafag.ch; gespeichert wird sie in jedem Fall.
 - Liste: `/api/liste.php` mit Passwort, Download als `.xlsx`, hochgeladene Dateien direkt abrufbar.
 - Löschfrist pro Formular (`loeschfrist_tage`, z. B. Bewerbungen 180 Tage): ältere Einträge und Dateien werden automatisch gelöscht. Das Passwort steht als Hash in
   `<Webroot>/../formulardaten/config.php` (setzt der Workflow aus `FORMULAR_PASSWORT`, oder von Hand –
