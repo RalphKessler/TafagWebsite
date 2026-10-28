@@ -118,7 +118,7 @@ Platzhalter («TODO: …», «Bild folgt») erscheinen nur im Test-Build (`PUBLI
 `src/lib/hilfen.ts` sie aus und lässt leere Abschnitte weg.
 
 - [ ] Impressum (UID CHE-100.407.537) und Datenschutz (Stand Oktober 2026) vom Verantwortlichen freigegeben
-- [ ] Pikettnummer bestätigt (`src/data/einstellungen.json`)
+- [x] Pikettnummer bestätigt (`src/data/einstellungen.json`)
 - [ ] Alle Formulare einmal abgeschickt (Mail angekommen, Liste funktioniert)
 - [ ] Weiterleitungen alter Adressen (`src/data/redirects.json`)
 - [ ] Favicon, Logo, Social-Media-Links, E-Mail-Adressen geprüft

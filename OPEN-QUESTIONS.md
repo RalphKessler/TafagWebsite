@@ -2,7 +2,7 @@
 
 | # | Thema | Frage | Stand |
 |---|---|---|---|
-| 1 | Pikett | Ist die Pikettnummer +41 41 859 08 29 (Website 2021) noch gültig? Wird erst nach Bestätigung live angezeigt. | offen |
+| 1 | Pikett | Pikettnummer +41 41 859 08 29 | bestätigt 28.10.2026 |
 | 2 | Telefon | Hauptnummer +41 41 859 08 20 (aktuelle Website) – die alte Nummer 855 25 02 und Fax 855 18 22 entfallen? | angenommen |
 | 3 | Kunden | Kundenliste von 2021 (SBB, RhB, Appenzeller Bahnen, Rigi Bahnen, Zillertalbahn, Siemens, Furrer+Frey, Kummler+Matter, Balfour Beatty, Baresel, Losinger, Elbatech, EBS, Transtec, Schumacher) aktuell? Namen und Logos freigegeben? «AB» = Appenzeller Bahnen, «RIGI» = Rigi Bahnen, «EBS» = ? | offen |
 | 4 | Partner | Partnerliste von 2021 aktuell? Name hinter Logo «Brienz AG» / emwb.ch? Logos freigegeben? | offen |
