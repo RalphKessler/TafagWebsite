@@ -16,6 +16,12 @@ bilder:
   alt: Blauer ZAGRO E-MAXI M WBA vor einem Personenwagen
 - bild: /uploads/zagro/schweiz/e-maxi-m-wba-1.webp
   alt: ZAGRO E-MAXI M WBA von vorne mit Bremsanlage in einer Halle
+- bild: /uploads/zagro/fotos/e-maxi-m-wba-1.webp
+  alt: Roter ZAGRO E-MAXI M WBA vor einem Personenzug auf dem Gleis
+- bild: /uploads/zagro/fotos/e-maxi-m-wba-2.webp
+  alt: Blauer ZAGRO E-MAXI M WBA von der Seite
+- bild: /uploads/zagro/fotos/e-maxi-m-wba-3.webp
+  alt: Roter ZAGRO E-MAXI M WBA in einer Werkstatt vor einem Personenzug
 technische_daten:
 - name: Antriebsart
   wert: batterieelektrisch

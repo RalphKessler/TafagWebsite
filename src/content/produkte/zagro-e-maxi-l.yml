@@ -13,7 +13,24 @@ beschreibung: |
   - Wenden auf der Stelle durch Allradlenkung
   - Einfaches Ankuppeln an der Stirnseite des Waggons, Rangieren in beide Fahrtrichtungen ohne Umsetzen
   - Funkfernsteuerung auf Strasse und Schiene, Fahrzeugüberwachung und Remote-Service
-bild: /uploads/zagro/e-maxi-l.webp
+bild: /uploads/zagro/fotos/e-maxi-l-1.webp
+bilder:
+- bild: /uploads/zagro/fotos/e-maxi-l-2.webp
+  alt: Blauer ZAGRO E-MAXI L mit gelber Kuppelstange auf dem Gleis
+- bild: /uploads/zagro/fotos/e-maxi-l-3.webp
+  alt: Roter ZAGRO E-MAXI L mit Kuppelstange unter einem Dach
+- bild: /uploads/zagro/fotos/e-maxi-l-4.webp
+  alt: ZAGRO E-MAXI L vor einem Güterwagen
+- bild: /uploads/zagro/fotos/e-maxi-l-5.webp
+  alt: ZAGRO E-MAXI L in einer Werkstatt vor einem Personenzug
+- bild: /uploads/zagro/fotos/e-maxi-l-wba-1.webp
+  alt: ZAGRO E-MAXI L mit Waggon-Bremsanlage (WBA), grün, vor einem Tragwagen
+- bild: /uploads/zagro/fotos/e-maxi-l-wba-2.webp
+  alt: ZAGRO E-MAXI L WBA, rot, mit gelber Kuppelstange in einer Halle
+- bild: /uploads/zagro/fotos/e-maxi-l-wba-3.webp
+  alt: ZAGRO E-MAXI L WBA, blau, mit Kuppelstange
+- bild: /uploads/zagro/fotos/e-maxi-l-wba-4.webp
+  alt: ZAGRO E-MAXI L WBA, blau, vor einem Servicefahrzeug der Tafag AG
 technische_daten:
 - name: Max. Anhängelast
   wert: 350 t in der Ebene

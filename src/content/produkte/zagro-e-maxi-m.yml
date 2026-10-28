@@ -16,6 +16,10 @@ bilder:
   alt: Gelber ZAGRO E-MAXI M in einer Werkstatt vor einem roten Triebfahrzeug
 - bild: /uploads/zagro/e-maxi-m.webp
   alt: Blauer ZAGRO E-MAXI M auf dem Gleis vor einem Servicefahrzeug der Tafag AG
+- bild: /uploads/zagro/fotos/e-maxi-m-1.webp
+  alt: Blauer ZAGRO E-MAXI M in einer Halle vor einem Güterwagen
+- bild: /uploads/zagro/fotos/e-maxi-m-2.webp
+  alt: Gelber ZAGRO E-MAXI M mit Kuppelstange auf dem Gleis
 technische_daten:
 - name: Antriebsart
   wert: batterieelektrisch

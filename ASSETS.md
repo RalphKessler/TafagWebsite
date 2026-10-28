@@ -16,6 +16,7 @@ Alle Bilder stammen von der aktuellen Website www.tafag.ch (Oktober 2026), auf 1
 | `module/*.webp` | `3TL.jpeg`, `PKR290.jpeg`, `DTB-Trommelböcke_1.JPG`, `TuBeMo_2.jpg`, `WM30.jpg` | Anbaumodule |
 | `zagro/e-maxi-*.webp`, `zagro/terberg-zagro-rr282.webp` | `ZAGRO E-Maxi M/L/XL.jpg`, `TERBERG-ZAGRO RR 282 6x4 #1.webp` | ZAGRO, Zweiweg – Herstellerbilder? Rechte prüfen |
 | `zagro/schweiz/e-maxi-*-1…4.webp` | Bilder aus den Datenblättern der Tafag AG (Word, Oktober 2026), mit TAFAG-Logo auf den Geräten | Standardgeräte Schweiz |
+| `zagro/fotos/*.webp` | ZIP «ZAGRO E-MAXI» der Tafag AG (28.10.2026), eigene Fotos | Rangiergeräte: E-MINI, E-MAXI M, M WBA, L, L WBA (in der Galerie von L), XL WBA, XL 20 t (bei XL VARIO), XXL |
 | `downloads/zagro/*-datenblatt.pdf` | Datenblätter der Tafag AG (Word → PDF) | Downloads der Standardgeräte |
 | `zweiweg/unimog-oberleitung.webp`, `zweiweg/lkw-oberleitung.webp` | `2_MFL3302.jpg`, `2wege-Fahrzeug-Oberleitungsmontage.jpg` | Zweiweg – evtl. Herstellerbilder (ZWEIWEG), Rechte prüfen |
 | `public/favicon.png`, `apple-touch-icon.png` | neu erstellt: weisses «T» auf Logoblau | Favicon |

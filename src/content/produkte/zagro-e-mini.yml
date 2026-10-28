@@ -25,3 +25,9 @@ technische_daten:
   wert: Funkfernsteuerung
 reihenfolge: 10
 downloads: []
+bild: /uploads/zagro/fotos/e-mini-1.webp
+bilder:
+- bild: /uploads/zagro/fotos/e-mini-2.webp
+  alt: ZAGRO E-MINI am Rad eines Radsatzes, Detail des Antriebs
+- bild: /uploads/zagro/fotos/e-mini-3.webp
+  alt: Antriebsrad des ZAGRO E-MINI an der Schiene

@@ -16,6 +16,14 @@ bilder:
   alt: ZAGRO E-MAXI XL WBA vor einer roten Rangierlok
 - bild: /uploads/zagro/schweiz/e-maxi-xl-wba-4.webp
   alt: ZAGRO E-MAXI XL WBA vor einem Zug aus Schüttgutwagen
+- bild: /uploads/zagro/fotos/e-maxi-xl-wba-1.webp
+  alt: Blauer ZAGRO E-MAXI XL WBA mit gelber Kuppelstange vor einer Halle
+- bild: /uploads/zagro/fotos/e-maxi-xl-wba-2.webp
+  alt: Grüner ZAGRO E-MAXI XL WBA mit Kuppelstangen auf einem Platz
+- bild: /uploads/zagro/fotos/e-maxi-xl-wba-3.webp
+  alt: Grüner ZAGRO E-MAXI XL WBA von der Seite
+- bild: /uploads/zagro/fotos/e-maxi-xl-wba-4.webp
+  alt: Roter ZAGRO E-MAXI XL WBA auf einem Gleis vor einer Werkstatt
 technische_daten:
 - name: Antriebsart
   wert: batterieelektrisch
