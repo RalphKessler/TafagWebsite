@@ -22,8 +22,6 @@ bloecke:
     text: Eine gut ausgestattete Werkstatt.
   - titel: Servicefahrzeug
     text: Ein gut eingerichtetes Servicefahrzeug.
-  - titel: Lohn
-    text: Einen leistungs- und zeitgerechten Lohn.
   hintergrund: grau
 - type: aufruf
   titel: Interessiert?
