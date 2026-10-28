@@ -19,5 +19,6 @@ Alle Bilder stammen von der aktuellen Website www.tafag.ch (Oktober 2026), auf 1
 | `zagro/fotos/*.webp` | ZIP «ZAGRO E-MAXI» der Tafag AG (28.10.2026), eigene Fotos | Rangierfahrzeuge: E-MINI, E-MAXI M, M WBA, L, L WBA (in der Galerie von L), XL WBA, XL 20TO, XXL |
 | `downloads/zagro/*-datenblatt.pdf` | Datenblätter der Tafag AG (Word → PDF) | Downloads der Standardgeräte |
 | `zweiweg/unimog-oberleitung.webp`, `zweiweg/lkw-oberleitung.webp` | `2_MFL3302.jpg`, `2wege-Fahrzeug-Oberleitungsmontage.jpg` | Zweiweg – evtl. Herstellerbilder (ZWEIWEG), Rechte prüfen |
+| `partner/*.png`, `partner/prose.svg` | Logos von zagro-group.com (ZAGRO, ZWEIWEG), SPÄNI-Projekt, prose.one und europowergenerators.com (über web.archive.org, Oktober 2026) | Partnerseite, Startseite – Verwendung vom Kunden gewünscht |
 | `public/favicon.png`, `apple-touch-icon.png` | neu erstellt: weisses «T» auf Logoblau | Favicon |
 | `public/og-bild.png` | Ausschnitt aus `vtms-db-793` | Vorschaubild für Social Media |

@@ -5,7 +5,7 @@
 | 1 | Pikett | Pikettnummer +41 41 859 08 29 | bestätigt 28.10.2026 |
 | 2 | Telefon | Hauptnummer +41 41 859 08 20 (aktuelle Website) – die alte Nummer 855 25 02 und Fax 855 18 22 entfallen? | angenommen |
 | 3 | Kunden | Kundenliste von 2021 (SBB, RhB, Appenzeller Bahnen, Rigi Bahnen, Zillertalbahn, Siemens, Furrer+Frey, Kummler+Matter, Balfour Beatty, Baresel, Losinger, Elbatech, EBS, Transtec, Schumacher) aktuell? Namen und Logos freigegeben? «AB» = Appenzeller Bahnen, «RIGI» = Rigi Bahnen, «EBS» = ? | offen |
-| 4 | Partner | Partnerliste von 2021 aktuell? Name hinter Logo «Brienz AG» / emwb.ch? Logos freigegeben? | offen |
+| 4 | Partner | Liste mit Logos und Links vom Kunden (28.10.2026): ZAGRO Group, ZWEIWEG, SPÄNI, PROSE, Europower. Kurztexte für ZWEIWEG, SPÄNI, PROSE und Europower gewünscht? | offen |
 | 5 | Hebebühne / Kran, Module | Beschreibungen und technische Daten für 3TL Hebebühne, PKR290, Trommelböcke, TuBeMo, WM30 und TERBERG-ZAGRO RR 282 | offen |
 | 6 | eVTms | Wofür steht das «e» (elektrisch/Batterie)? Ist der Text von 2021 (diesel-elektrisch mit Partikelfilter) noch aktuell? Technische Daten (Abmessungen, Gewicht, Spurweiten, Leistung), Datenblätter als PDF | offen |
 | 6a | Notstromversorgung | Welche Produkte bzw. Leistungen gehören dazu? Texte, Daten und Bilder (Gruppe ist angelegt, zeigt bis dahin «Beratung und Offerte») | offen |

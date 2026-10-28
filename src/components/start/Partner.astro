@@ -21,7 +21,11 @@ const eintraege = block && block.type === 'logos' ? block.eintraege.filter((e) =
         <ul class="reihe">
           {eintraege.map((e) => (
             <li>
-              {e.logo ? <img src={e.logo} alt={e.name} loading="lazy" decoding="async" height="48" /> : <span class="wortmarke">{e.name}</span>}
+              {e.link ? (
+                <a href={e.link} target="_blank" rel="noopener">
+                  {e.logo ? <img src={e.logo} alt={e.name} loading="lazy" decoding="async" height="48" /> : <span class="wortmarke">{e.name}</span>}
+                </a>
+              ) : e.logo ? <img src={e.logo} alt={e.name} loading="lazy" decoding="async" height="48" /> : <span class="wortmarke">{e.name}</span>}
             </li>
           ))}
         </ul>
@@ -36,7 +40,9 @@ const eintraege = block && block.type === 'logos' ? block.eintraege.filter((e) =
   .kopf h2 { margin: 0; }
   .reihe { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); border-left: 1px solid var(--grau-200); }
   .reihe li { min-height: 88px; display: flex; align-items: center; justify-content: center; padding: 1rem; border-right: 1px solid var(--grau-200); text-align: center; }
-  .reihe img { max-height: 48px; max-width: 100%; width: auto; height: auto; object-fit: contain; }
+  .reihe a { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 56px; text-decoration: none; }
+  .reihe a:hover img { opacity: .75; }
+  .reihe img { max-height: 44px; max-width: 80%; width: auto; height: auto; object-fit: contain; }
   .wortmarke { font-size: 1.15rem; font-weight: 750; letter-spacing: -.01em; color: var(--navy); line-height: 1.15; }
   @media (max-width: 520px) { .reihe { grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--grau-200); } .reihe li { border-bottom: 1px solid var(--grau-200); } }
 </style>

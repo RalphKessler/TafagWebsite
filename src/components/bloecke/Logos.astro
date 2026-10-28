@@ -33,7 +33,7 @@ const { titel, text, eintraege } = Astro.props;
 <style>
   .kopf { max-width: 48rem; margin-bottom: 2.25rem; }
   .kopf .lead :global(p) { margin: 0; }
-  .raster { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--grau-200); border-left: 1px solid var(--grau-200); }
+  .raster { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); border-top: 1px solid var(--grau-200); border-left: 1px solid var(--grau-200); }
   .zelle { position: relative; padding: 1.5rem 1.25rem 1.6rem; border-right: 1px solid var(--grau-200); border-bottom: 1px solid var(--grau-200); background: var(--weiss); }
   .zelle.verlinkt:hover { box-shadow: inset 0 3px 0 var(--akzent); }
   .marke { height: 64px; display: flex; align-items: center; margin-bottom: 1.1rem; }
@@ -46,6 +46,5 @@ const { titel, text, eintraege } = Astro.props;
   .zelle:has(a:focus-visible) { outline: 3px solid var(--akzent); outline-offset: -3px; }
   .zelle.verlinkt:hover h3 a { color: var(--akzent-text); }
   p { color: var(--text-2); margin: 0; font-size: .95rem; }
-  @media (max-width: 1000px) { .raster { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 520px) { .raster { grid-template-columns: 1fr; } }
 </style>
