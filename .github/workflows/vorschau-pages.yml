@@ -36,7 +36,7 @@ jobs:
         run: npx astro build
       - name: Für Pages aufbereiten
         run: |
-          rm -rf dist/api dist/admin dist/.htaccess
+          rm -rf dist/api dist/admin dist/.htaccess dist/sitemap.xml
           node scripts/vorschau-relativ.mjs dist
       - uses: actions/upload-pages-artifact@v3
         with:

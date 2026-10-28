@@ -51,6 +51,7 @@ const ogBild = new URL(bild ?? '/og-bild.png', Astro.site);
   </head>
   <body data-marke={marke}>
     <a class="skip" href="#inhalt">{t(sprache, 'skip')}</a>
+    {noindex && <div class="testversion" role="note">{t(sprache, 'testversion')}</div>}
     <Kopf sprache={sprache} pfad={pfad} />
     <main id="inhalt">
       <slot />

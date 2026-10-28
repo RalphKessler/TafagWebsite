@@ -37,6 +37,9 @@ p, ul, ol { margin: 0 0 1em; }
 .skip:focus { left: .5rem; }
 .klein { font-size: .875rem; }
 
+/* Hinweisbalken auf der Test-Website (nur bei PUBLIC_NOINDEX=true) */
+.testversion { background: repeating-linear-gradient(-45deg, #ffcb05 0 14px, #ffd83d 14px 28px); color: #121c2e; text-align: center; font-weight: 700; font-size: .875rem; padding: .4rem 1rem; }
+
 /* Offene Punkte gut sichtbar markieren (nur bis zur Abnahme) */
 .todo { border-left: 4px solid #d9a400; background: #fff7d1; color: #3d3000; padding: .5rem .75rem; font-size: .95rem; border-radius: 0 6px 6px 0; }
 
