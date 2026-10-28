@@ -10,7 +10,7 @@ import { ohneTodo } from '../../../lib/hilfen';
 export const getStaticPaths = () => sprachen.map((lang) => ({ params: { lang } }));
 const sprache = Astro.params.lang as Sprache;
 const produkte = await alleProdukte();
-const einleitung = 'eVTms Schienenfahrzeuge, Hebebühnen und Krane, Module, Rangiergeräte, Zweiwegefahrzeuge, Notstromversorgung und Sonderlösungen für die Bahninfrastruktur. Kein Webshop – Anfrage statt Warenkorb.';
+const einleitung = 'eVTms Schienenfahrzeuge, Hebebühnen und Krane, Module, Rangierfahrzeuge, Zweiwegefahrzeuge, Notstromversorgung und Sonderlösungen für die Bahninfrastruktur. Kein Webshop – Anfrage statt Warenkorb.';
 ---
 
 <Basis titel={t(sprache, 'produkte')} beschreibung={einleitung} sprache={sprache}>

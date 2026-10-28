@@ -12,6 +12,7 @@
 | 7a | ZAGRO | Fotos fehlen noch für E-MAXI S und XL Hybrid; Datenblätter als PDF auch für die übrigen Modelle? | offen |
 | 7b | ZAGRO | Ordner «E-Maxi XL 20t – bis 1000 t»: Fotos vorerst beim E-MAXI XL VARIO (ZAGRO: bis 1000 t, 7,5–15 t). Richtig, oder eigenes Produkt «E-MAXI XL 20 t»? | offen |
 | 7c | ZAGRO | Abweichende Lasten: Ordner XXL «bis 1700 t» (ZAGRO-Website: 2000 t); Ordner XL WBA «bis 700 t» (Datenblatt Schweiz: 800 t). Welche Werte gelten? | offen |
+| 7e | Rangierfahrzeuge | Unimog-Rangierer: Foto zeigt vorerst den Zweiwege-Unimog auf dem Tieflader – eigene Fotos eines Unimog-Rangierers? TERBERG/ZAGRO Truck: Bild zeigt RR 282 6x4, Text beschreibt RR283 (2800 t) – passt das, Daten zum RR 282? | offen |
 | 7d | ZAGRO | E-MAXI L WBA: Fotos zurzeit in der Galerie des E-MAXI L. Eigenes Produkt mit Datenblatt gewünscht? | offen |
 | 7 | Bilder | Bilder für Container-Module, Partikelfilter, Montagehilfen und Installationszug in guter Auflösung | offen |
 | 8 | Firmengeschichte | Gründer, Gründungsort, weitere Meilensteine (Generalvertretung ZAGRO seit?) | offen |

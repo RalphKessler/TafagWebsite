@@ -1,0 +1,39 @@
+titel: TERBERG/ZAGRO Truck
+gruppe: rangierfahrzeuge
+kategorie: TERBERG/ZAGRO Truck
+kurz: Zweiwege-Rangierfahrzeug für Anhängelasten bis 2800 t – zu 90 % aus Standardkomponenten.
+beschreibung: |
+  Das Zweiwegefahrzeug TERBERG/ZAGRO Truck RR283 ist für Anhängelasten bis 2800 t bzw. 100 Achsen konzipiert. Mit der Verwendung von Grossserienteilen entstand ein Sonderfahrzeug, das zu 90 % aus Standardkomponenten besteht. Es vereint die Erfahrung von TERBERG in der Fahrzeugtechnik und von ZAGRO in der Bahntechnik. Angaben gemäss Hersteller; die Tafag AG ist Generalvertretung der ZAGRO Group.
+
+  ### Bewährter Antrieb
+
+  Zwei angetriebene Achsen, ausgelegt auf die geforderte Schienenspurweite, sorgen für hohe Traktion. Die vordere Lenkachse hat eine deutlich grössere Spurweite als die Antriebsachsen – das ergibt einen engen Wendekreis von 13,5 m.
+
+  ### Hochleistungs-Waggonbremsanlage
+
+  Schon bei Minimaldrehzahl des Dieselmotors erreicht der Verdichter die maximale Förderleistung.
+
+  ### Service und Varianten
+
+  Kippbare Fahrerkabine und leicht zu öffnende GFK-Abdeckungen erleichtern die Wartung. Mit Kofferaufbau wird das dreiachsige Fahrzeug zum kompakten Hilfszug mit Mannschaftskabine für bis zu fünf Personen und Geräteabteil für Rettungshydraulik.
+bild: /uploads/zagro/terberg-zagro-rr282.webp
+technische_daten:
+- name: Max. Anhängelast
+  wert: bis 2800 t bzw. 100 Achsen (RR283)
+- name: Antrieb
+  wert: Diesel, zwei angetriebene Achsen auf Schienenspurweite
+- name: Wendekreis
+  wert: 13,5 m
+- name: Bremse
+  wert: Hochleistungs-Waggonbremsanlage
+- name: Zulassung
+  wert: abgenommen nach § 32 EBO (Deutschland)
+- name: Variante
+  wert: Hilfszug mit Kofferaufbau
+modelle:
+- name: RR 282 6x4
+  text: dreiachsige Ausführung (Bild)
+- name: RR283
+  text: für Anhängelasten bis 2800 t
+reihenfolge: 21
+downloads: []

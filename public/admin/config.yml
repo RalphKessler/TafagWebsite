@@ -403,7 +403,7 @@ collections:
           - { label: 'eVTms Schienenfahrzeug', value: evtms }
           - { label: 'Hebebühne / Kran', value: hebebuehne-kran }
           - { label: 'Module', value: module }
-          - { label: 'Rangiergeräte', value: rangiergeraete }
+          - { label: 'Rangierfahrzeuge', value: rangierfahrzeuge }
           - { label: 'Zweiweg', value: zweiweg }
           - { label: 'Notstromversorgung', value: notstromversorgung }
           - { label: 'Sonderlösungen', value: sonderloesungen }

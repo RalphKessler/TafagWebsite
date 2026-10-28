@@ -1,0 +1,36 @@
+titel: ZAGRO Unimog-Rangierer
+gruppe: rangierfahrzeuge
+kategorie: Unimog-Rangierer
+kurz: Leistungsstark und wirtschaftlich auf Strasse und Schiene – Unimog-Zweiwegefahrzeug für Anhängelasten bis 1000 t.
+beschreibung: |
+  Der Mehrfachnutzen und die Flexibilität der ZAGRO Zweiwegefahrzeuge beruhen auf dem wechselweisen Einsatz auf Strasse und Schiene. Durch bedarfsgerechte Aufbauten kann der Unimog flexibel eingesetzt werden, zum Beispiel für Rangier-, Reparatur- und Instandhaltungsarbeiten oder für die Bergung havarierter Züge. Angaben gemäss Hersteller; die Tafag AG ist Generalvertretung der ZAGRO Group.
+
+  ### Schienenführung mit Systemachse
+
+  Die patentierte Schienenführungseinrichtung zeichnet sich durch hervorragende Laufeigenschaften aus. Das Führungsrad ist nah am Gummirad positioniert und sorgt für perfekte Spurtreue – ruhig und entgleisungssicher.
+
+  ### Waggonbremsanlage bis 1000 Tonnen
+
+  Beim Einsatz als Rangierfahrzeug wird der Unimog mit einer Waggonbremsanlage für bis 1000 t Anhängelast ausgestattet: leistungsstarke Kompressoren, Waggonvorrangfüllung, elektronisches Führerbremsventil mit Füllstossangleichung, Zweikammerlufttrockner, digitale Brems- und Lösedruckanzeige sowie automatische Betriebsstundenüberwachung.
+
+  ### Bedienung und Ausrüstung
+
+  - Zentrales LCD-Bedienpult mit Diagnosesystem auf CAN-Bus-Basis, Fernwartung über GSM
+  - Funkfernsteuerung für den Ein-Mann-Rangiereinsatz (Anforderungsklasse AK4 bis AK6)
+  - Kuppelstangen mechanisch, automatisch, mit Hochschwenkeinrichtung, mit Dämpfung oder kundenspezifisch
+  - Modulares Baukastensystem: Waggonbremsanlage, Lufttrockner, Sandstreuer, Hemmschuhhalter, Ersatzradhalterung – auch nachrüstbar
+  - Bahntechnische Ausrüstung nach den geltenden Vorschriften: Signallicht- und Warnanlage, Drucklufthorn, Glocke, Zugsicherung, Sicherheitsfahrschaltung, Zugbahnfunk, Not-Aus, Erdungseinrichtung, Gleisstromüberbrückung
+bild: /uploads/fahrzeuge/unimog-transport.webp
+technische_daten:
+- name: Max. Anhängelast
+  wert: bis 1000 t (mit Waggonbremsanlage)
+- name: Basisfahrzeug
+  wert: Mercedes-Benz Unimog
+- name: Schienenführung
+  wert: patentierte Systemachse von ZAGRO
+- name: Steuerung
+  wert: zentrales LCD-Bedienpult, Funkfernsteuerung AK4 bis AK6
+- name: Zulassung
+  wert: Abnahme nach § 32 EBO (Deutschland) möglich
+reihenfolge: 20
+downloads: []

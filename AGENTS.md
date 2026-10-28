@@ -13,7 +13,7 @@ Unabhängiges Produktionsunternehmen: Fahrzeuge für Schiene und Strasse, Maschi
 Generalvertretung der ZAGRO Group.
 
 - **Produkte:** eVTms Schienenfahrzeug, Hebebühne / Kran (3TL, PKR290), Module (Trommelböcke, TuBeMo, WM30,
-  Container-Module), Rangiergeräte (ZAGRO E-MAXI M/L/XL), Zweiweg (Unimog, LKW, TERBERG-ZAGRO RR 282),
+  Container-Module), Rangierfahrzeuge (ZAGRO Elektrorangierer E-MINI bis E-MAXI XXL, Unimog-Rangierer, TERBERG/ZAGRO Truck), Zweiweg (LKW),
   Notstromversorgung (Inhalte folgen), Sonderlösungen (Montagehilfen, Partikelfilter).
 - **Dienstleistungen:** Engineering, Revisionen & Umbau, Service & Inbetriebnahme, Pikettdienst 24 h.
 - **Zielgruppen:** Bahnen, Fahrleitungsbau, Bauunternehmen, Tunnelbau.
@@ -36,7 +36,7 @@ Zammad (support.tafag.ch) für die Serviceanfrage, übrige Formulare per Mail. N
 ## 5. Seitenstruktur (Hauptmenü, verbindliche Reihenfolge)
 
 1. Startseite
-2. Produkte – eVTms Schienenfahrzeug, Hebebühne / Kran, Module, Rangiergeräte, Zweiweg, Notstromversorgung, Sonderlösungen (Reihenfolge vom Kunden, 28.10.2026)
+2. Produkte – eVTms Schienenfahrzeug, Hebebühne / Kran, Module, Rangierfahrzeuge, Zweiweg, Notstromversorgung, Sonderlösungen (Reihenfolge vom Kunden, 28.10.2026; «Rangierfahrzeuge» wie bei ZAGRO)
 3. Dienstleistungen – Engineering, Revisionen & Umbau, Service & Inbetriebnahme, Pikettdienst, Serviceanfrage
 4. Referenzen – Installationszug Gotthard-Basistunnel, Kunden
 5. Über uns – Leitbild, Firmengeschichte, Partner, Standort & Anfahrt

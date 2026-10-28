@@ -21,18 +21,18 @@
       ]
     },
     {
-      "titel": "Zweiweg & Rangiergeräte",
-      "link": "/de/produkte/zweiweg/",
-      "bild": "/uploads/zweiweg/unimog-oberleitung.webp",
-      "text": "Zweiwegefahrzeuge auf Unimog- und LKW-Basis sowie ZAGRO Rangiergeräte – wir bringen Fahrzeuge auf die Schiene.",
+      "titel": "Rangierfahrzeuge & Zweiweg",
+      "link": "/de/produkte/rangierfahrzeuge/",
+      "bild": "/uploads/zagro/schweiz/e-maxi-m-wba-3.webp",
+      "text": "ZAGRO Elektrorangierer, Unimog-Rangierer und TERBERG/ZAGRO Truck sowie Zweiwegefahrzeuge auf LKW-Basis.",
       "punkte": [
+        {
+          "titel": "Rangierfahrzeuge",
+          "link": "/de/produkte/rangierfahrzeuge/"
+        },
         {
           "titel": "Zweiweg",
           "link": "/de/produkte/zweiweg/"
-        },
-        {
-          "titel": "ZAGRO Elektrorangierer",
-          "link": "/de/produkte/rangiergeraete/"
         }
       ]
     },
