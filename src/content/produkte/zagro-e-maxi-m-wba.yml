@@ -1,0 +1,51 @@
+titel: ZAGRO E-MAXI M WBA
+gruppe: rangiergeraete
+kategorie: Standardgerät Schweiz
+kurz: Mit Waggon-Bremsanlage und Zusatzballast für Anhängelasten bis 300 t – Standardgerät in Schweizer Ausführung.
+beschreibung: |
+  Der ZAGRO E-MAXI M WBA ist ein kompakter, batterieelektrischer Rangierer für das effiziente Bewegen von Schienenfahrzeugen. Dank Vierradantrieb und patentierter Allradlenkung eignet er sich besonders für Rangierarbeiten auf engem Raum.
+
+  Ausgestattet mit einer Waggon-Bremsanlage (WBA) und zusätzlichem Ballastgewicht für eine höhere Anpresskraft der Antriebsräder, kann er für Anhängelasten von bis zu 300 Tonnen eingesetzt werden.
+
+  Eines von drei Standardgeräten, die die Tafag AG als Generalvertretung der ZAGRO Group in Schweizer Ausführung anbietet. Das Datenblatt mit allen Angaben steht unten zum Download bereit.
+bild: /uploads/zagro/schweiz/e-maxi-m-wba-3.webp
+bilder:
+- bild: /uploads/zagro/schweiz/e-maxi-m-wba-2.webp
+  alt: Roter ZAGRO E-MAXI M WBA vor einem Personenzug
+- bild: /uploads/zagro/schweiz/e-maxi-m-wba-4.webp
+  alt: Blauer ZAGRO E-MAXI M WBA vor einem Personenwagen
+- bild: /uploads/zagro/schweiz/e-maxi-m-wba-1.webp
+  alt: ZAGRO E-MAXI M WBA von vorne mit Bremsanlage in einer Halle
+technische_daten:
+- name: Antriebsart
+  wert: batterieelektrisch
+- name: Max. Anhängelast
+  wert: 300 t in der Ebene und bei trockenen Verhältnissen
+- name: Zugkraft am Haken
+  wert: ca. 18 kN
+- name: Abmessungen (L × B × H)
+  wert: ca. 2200 × 2110/2170 × 3050 mm
+- name: Eigengewicht
+  wert: ca. 6,5 t
+- name: Spurweiten
+  wert: Normalspur 1435 mm, Meterspur 1000 mm
+- name: Schienenfahreinrichtung
+  wert: Hydraulisch heb- und senkbare Schienenachse vorne und hinten, Betätigung über Funkfernsteuerung
+- name: Antrieb
+  wert: Vierradantrieb über Vollgummiräder, je ein Elektromotor à 5 kW pro Antriebsrad
+- name: Lenkung
+  wert: 'Reifenschonende Allradlenkung: Die vier Antriebsräder lassen sich per Joystick auf der Funkfernsteuerung um bis zu 130° schwenken. Je nach Modell: Drehen auf der Stelle und Diagonalfahrt, optional Sternfahrt sowie separate Vorder- oder Hinterradlenkung.'
+- name: Batterie
+  wert: 80 V / 375 Ah; Blei-Säure-Batterie mit integrierter Aquamatik zum Nachfüllen des Batteriewassers; Ladegerät mit Anschlussdose CEE 400 V/16 A fest im Fahrzeug verbaut
+- name: Bremse
+  wert: Waggon-Bremsanlage (WBA)
+- name: Geschwindigkeit ohne Last
+  wert: 0 bis max. 6 km/h, proportional regelbar über Funkfernsteuerung
+- name: Geschwindigkeit mit Last
+  wert: 0 bis max. 3 km/h, proportional regelbar über Funkfernsteuerung; Wahl zwischen Fahrt mit Last und Leerfahrt über abziehbaren Schlüssel auf der Funkfernsteuerung
+- name: Steuerung
+  wert: Funkfernsteuerung mit proportionalen Joysticks für Lenkung, Fahrgeschwindigkeit und Bremse; Zweihandbedienung für sicherheitsrelevante Aktionen (z. B. Schienenachsen heben/senken, Waggon-Bremsanlage aktivieren, optionale automatische Kupplung öffnen)
+downloads:
+- datei: /uploads/downloads/zagro/zagro-e-maxi-m-wba-datenblatt.pdf
+  bezeichnung: Datenblatt ZAGRO E-MAXI M WBA (PDF)
+reihenfolge: 2

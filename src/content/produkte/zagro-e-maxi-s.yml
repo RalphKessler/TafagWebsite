@@ -1,0 +1,32 @@
+titel: ZAGRO E-MAXI S
+gruppe: rangiergeraete
+kategorie: ZAGRO Programm
+kurz: Elektrorangierer für Anhängelasten bis 100 t, mit Zweiradantrieb.
+beschreibung: |
+  Aus dem Programm der ZAGRO Group – Angaben gemäss Hersteller. Die Tafag AG ist Generalvertretung der ZAGRO Group und berät Sie zur passenden Ausführung für Ihren Einsatz.
+
+  ### Vorteile der E-MAXI-Baureihe
+
+  - Für freiliegende und niveauebene Gleisanlagen
+  - Stufenlos regelbarer Elektroantrieb, zweistufig umschaltbare Geschwindigkeit: 0–3 km/h, 0–6 km/h
+  - Emissionsfrei – ideal für geschlossene Räume
+  - Wenden auf der Stelle durch Allradlenkung
+  - Einfaches Ankuppeln an der Stirnseite des Waggons, Rangieren in beide Fahrtrichtungen ohne Umsetzen
+  - Funkfernsteuerung auf Strasse und Schiene, Fahrzeugüberwachung und Remote-Service
+technische_daten:
+- name: Max. Anhängelast
+  wert: 100 t in der Ebene
+- name: Abmessungen (L × B × H)
+  wert: ca. 2200 × 2110/2170 × 1190 mm
+- name: Gesamtgewicht
+  wert: 4300 kg
+- name: Spurweiten
+  wert: 1000 mm bis 1676 mm
+- name: Antriebsart
+  wert: Batterie
+- name: Antrieb und Lenkung
+  wert: Zweiradantrieb / Zweiradlenkung
+- name: Häufige Konfiguration
+  wert: verschiedene Kupplungssysteme (z. B. Schaku), Höhenverstellung des Kuppelsystems, mechanische Trittroste
+reihenfolge: 11
+downloads: []

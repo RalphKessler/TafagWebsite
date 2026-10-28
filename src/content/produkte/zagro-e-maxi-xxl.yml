@@ -1,0 +1,27 @@
+titel: ZAGRO E-MAXI XXL
+gruppe: rangiergeraete
+kategorie: ZAGRO Programm
+kurz: Der grösste Elektrorangierer der Baureihe – für Anhängelasten bis 2000 t.
+beschreibung: |
+  Aus dem Programm der ZAGRO Group – Angaben gemäss Hersteller. Die Tafag AG ist Generalvertretung der ZAGRO Group und berät Sie zur passenden Ausführung für Ihren Einsatz.
+technische_daten:
+- name: Max. Anhängelast
+  wert: 2000 t in der Ebene
+- name: Abmessungen (L × B × H)
+  wert: kurzer Radstand ca. 4300 × 2500 × 3300 mm, langer Radstand ca. 5070 × 2500 × 3300 mm
+- name: Gesamtgewicht
+  wert: 25 t / 27,5 t
+- name: Spurweiten
+  wert: 1067 mm bis 1676 mm
+- name: Max. Geschwindigkeit
+  wert: 15 km/h auf Schiene und Strasse
+- name: Antrieb
+  wert: stufenlos regelbarer Elektroantrieb, 4 Antriebsmotoren mit je 80 V / 20 kW
+- name: Energie
+  wert: 2 Bleibatterien mit je 1085 Ah / 80 V, Stromerzeuger 40 kW
+- name: Bremse
+  wert: Waggonbremsanlage, Schraubenverdichter 960 l/min bei 5,1/10 bar (auch TA11 möglich)
+- name: Ausstattungsvarianten
+  wert: Antrieb Batterie oder Hybrid; Allradlenkung (Drehen auf der Stelle, Diagonalfahrt, Vorder- oder Hinterradlenkung, Sternfahrt); moderne Kabine; Aufgleiskameras; Pendelachse
+reihenfolge: 16
+downloads: []

@@ -9,6 +9,7 @@
 | 5 | Hebebühne / Kran, Module | Beschreibungen und technische Daten für 3TL Hebebühne, PKR290, Trommelböcke, TuBeMo, WM30 und TERBERG-ZAGRO RR 282 | offen |
 | 6 | eVTms | Wofür steht das «e» (elektrisch/Batterie)? Ist der Text von 2021 (diesel-elektrisch mit Partikelfilter) noch aktuell? Technische Daten (Abmessungen, Gewicht, Spurweiten, Leistung), Datenblätter als PDF | offen |
 | 6a | Notstromversorgung | Welche Produkte bzw. Leistungen gehören dazu? Texte, Daten und Bilder (Gruppe ist angelegt, zeigt bis dahin «Beratung und Offerte») | offen |
+| 7a | ZAGRO | Fotos für E-MINI, E-MAXI S, XL VARIO, XL Hybrid, XXL (Herstellerbilder nur mit Erlaubnis von ZAGRO); Datenblätter als PDF auch für diese Modelle? | offen |
 | 7 | Bilder | Bilder für Container-Module, Partikelfilter, Montagehilfen und Installationszug in guter Auflösung | offen |
 | 8 | Firmengeschichte | Gründer, Gründungsort, weitere Meilensteine (Generalvertretung ZAGRO seit?) | offen |
 | 9 | Jobs | Aktuelle offene Stellen? Die Ausschreibung von 2021 ist als archiviertes Muster erfasst (live als «nicht mehr ausgeschrieben» erreichbar) – löschen oder aktualisieren? | offen |

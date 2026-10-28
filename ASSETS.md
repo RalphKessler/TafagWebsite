@@ -15,6 +15,8 @@ Alle Bilder stammen von der aktuellen Website www.tafag.ch (Oktober 2026), auf 1
 | `fahrzeuge/hybridfahrzeug.webp` | `spani-tafag-hybridfahrzeug.jpg` | Referenzen |
 | `module/*.webp` | `3TL.jpeg`, `PKR290.jpeg`, `DTB-Trommelböcke_1.JPG`, `TuBeMo_2.jpg`, `WM30.jpg` | Anbaumodule |
 | `zagro/e-maxi-*.webp`, `zagro/terberg-zagro-rr282.webp` | `ZAGRO E-Maxi M/L/XL.jpg`, `TERBERG-ZAGRO RR 282 6x4 #1.webp` | ZAGRO, Zweiweg – Herstellerbilder? Rechte prüfen |
+| `zagro/schweiz/e-maxi-*-1…4.webp` | Bilder aus den Datenblättern der Tafag AG (Word, Oktober 2026), mit TAFAG-Logo auf den Geräten | Standardgeräte Schweiz |
+| `downloads/zagro/*-datenblatt.pdf` | Datenblätter der Tafag AG (Word → PDF) | Downloads der Standardgeräte |
 | `zweiweg/unimog-oberleitung.webp`, `zweiweg/lkw-oberleitung.webp` | `2_MFL3302.jpg`, `2wege-Fahrzeug-Oberleitungsmontage.jpg` | Zweiweg – evtl. Herstellerbilder (ZWEIWEG), Rechte prüfen |
 | `public/favicon.png`, `apple-touch-icon.png` | neu erstellt: weisses «T» auf Logoblau | Favicon |
 | `public/og-bild.png` | Ausschnitt aus `vtms-db-793` | Vorschaubild für Social Media |

@@ -1,0 +1,27 @@
+titel: ZAGRO E-MINI
+gruppe: rangiergeraete
+kategorie: ZAGRO Programm
+kurz: Elektrischer Kleinrangierer für Verschiebelasten bis 50 t.
+beschreibung: |
+  Aus dem Programm der ZAGRO Group – Angaben gemäss Hersteller. Die Tafag AG ist Generalvertretung der ZAGRO Group und berät Sie zur passenden Ausführung für Ihren Einsatz.
+technische_daten:
+- name: Verschiebeleistung
+  wert: bis 50 t in der Ebene
+- name: Abmessungen (T × B × H)
+  wert: ca. 910 × 1120 × 320 mm (1460 mm inkl. Deichsel)
+- name: Raddurchmesser
+  wert: 500 mm bis 1000 mm
+- name: Gesamtgewicht
+  wert: 170 kg
+- name: Geschwindigkeit
+  wert: 3 km/h
+- name: Antrieb
+  wert: stufenlos regelbarer Elektroantrieb, 48 V
+- name: Batterie
+  wert: Lithium-Ionen 48 V / 60 Ah
+- name: Einsatz
+  wert: Verschub und Bremsen auf niveauebenen und aufgeständerten Gleisen
+- name: Steuerung
+  wert: Funkfernsteuerung
+reihenfolge: 10
+downloads: []

@@ -1,0 +1,23 @@
+titel: ZAGRO E-MAXI XL Hybrid
+gruppe: rangiergeraete
+kategorie: ZAGRO Programm
+kurz: Hybrid-Rangierer mit Generator für Anhängelasten bis 700 t.
+beschreibung: |
+  Aus dem Programm der ZAGRO Group – Angaben gemäss Hersteller. Die Tafag AG ist Generalvertretung der ZAGRO Group und berät Sie zur passenden Ausführung für Ihren Einsatz.
+technische_daten:
+- name: Max. Anhängelast
+  wert: 700 t in der Ebene
+- name: Abmessungen (L × B × H)
+  wert: ca. 4230 × 2320 × 2820 mm
+- name: Gesamtgewicht
+  wert: 13–15 t
+- name: Spurweiten
+  wert: 1000 mm bis 1676 mm
+- name: Antriebsart
+  wert: Hybrid, Generator 18 kW
+- name: Antrieb und Lenkung
+  wert: Vierradantrieb / Vierradlenkung
+- name: Häufige Konfiguration
+  wert: verschiedene Kupplungssysteme, Höhenverstellung, UIC-Pufferanlage, Waggonbremsanlage, grossräumige, geräuschoptimierte Fahrerkabine
+reihenfolge: 15
+downloads: []

@@ -1,22 +1,49 @@
 titel: ZAGRO E-MAXI M
 gruppe: rangiergeraete
-kategorie: ZAGRO Elektrorangierer
-kurz: Elektrorangierer für Anhängelasten bis 200 t in der Ebene.
+kategorie: Standardgerät Schweiz
+kurz: Kompakter, batterieelektrischer Rangierer für Anhängelasten bis 200 t – Standardgerät in Schweizer Ausführung.
 beschreibung: |
-  Batteriebetriebener Elektrorangierer der ZAGRO Group mit Vierradantrieb und Vierradlenkung. Die Tafag AG ist Generalvertretung der ZAGRO Group.
-bild: /uploads/zagro/e-maxi-m.webp
+  Der ZAGRO E-MAXI M ist ein kompakter, batterieelektrischer Rangierer für das effiziente Bewegen von Schienenfahrzeugen. Dank Vierradantrieb und patentierter Allradlenkung eignet er sich besonders für Rangierarbeiten auf engem Raum und kann für Anhängelasten von bis zu 200 Tonnen eingesetzt werden.
+
+  Eines von drei Standardgeräten, die die Tafag AG als Generalvertretung der ZAGRO Group in Schweizer Ausführung anbietet. Das Datenblatt mit allen Angaben steht unten zum Download bereit.
+bild: /uploads/zagro/schweiz/e-maxi-m-1.webp
+bilder:
+- bild: /uploads/zagro/schweiz/e-maxi-m-2.webp
+  alt: ZAGRO E-MAXI M von vorne mit Kupplung unter einem Güterwagen
+- bild: /uploads/zagro/schweiz/e-maxi-m-3.webp
+  alt: Grüner ZAGRO E-MAXI M mit gelber Kuppelstange auf dem Gleis
+- bild: /uploads/zagro/schweiz/e-maxi-m-4.webp
+  alt: Gelber ZAGRO E-MAXI M in einer Werkstatt vor einem roten Triebfahrzeug
+- bild: /uploads/zagro/e-maxi-m.webp
+  alt: Blauer ZAGRO E-MAXI M auf dem Gleis vor einem Servicefahrzeug der Tafag AG
 technische_daten:
+- name: Antriebsart
+  wert: batterieelektrisch
 - name: Max. Anhängelast
-  wert: 200 t in der Ebene
+  wert: 200 t in der Ebene und bei trockenen Verhältnissen
+- name: Zugkraft am Haken
+  wert: ca. 15 kN
 - name: Abmessungen (L × B × H)
   wert: ca. 2200 × 2110/2170 × 1190 mm
-- name: Gesamtgewicht
-  wert: 4500 kg
+- name: Eigengewicht
+  wert: ca. 4,5 t
 - name: Spurweiten
-  wert: 1000 mm bis 1676 mm
-- name: Antriebsart
-  wert: Batterie
-- name: Antrieb und Lenkung
-  wert: Vierradantrieb / Vierradlenkung
+  wert: Normalspur 1435 mm, Meterspur 1000 mm
+- name: Schienenfahreinrichtung
+  wert: Hydraulische Spurführung vor jedem Antriebsrad, Betätigung über Funkfernsteuerung
+- name: Antrieb
+  wert: Vierradantrieb über Vollgummi- oder Vulkollanräder, je ein Elektromotor à 5 kW pro Antriebsrad
+- name: Lenkung
+  wert: 'Reifenschonende Allradlenkung: Die vier Antriebsräder lassen sich per Joystick auf der Funkfernsteuerung um bis zu 130° schwenken. Je nach Modell: Drehen auf der Stelle und Diagonalfahrt, optional Sternfahrt sowie separate Vorder- oder Hinterradlenkung.'
+- name: Batterie
+  wert: 80 V / 375 Ah; Blei-Säure-Batterie mit integrierter Aquamatik zum Nachfüllen des Batteriewassers; Ladegerät mit Anschlussdose CEE 400 V/16 A fest im Fahrzeug verbaut
+- name: Geschwindigkeit ohne Last
+  wert: 0 bis max. 6 km/h, proportional regelbar über Funkfernsteuerung
+- name: Geschwindigkeit mit Last
+  wert: 0 bis max. 3 km/h, proportional regelbar über Funkfernsteuerung; Wahl zwischen Fahrt mit Last und Leerfahrt über abziehbaren Schlüssel auf der Funkfernsteuerung
+- name: Steuerung
+  wert: Funkfernsteuerung mit proportionalen Joysticks für Lenkung und Fahrgeschwindigkeit; Zweihandbedienung für sicherheitsrelevante Aktionen (z. B. Schienenfahrwerk heben/senken, optionale automatische Kupplung öffnen)
+downloads:
+- datei: /uploads/downloads/zagro/zagro-e-maxi-m-datenblatt.pdf
+  bezeichnung: Datenblatt ZAGRO E-MAXI M (PDF)
 reihenfolge: 1
-downloads: []
