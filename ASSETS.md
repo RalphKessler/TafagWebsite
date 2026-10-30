@@ -6,6 +6,7 @@ Alle Bilder stammen von der aktuellen Website www.tafag.ch (Oktober 2026), auf 1
 | Datei (`public/uploads/…`) | Quelle (www.tafag.ch/web/image/…) | Verwendung |
 |---|---|---|
 | `marken/tafag-logo.png` / `.webp` | `TAFAG-Hauptlogo.png` | Logo Kopf und Fuss |
+| `fahrzeuge/evtms-hybrid-bahnhof.webp`, `evtms-hybrid-arbeitsbuehne.webp` | Fotos der Tafag AG (Chat, 30.10.2026) | eVTms (Haupt- und Galeriebild) |
 | `fahrzeuge/vtms-db-793.webp` | `20241206_131004.jpg` | Hero Startseite, VTms |
 | `fahrzeuge/vtms-zug.webp` | `20241206_130827.jpg` | Bereichskachel, VTms |
 | `fahrzeuge/vtms-kran.webp` | `20220502_131851.jpg` | Dienstleistungen, VTms |

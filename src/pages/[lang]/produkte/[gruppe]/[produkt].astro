@@ -136,7 +136,8 @@ const anfrage = `/${sprache}/produkte/anfrage/?produkt=${encodeURIComponent(d.ti
   .modelle dt, .modelle dd { overflow-wrap: anywhere; }
   @media (max-width: 600px) { .modelle { grid-template-columns: minmax(0, 1fr); gap: .15rem; } .modelle dd { margin-bottom: .6rem; } }
   .bilder { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 1rem; }
-  .bilder img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+  /* Ganzes Bild zeigen (auch Hochformat), Rest der Fläche hellgrau */
+  .bilder img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: var(--grau-50); border-radius: 12px; }
   .downloads { padding-left: 1.2rem; }
   .seite { position: sticky; top: 7rem; display: grid; gap: 1rem; }
   .box { border: 1px solid var(--grau-200); border-radius: 18px; padding: 1.5rem; }

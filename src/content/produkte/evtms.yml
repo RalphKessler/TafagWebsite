@@ -14,14 +14,16 @@ beschreibung: |
   ### Ausrüsten mit Twistlock
 
   Dazu erhältlich sind zahlreiche, nach Ihren Wünschen ausgestattete, wechselbare Plattformen mit Unterhaltshilfsmitteln wie Kranen, Arbeitsbühnen, Kabelverlegeeinrichtungen oder Inspektionsausrüstungen – siehe [Module](/de/produkte/module/) und [Hebebühne / Kran](/de/produkte/hebebuehne-kran/).
-bild: /uploads/fahrzeuge/vtms-db-793.webp
+bild: /uploads/fahrzeuge/evtms-hybrid-bahnhof.webp
 bilder:
+- bild: /uploads/fahrzeuge/evtms-hybrid-arbeitsbuehne.webp
+  alt: eVTms Hybridfahrzeug mit ausgefahrener Arbeitsbühne an der Fahrleitung
+- bild: /uploads/fahrzeuge/vtms-db-793.webp
+  alt: VTms-Arbeitsfahrzeug mit Tragwagen auf dem Gleis
 - bild: /uploads/fahrzeuge/vtms-zug.webp
   alt: VTms-Zug mit Kran und mehreren Tragwagen
 - bild: /uploads/fahrzeuge/vtms-kran.webp
   alt: VTms mit Kran und Arbeitsplattform im Bahnhof
-- bild: /uploads/fahrzeuge/vtms-tunnel.webp
-  alt: VTms mit Trommelböcken im Tunnel
 technische_daten:
 - name: Antrieb
   wert: diesel-elektrisch, mit Partikelfilter
