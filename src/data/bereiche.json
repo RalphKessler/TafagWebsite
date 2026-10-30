@@ -13,10 +13,6 @@
         {
           "titel": "Hebebühne / Kran",
           "link": "/de/produkte/hebebuehne-kran/"
-        },
-        {
-          "titel": "Module",
-          "link": "/de/produkte/module/"
         }
       ]
     },
@@ -37,11 +33,15 @@
       ]
     },
     {
-      "titel": "Notstrom & Sonderlösungen",
-      "link": "/de/produkte/sonderloesungen/",
+      "titel": "Module, Notstrom & Sonderlösungen",
+      "link": "/de/produkte/module/",
       "bild": "/uploads/fahrzeuge/tubemo-wagen.webp",
-      "text": "Notstromversorgung, Montagehilfen, Spezialarbeitsbühnen und Partikelfilter – massgeschneidert für Ihre Aufgabe.",
+      "text": "Wechselbare Module für eVTms und Tragwagen, Notstromversorgung, Montagehilfen und Partikelfilter – massgeschneidert für Ihre Aufgabe.",
       "punkte": [
+        {
+          "titel": "Module",
+          "link": "/de/produkte/module/"
+        },
         {
           "titel": "Notstromversorgung",
           "link": "/de/produkte/notstromversorgung/"
@@ -49,10 +49,6 @@
         {
           "titel": "Sonderlösungen",
           "link": "/de/produkte/sonderloesungen/"
-        },
-        {
-          "titel": "Installationszug Gotthard",
-          "link": "/de/referenzen/installationszug-gotthard/"
         }
       ]
     },
